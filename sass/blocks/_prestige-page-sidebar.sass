@@ -1,0 +1,105 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Page sidebar
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-page-sidebar"
+
+#{$block}
+  position: relative
+  z-index: 90
+  flex-grow: 0
+  flex-shrink: 0
+  display: block
+  width: 240px
+  height: 100%
+  overflow-x: hidden
+  overflow-y: auto
+  background-color: $c-secondary-ultra-dark
+  box-shadow: 2px 0 8px -2px $c-shadow-primary
+  transition: .3s
+
+  +media-screen-max-l-major
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    width: 0
+
+  // $Page sidebar STATE: toggled
+  &.is-toggled
+    +media-screen-max-l-major
+      width: 100%
+
+    +media-screen-min-l-major
+      width: 60px
+
+
+  // $Page sidebar inner
+  &__inner
+    display: block
+    width: 100%
+    padding: 20px 0
+
+
+  // $Page sidebar toggle
+  &__toggle
+    display: block
+    width: 20px
+    height: 20px
+    margin: 0
+    padding: 0
+    margin: 0 20px 20px auto
+    background-color: transparent
+    border: none
+    font-size: 0
+    line-height: 0
+    color: transparent
+    outline: none
+    transition: all .3s
+    cursor: pointer
+
+    +media-screen-max-l-major
+      display: none
+
+    &:before
+      content: '\e901'
+      font-family: icons
+      font-size: 20px
+      line-height: 20px
+      color: $c-white
+
+      #{$block}.is-toggled &
+        content: '\e902'
+
+    &:hover
+      opacity: 0.75
+
+    &:focus
+      outline: none
+
+
+  // $Page sidebar menu
+  &__menu
+    display: block
+    width: 100%
+
+    +media-screen-max-l-major
+      display: none
+
+    // $Page sidebar menu CONTEXT: $Page sidebar STATE: toggled
+    #{$block}.is-toggled &
+      +media-screen-max-l-major
+        display: block
+
+      +media-screen-min-l-major
+        display: none
