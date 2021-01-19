@@ -1,0 +1,187 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Menu
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-menu"
+
+#{$block}
+  position: relative
+  display: block
+  width: 100%
+
+  // $Menu MOD: role dropdown
+  &_role_dropdown
+
+  // $Menu MOD: role sidebar
+  &_role_sidebar
+
+
+  // $Menu list
+  // $Menu sub list
+  &__list,
+  &__sub-list
+    display: block
+    width: 100%
+    list-style: none
+
+
+  // $Menu sub list
+  &__sub-list
+    overflow: hidden
+    max-height: 0
+    transition: max-height .9s ease
+
+    // $Menu sub list STATE: opened
+    &.is-opened
+      max-height: 600px
+
+
+  // $Menu item
+  // $Menu sub item
+  &__item,
+  &__sub-item
+    display: block
+    width: 100%
+
+
+  // $Menu item
+  &__item
+    &:not(:last-child)
+      border-bottom: 1px solid rgba(255,255,255,.05)
+
+
+  // $Menu label
+  // $Menu link
+  // $Menu sub link
+  // $Menu sub list toggle
+  &__label,
+  &__link,
+  &__sub-link,
+  &__sub-list-toggle
+    position: relative
+    display: block
+    width: 100%
+    height: 40px
+    padding: 0 20px
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 40px
+    font-weight: 400
+    color: $c-gray-ultra-dark
+    text-decoration: none
+    transition: all .3s
+
+    #{$block}_role_sidebar &
+      color: $c-white
+      white-space: nowrap
+
+    +media-screen-max-m-major
+      padding: 0 15px
+
+    +media-screen-max-s-major
+      padding: 0 10px
+
+    &:before
+      display: inline-block
+      margin-right: 10px
+      font-family: icons
+      font-size: 14px
+      line-height: 1
+      vertical-align: middle
+      color: inherit
+
+    &_icon_user
+      &:before
+        content: '\e906'
+
+    &_icon_power
+      &:before
+        content: '\e904'
+
+    &_icon_envelope
+      &:before
+        content: '\e91a'
+
+    &_adjust_wrap
+      word-wrap: break-word
+      hyphens: auto
+
+    &_adjust_nowrap
+      white-space: nowrap
+
+
+  // $Menu link
+  // $Menu sub link
+  // $Menu sub list toggle
+  &__link,
+  &__sub-link,
+  &__sub-list-toggle
+    cursor: pointer
+    outline: none
+
+    &:hover
+      background-color: $c-gray-ultra-light
+
+      #{$block}_role_sidebar &
+        background-color: $c-primary-medium
+
+    &:focus
+      outline: none
+
+
+  // $Menu link
+  // $Menu sub link
+  &__link,
+  &__sub-link
+    &.is-active
+      cursor: default
+      background-color: $c-gray-ultra-light
+
+      #{$block}_role_sidebar &
+        background-color: $c-primary-medium
+
+
+  // $Menu sub link
+  &__sub-link
+    padding-left: 40px
+    font-weight: 300
+
+    +media-screen-max-m-major
+      padding-left: 30px
+
+    +media-screen-max-s-major
+      padding-left: 20px
+
+
+  // $Menu sub list toggle
+  &__sub-list-toggle
+    &:after
+      content: '\e90d'
+      position: absolute
+      top: 50%
+      margin-top: -2px
+      right: 20px
+      font-family: icons
+      font-size: 14px
+      line-height: 5px
+
+      +media-screen-max-m-major
+        right: 15px
+
+      +media-screen-max-s-major
+        right: 10px
+
+    // $Menu sub list toggle STATE: active
+    &.is-active
+      &:after
+        content: '\e90c'

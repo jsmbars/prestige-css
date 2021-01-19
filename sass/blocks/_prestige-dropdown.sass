@@ -1,0 +1,167 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Dropdown
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-dropdown"
+
+#{$block}
+  position: relative
+  display: block
+  width: 100%
+
+  // $Dropdown STATE: opened
+  &.is-opened
+
+  // $Dropdown MOD: role user
+  &_role_user
+
+
+  // $Dropdown control
+  &__control
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+    width: 100%
+    cursor: pointer
+
+    +media-screen-max-l-major
+    justify-content: center
+
+
+  // $Dropdown icon
+  &__icon
+    display: block
+    margin-right: 10px
+
+    &:before
+      content: ''
+      display: inline-block
+      font-family: icons
+      font-size: 14px
+      line-height: 1
+      color: inherit
+
+    // $Dropdown icon MOD: user
+    &_user
+      &:before
+        content: '\e906'
+
+
+  // $Dropdown label
+  &__label
+    display: block
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1
+    color: $c-gray-ultra-dark
+    transition: all .3s
+
+    #{$block}__control:hover &
+      color: $c-gray-dark
+
+
+  // $Dropdown arrow
+  &__arrow
+    display: block
+    margin-left: 10px
+
+    &:before
+      content: '\e90d'
+      font-family: icons
+      font-size: 14px
+      line-height: 1
+      color: inherit
+
+      // $Dropdown arrow CONTEXT: $Dropdown STATE: opened
+      #{$block}.is-opened &
+        content: '\e90c'
+
+
+  // Dropdown content
+  &__content
+    position: absolute
+    top: calc(100% + 10px)
+    right: -20px
+    z-index: 110
+    display: none
+    width: 320px
+    padding: 10px 0
+    border-radius: 8px
+    border: 1px solid $c-gray-extra-light
+    background-color: $c-white
+    box-shadow: 0 2px 8px -2px $c-shadow-primary
+
+    +media-screen-max-l-major
+      position: relative
+      right: auto
+      top: auto
+      width: 100%
+      max-width: 320px
+      margin: 10px auto 0
+
+    &:before
+      content: ''
+      position: absolute
+      bottom: 100%
+      right: 12px
+      z-index: 120
+      display: block
+      border-bottom: 11px solid $c-gray-extra-light
+      border-right: 11px solid transparent
+      border-left: 11px solid transparent
+
+      +media-screen-max-l-major
+        right: 50%
+        margin-right: -6px
+
+    &:after
+      content: ''
+      position: absolute
+      bottom: 100%
+      right: 13px
+      z-index: 130
+      border-bottom: 10px solid #fff
+      border-right: 10px solid transparent
+      border-left: 10px solid transparent
+
+      +media-screen-max-l-major
+        right: 50%
+        margin-right: -5px
+
+    // $Dropdown content CONTEXT: $Dropdown STATE: opened
+    #{$block}.is-opened &
+      display: block
+
+
+  // Dropdown menu container
+  &__menu
+    display: block
+    width: 100%
+
+
+  // Dropdown calendar container
+  &__calendar
+    display: block
+    width: 100%
+    padding: 0 10px
+
+
+  // $Dropdown scroll container
+  &__scroll
+    position: relative
+    z-index: 10
+    display: block
+    width: 100%
+    max-height: 200px
+    overflow: hidden

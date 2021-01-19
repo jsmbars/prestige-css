@@ -1,0 +1,207 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Error message
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-error"
+
+#{$block}
+  display: block
+  position: relative
+  padding: 8px 10px 8px 30px
+  background-color: $c-red-medium
+  border-radius: 2px
+  text-align: left
+
+  &:before
+    content: "\e912"
+    position: absolute
+    top: 10px
+    left: 10px
+    display: block
+    font-family: icons
+    font-size: 10px
+    line-height: 1
+    color: $c-white
+
+  // $Error message MOD: type general
+  &_type_general
+    padding: 15px 15px 15px 40px
+    margin-bottom: 30px
+
+    &:before
+      top: 18px
+      left: 15px
+      font-size: 14px
+
+  // $Error message MOD: type tooltip layout
+  &_type_tooltip
+    position: absolute
+    z-index: 10
+
+    &:before
+      top: 10px
+
+    &:after
+      content: ""
+      position: absolute
+      z-index: 11
+      display: block
+
+  // $Error message MOD: position top
+  &_position_top
+    margin-bottom: 10px
+
+  // $Error message MOD: position top MOD: type general
+  &_position_top#{&}_type_general
+    margin-bottom: 20px
+
+  // $Error message MOD: position top left
+  &_position_top-left#{&}_type_tooltip
+    left: 0
+    bottom: 100%
+    margin-bottom: 5px
+
+    &:after
+      top: 100%
+      left: 15px
+      border-top: 5px solid $c-red-medium
+      border-right: 5px solid transparent
+      border-left: 5px solid transparent
+
+  // $Error message MOD: position top left MOD: type tooltip MOD: adjust field label
+  &_position_top-left#{&}_type_tooltip#{&}_adjust_label
+    bottom: calc(100% - 25px)
+
+  // $Error message MOD: position top right
+  &_position_top-right#{&}_type_tooltip
+    right: 0
+    bottom: 100%
+    margin-bottom: 5px
+
+    &:after
+      top: 100%
+      right: 15px
+      border-top: 5px solid $c-red-medium
+      border-right: 5px solid transparent
+      border-left: 5px solid transparent
+
+  // $Error message MOD: position top right MOD: type tooltip MOD: adjust field label
+  &_position_top-right#{&}_type_tooltip#{&}_adjust_label
+    bottom: calc(100% - 25px)
+
+  // $Error message MOD: position bottom
+  &_position_bottom
+    margin-top: 10px
+
+  // $Error message MOD: position bottom MOD: type general
+  &_position_bottom#{&}_type_general
+    margin-top: 20px
+
+  // $Error message MOD: position bottom left MOD: type tooltip
+  &_position_bottom-left#{&}_type_tooltip
+    left: 0
+    top: 100%
+    margin-top: 5px
+
+    &:after
+      bottom: 100%
+      left: 15px
+      border-bottom: 5px solid $c-red-medium
+      border-right: 5px solid transparent
+      border-left: 5px solid transparent
+
+  // $Error message MOD: position bottom right MOD: type tooltip
+  &_position_bottom-right#{&}_type_tooltip
+    right: 0
+    top: 100%
+    margin-top: 5px
+
+    &:after
+      bottom: 100%
+      right: 15px
+      border-bottom: 5px solid $c-red-medium
+      border-right: 5px solid transparent
+      border-left: 5px solid transparent
+
+
+  // $Error message text
+  &__text
+    position: relative
+    display: block
+    font-family: $f-sans
+    font-size: 12px
+    line-height: 1.25
+    font-weight: 400
+    color: $c-white
+    text-align: left
+
+    // $Error message text CONTEXT: $Error MOD: type tooltip
+    #{$block}_type_tooltip &
+      font-size: 11px
+
+    // $Error message text CONTEXT: $Error MOD: type general
+    #{$block}_type_general &
+      font-size: 14px
+
+    &:not(:last-child)
+      margin-bottom: 4px
+
+      #{$block}_type_tooltip &
+        margin-bottom: 2px
+
+      #{$block}_type_general &
+        margin-bottom: 6px
+
+    // $Error message text MOD: adjust nowrap
+    &_adjust_nowrap
+      white-space: nowrap
+
+
+  // $Error text bold
+  &__text-bold
+    font-weight: 800
+
+
+  // $Error text light
+  &__text-light
+    font-weight: 300
+
+
+  // $Error message text line
+  &__text-line
+    display: block
+
+    &:not(:last-child)
+      margin-bottom: 4px
+
+      #{$block}_type_tooltip &
+        margin-bottom: 2px
+
+      #{$block}_type_general &
+        margin-bottom: 6px
+
+    // $Error message text line MOD: pointer dash
+    &_pointer_dash
+      &:before
+        content: "\2013"
+        display: inline-block
+        margin-right: 5px
+
+
+  // $Error message text link
+  &__text-link
+    color: inherit
+    text-decoration: underline
+
+    &:hover
+      text-decoration: none

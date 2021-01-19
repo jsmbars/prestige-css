@@ -1,0 +1,236 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Page header
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-page-header"
+
+#{$block}
+  flex-grow: 0
+  flex-shrink: 0
+  position: relative
+  z-index: 100
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: stretch
+  width: 100%
+  height: 60px
+  background-color: $c-white
+  box-shadow: 0 2px 8px -2px $c-shadow-primary
+
+  +media-screen-max-l-major
+    height: auto
+
+
+  // $Page header inner
+  &__inner
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+    width: 100%
+    padding: 0 20px
+
+    +media-screen-max-l-major
+      flex-wrap: wrap
+      padding: 20px
+
+    +media-screen-max-m-major
+      padding: 15px
+
+    +media-screen-max-s-major
+      padding: 10px
+
+
+  // $Page header info
+  &__info
+    flex-grow: 1
+    flex-shrink: 1
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+    width: auto
+
+    +media-screen-max-l-major
+      width: 100%
+
+    &:only-child
+      justify-content: center
+      width: 100%
+
+
+  // $Page header info group
+  &__info-group
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+
+    +media-screen-max-l-major
+      padding: 0 20px
+      text-align: center
+
+    +media-screen-max-m-major
+      padding: 0 15px
+
+    +media-screen-max-s-major
+      padding: 0 10px
+
+    &:only-child
+      text-align: center
+
+      +media-screen-max-l-major
+        padding: 0
+
+      +media-screen-max-m-major
+        padding: 0
+
+      +media-screen-max-s-major
+        padding: 0
+
+
+  // $Page sidebar toggle
+  &__toggle
+    flex-grow: 0
+    flex-shrink: 0
+    display: none
+    width: 30px
+    height: 20px
+    margin: 0
+    padding: 0
+    background-color: transparent
+    border: none
+    font-size: 0
+    line-height: 0
+    color: transparent
+    outline: none
+    transition: all .3s
+    cursor: pointer
+
+    +media-screen-max-l-major
+      display: block
+
+    &:before
+      font-family: icons
+      font-size: 20px
+      line-height: 20px
+      color: $c-gray-ultra-dark
+
+    &:hover
+      opacity: 0.75
+
+    &:focus
+      outline: none
+
+    // $Page sidebar toggle MOD: role sidebar
+    &_role_sidebar
+      text-align: left
+
+      &:before
+        content: '\e902'
+
+    // $Page sidebar toggle MOD: role sidebar STATE: active
+    &_role_sidebar#{&}.is-active
+      &:before
+        content: '\e901'
+        font-size: 18px
+
+    // $Page sidebar toggle MOD: role controls
+    &_role_controls
+      text-align: right
+
+      &:before
+        content: '\e91c'
+        font-size: 25px
+
+    // $Page sidebar toggle MOD: role sidebar STATE: active
+    &_role_controls#{&}.is-active
+      &:before
+        content: '\e901'
+        font-size: 16px
+
+
+  // $Page header logo
+  &__logo
+    display: inline-block
+    width: auto
+    text-decoration: none
+
+
+  // $Page header logo text
+  &__logo-text
+    display: inline-block
+    font-family: $f-sans
+    font-size: 24px
+    line-height: 1
+    font-weight: 600
+    color: $c-gray-ultra-dark
+    text-decoration: none
+    text-transform: uppercase
+    transition: all .3s
+
+    +media-screen-max-l-major
+      font-size: 20px
+
+    &:hover
+      color: $c-gray-dark
+
+
+  // $Page header controls
+  &__controls
+    flex-grow: 0
+    flex-shrink: 0
+    display: flex
+    flex-direction: row
+    justify-content: flex-end
+    align-items: center
+    width: auto
+
+    +media-screen-max-l-major
+      flex-direction: column
+      justify-content: flex-start
+      display: none
+      width: 100%
+      margin-top: 20px
+      padding-top: 20px
+      border-top: 1px solid $c-gray-extra-light
+
+    +media-screen-max-m-major
+      margin-top: 15px
+      padding-top: 15px
+
+    +media-screen-max-s-major
+      margin-top: 10px
+      padding-top: 10px
+
+    &.is-opened
+      +media-screen-max-l-major
+        display: flex
+
+
+  // $Page header control
+  &__control
+    flex-grow: 0
+    flex-shrink: 0
+    display: block
+
+    +media-screen-max-l-major
+      display: block
+      width: 100%
+
+    &:not(:last-child)
+      margin-right: 30px
+
+      +media-screen-max-l-major
+        margin-right: 0
+        margin-bottom: 20px

@@ -1,0 +1,30 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Page container
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-page-container"
+
+#{$block}
+  flex-grow: 1
+  flex-shrink: 1
+  position: relative
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+  align-items: stretch
+  width: 100%
+  height: calc(100% - 60px)
+  overflow: hidden
+
+  +media-screen-max-l-major
+    display: block
