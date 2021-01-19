@@ -1,0 +1,182 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Page error
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-page-error"
+
+#{$block}
+  display: block
+  width: 100%
+  max-width: 960px
+  margin-left: auto
+  margin-right: auto
+  padding: 40px
+  background-color: $c-white
+  border-radius: 10px
+  box-shadow: 0 2px 8px -2px $c-shadow-primary
+  margin-top: 100px
+  margin-bottom: 100px
+
+  +media-screen-max-m-major
+    padding: 30px
+
+  +media-screen-max-s-major
+    margin-top: 50px
+    margin-bottom: 50px
+    padding: 20px
+
+  +media-screen-max-s-minor
+    margin-top: 25px
+    margin-bottom: 25px
+
+
+  // $Page error group
+  &__group
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: flex-start
+    width: 100%
+
+    +media-screen-max-s-major
+      flex-direction: column
+      align-items: center
+
+
+  // $Page error icon
+  &__icon
+    flex-grow: 0
+    flex-shrink: 0
+    display: block
+    width: 240px
+
+    +media-screen-max-m-major
+      width: 210px
+
+    +media-screen-max-m-minor
+      width: 180px
+
+    +media-screen-max-s-major
+      width: 150px
+      margin-bottom: 20px
+
+
+  // $Page error image
+  &__image
+    display: block
+    width: 100%
+    max-width: 100%
+
+
+  // $Page error information
+  &__info
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    width: calc(100% - 240px)
+    padding-left: 40px
+
+    +media-screen-max-m-major
+      width: calc(100% - 210px)
+      padding-left: 30px
+
+    +media-screen-max-m-minor
+      width: calc(100% - 180px)
+
+    +media-screen-max-s-major
+      width: 100%
+      padding-left: 0
+
+
+  // $Page error title
+  &__title
+    font-family: $f-sans
+    font-size: 40px
+    line-height: 1
+    color: $c-gray-ultra-dark
+    font-weight: 400
+
+    +media-screen-max-m-major
+      font-size: 36px
+
+    +media-screen-max-s-major
+      font-size: 32px
+      text-align: center
+
+    &:not(:last-child)
+      margin-bottom: 20px
+
+
+  // $Page error title code
+  &__title-code
+    font-weight: 600
+    white-space: nowrap
+
+    &:after
+      content: '.'
+      display: inline-block
+      font-weight: 400
+
+
+  // $Page error text
+  &__text
+    font-family: $f-sans
+    font-size: 20px
+    line-height: 1.25
+    color: $c-gray-ultra-dark
+    font-weight: 300
+
+    +media-screen-max-m-major
+      font-size: 18px
+
+    +media-screen-max-s-major
+      font-size: 16px
+
+    &:not(:last-child)
+      margin-bottom: 20px
+
+
+  // $Page error text line
+  &__text-line
+    display: block
+
+    &:not(:last-child)
+      margin-bottom: 10px
+
+
+  // $Page error text link
+  &__text-link
+    font-size: inherit
+    line-height: inherit
+    color: $c-primary-medium
+    text-decoration: underline
+
+    &:hover
+      text-decoration: none
+      color: $c-primary-medium
+
+
+  // $Page error actions
+  &__actions
+    margin-top: 40px
+    text-align: left
+
+    +media-screen-max-m-major
+      margin-top: 30px
+
+    +media-screen-max-s-major
+      text-align: center
+
+
+  // $Page error action
+  &__action

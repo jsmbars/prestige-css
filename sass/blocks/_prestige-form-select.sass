@@ -1,0 +1,333 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Form select
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+// $select-size-name, $select-height
+$select-sizes: ("xxs" 25px, "xs" 30px, "s" 35px, "m" 40px, "l" 45px, "xl" 50px, "xxl" 55px)
+
+// $select-highlight-name, $select-highlight-background, $select-highlight-border
+$select-highlights: ("primary-ultra-light" $c-primary-ultra-light $c-primary-light, "pink-ultra-light" $c-pink-ultra-light $c-pink-light, "red-ultra-light" $c-red-ultra-light $c-red-light, "orange-ultra-light" $c-orange-ultra-light $c-orange-light, "yellow-ultra-light" $c-yellow-ultra-light $c-yellow-light, "green-ultra-light" $c-green-ultra-light $c-green-light, "blue-ultra-light" $c-blue-ultra-light $c-blue-light, "purple-ultra-light" $c-purple-ultra-light $c-purple-light, "gray-ultra-light" $c-gray-ultra-light $c-gray-light)
+
+// $select-color-name, $select-color-value
+$select-colors: ("primary-medium" $c-primary-medium, "pink-medium" $c-pink-medium, "red-medium" $c-red-medium, "orange-medium" $c-orange-medium, "yellow-medium" $c-yellow-medium, "green-medium" $c-green-medium, "blue-medium" $c-blue-medium, "purple-medium" $c-purple-medium, "gray-medium" $c-gray-medium)
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-form-select"
+
+#{$block}
+  position: relative
+  display: block
+  width: 100%
+
+  // $Form select STATE: error
+  &.is-error
+
+  // $Form select MOD: size xxs
+  &_size_xxs
+
+  // $Form select MOD: size xs
+  &_size_xs
+
+  // $Form select MOD: size s
+  &_size_s
+
+  // $Form select MOD: size m
+  &_size_m
+
+  // $Form select MOD: size l
+  &_size_l
+
+  // $Form select MOD: size xl
+  &_size_xl
+
+  // $Form select MOD: size xxl
+  &_size_xxl
+
+  // $Form select MOD: highlight primary ultra light
+  &_highlight_primary-ultra-light
+
+  // $Form select MOD: highlight pink ultra light
+  &_highlight_pink-ultra-light
+
+  // $Form select MOD: highlight red ultra light
+  &_highlight_red-ultra-light
+
+  // $Form select MOD: highlight orange ultra light
+  &_highlight_orange-ultra-light
+
+  // $Form select MOD: highlight yellow ultra light
+  &_highlight_yellow-ultra-light
+
+  // $Form select MOD: highlight green ultra light
+  &_highlight_green-ultra-light
+
+  // $Form select MOD: highlight blue ultra light
+  &_highlight_blue-ultra-light
+
+  // $Form select MOD: highlight purple ultra light
+  &_highlight_purple-ultra-light
+
+  // $Form select MOD: highlight gray ultra light
+  &_highlight_gray-ultra-light
+
+  // $Form select MOD: color primary medium
+  &_color_primary-medium
+
+  // $Form select MOD: color pink medium
+  &_color_pink-medium
+
+  // $Form select MOD: color red medium
+  &_color_red-medium
+
+  // $Form select MOD: color orange medium
+  &_color_orange-medium
+
+  // $Form select MOD: color yellow medium
+  &_color_yellow-medium
+
+  // $Form select MOD: color green medium
+  &_color_green-medium
+
+  // $Form select MOD: color blue medium
+  &_color_blue-medium
+
+  // $Form select MOD: color purple medium
+  &_color_purple-medium
+
+  // $Form select MOD: color gray medium
+  &_color_gray-medium
+
+
+  // $Form select group
+  &__group
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+
+    // $Form select group MOD: justify start
+    &_justify_start
+      justify-content: flex-start
+
+    // $Form select group MOD: justify end
+    &_justify_end
+      justify-content: flex-end
+
+
+  // $Form select label
+  &__label
+    display: block
+    width: 100%
+    margin-bottom: 10px
+    font-family: $f-sans
+    font-size: 14px
+    color: $c-gray-ultra-dark
+    font-weight: 400
+    line-height: 1
+    text-align: left
+
+    #{$block}__group &
+      flex-grow: 0
+      flex-shrink: 1
+      width: auto
+      margin-bottom: 0
+
+    &:first-child
+      #{$block}__group &
+        padding-right: 10px
+
+    &:last-child
+      #{$block}__group &
+        padding-left: 10px
+
+
+  // $Form select label text
+  &__label-text
+
+
+  // $Form select input
+  &__input
+    position: relative
+
+    #{$block}__group &
+      flex-grow: 1
+      flex-shrink: 1
+
+    &:after
+      content: '\e90e'
+      position: absolute
+      top: 50%
+      right: 10px
+      z-index: 10
+      display: block
+      font-family: icons
+      font-size: 20px
+      color: $c-gray-dark
+      line-height: 1
+      transform: translateY(-50%)
+
+      #{$block}.is-error &
+        color: $c-red-medium
+
+    // Form select control
+    & select
+      display: block
+      width: 100%
+      height: 40px
+      padding: 0 30px 0 10px
+      font-family: $f-sans
+      font-size: 14px
+      color: $c-gray-ultra-dark
+      font-weight: 400
+      line-height: 1.25
+      border-radius: 2px
+      background-color: $c-white
+      border: 1px solid $c-gray-light
+      appearance: none
+      -moz-appearance: none
+      -webkit-appearance: none
+
+      @each $select-size-name, $select-height in $select-sizes
+        #{$block}_size_#{$select-size-name} &
+          height: $select-height
+
+      @each $select-highlight-name, $select-highlight-background, $select-highlight-border in $select-highlights
+        #{$block}_highlight_#{$select-highlight-name} &
+          background-color: $select-highlight-background
+          border-color: $select-highlight-border
+
+      @each $select-color-name, $select-color-value in $select-colors
+        #{$block}_color_#{$select-color-name} &
+          color: $select-color-value
+
+      #{$block}.is-error &
+        border-color: $c-red-medium
+        color: $c-red-medium
+
+      &:invalid
+        box-shadow: none
+
+      &:focus
+        outline: none
+        box-shadow: 0 0 3px -1px $c-shadow-primary
+
+      &::-ms-expand
+        display: none
+
+      &:focus::-ms-value
+        background-color: transparent
+        color: $c-gray-ultra-dark
+
+      &:disabled
+        background-color: $c-gray-ultra-light
+        cursor: not-allowed
+
+    // Form select control option
+    & option
+      display: block
+      width: 100%
+      max-width: 100%
+      font-family: $f-sans
+      font-size: 14px
+      color: $c-gray-ultra-dark
+      font-weight: 400
+      line-height: 1.25
+      outline: none
+      border: none
+
+
+  // $Form select box
+  &__box
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+    width: 100%
+    min-height: 40px
+    padding: 10px
+    font-family: $f-sans
+    font-size: 14px
+    color: $c-gray-ultra-dark
+    font-weight: 400
+    line-height: 1.25
+    border-radius: 2px
+    background-color: $c-white
+    border: 1px solid $c-gray-light
+    cursor: default
+
+    #{$block}__group &
+      flex-grow: 1
+      flex-shrink: 1
+
+    @each $select-size-name, $select-height in $select-sizes
+      #{$block}_size_#{$select-size-name} &
+        min-height: $select-height
+        padding-top: floor(($select-height - 20px) / 2)
+        padding-bottom: floor(($select-height - 20px) / 2)
+
+    @each $select-highlight-name, $select-highlight-background, $select-highlight-border in $select-highlights
+      #{$block}_highlight_#{$select-highlight-name} &
+        background-color: $select-highlight-background
+        border-color: $select-highlight-border
+
+    @each $select-color-name, $select-color-value in $select-colors
+      #{$block}_color_#{$select-color-name} &
+        color: $select-color-value
+
+    #{$block}.is-error &
+      border-color: $c-red-medium
+      color: $c-red-medium
+
+
+  // $Form select box text
+  &__box-text
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    width: 100%
+    max-width: 100%
+
+
+  // $Form select value
+  &__value
+    width: 100%
+    font-family: $f-sans
+    font-size: 18px
+    color: $c-gray-ultra-dark
+    font-weight: 600
+    line-height: 1.25
+    background-color: transparent
+    cursor: default
+
+    #{$block}__group &
+      flex-grow: 1
+      flex-shrink: 1
+
+    #{$block}.is-error &
+      color: $c-red-medium
+
+
+  // $Form select note
+  &__note
+    margin-top: 10px
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1
+    font-weight: 400
+    font-style: italic
+    color: $c-gray-ultra-dark
+
+
+  // $Form select third-party component wrap
+  &__component
+    display: block
+    width: 100%

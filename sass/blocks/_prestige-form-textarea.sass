@@ -1,0 +1,329 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Form textarea
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+// $textarea-size-name, $textarea-height, $textarea-base-height
+$textarea-sizes: ("xxs" 60px 25px, "xs" 75px 30px, "s" 85px 35px, "m" 100px 40px, "l" 105px 45px, "xl" 125px 50px, "xxl" 140px 55px)
+
+// $textarea-highlight-name, $textarea-highlight-background, $textarea-highlight-border
+$textarea-highlights: ("primary-ultra-light" $c-primary-ultra-light $c-primary-light, "pink-ultra-light" $c-pink-ultra-light $c-pink-light, "red-ultra-light" $c-red-ultra-light $c-red-light, "orange-ultra-light" $c-orange-ultra-light $c-orange-light, "yellow-ultra-light" $c-yellow-ultra-light $c-yellow-light, "green-ultra-light" $c-green-ultra-light $c-green-light, "blue-ultra-light" $c-blue-ultra-light $c-blue-light, "purple-ultra-light" $c-purple-ultra-light $c-purple-light, "gray-ultra-light" $c-gray-ultra-light $c-gray-light)
+
+// $textarea-color-name, $textarea-color-value
+$textarea-colors: ("primary-medium" $c-primary-medium, "pink-medium" $c-pink-medium, "red-medium" $c-red-medium, "orange-medium" $c-orange-medium, "yellow-medium" $c-yellow-medium, "green-medium" $c-green-medium, "blue-medium" $c-blue-medium, "purple-medium" $c-purple-medium, "gray-medium" $c-gray-medium)
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-form-textarea"
+
+#{$block}
+  position: relative
+  display: block
+  width: 100%
+
+  // $Form textarea STATE: error
+  &.is-error
+
+  // $Form textarea MOD: size xxs
+  &_size_xxs
+
+  // $Form textarea MOD: size xs
+  &_size_xs
+
+  // $Form textarea MOD: size s
+  &_size_s
+
+  // $Form textarea MOD: size m
+  &_size_m
+
+  // $Form textarea MOD: size l
+  &_size_l
+
+  // $Form textarea MOD: size xl
+  &_size_xl
+
+  // $Form textarea MOD: size xxl
+  &_size_xxl
+
+  // $Form textarea MOD: highlight primary ultra light
+  &_highlight_primary-ultra-light
+
+  // $Form textarea MOD: highlight pink ultra light
+  &_highlight_pink-ultra-light
+
+  // $Form textarea MOD: highlight red ultra light
+  &_highlight_red-ultra-light
+
+  // $Form textarea MOD: highlight orange ultra light
+  &_highlight_orange-ultra-light
+
+  // $Form textarea MOD: highlight yellow ultra light
+  &_highlight_yellow-ultra-light
+
+  // $Form textarea MOD: highlight green ultra light
+  &_highlight_green-ultra-light
+
+  // $Form textarea MOD: highlight blue ultra light
+  &_highlight_blue-ultra-light
+
+  // $Form textarea MOD: highlight purple ultra light
+  &_highlight_purple-ultra-light
+
+  // $Form textarea MOD: highlight gray ultra light
+  &_highlight_gray-ultra-light
+
+  // $Form textarea MOD: color primary medium
+  &_color_primary-medium
+
+  // $Form textarea MOD: color pink medium
+  &_color_pink-medium
+
+  // $Form textarea MOD: color red medium
+  &_color_red-medium
+
+  // $Form textarea MOD: color orange medium
+  &_color_orange-medium
+
+  // $Form textarea MOD: color yellow medium
+  &_color_yellow-medium
+
+  // $Form textarea MOD: color green medium
+  &_color_green-medium
+
+  // $Form textarea MOD: color blue medium
+  &_color_blue-medium
+
+  // $Form textarea MOD: color purple medium
+  &_color_purple-medium
+
+  // $Form textarea MOD: color gray medium
+  &_color_gray-medium
+
+
+  // $Form textarea group
+  &__group
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+
+
+  // $Form textarea label
+  &__label
+    display: block
+    width: 100%
+    margin-bottom: 10px
+    font-family: $f-sans
+    font-size: 14px
+    color: $c-gray-ultra-dark
+    font-weight: 400
+    line-height: 1
+    text-align: left
+
+    #{$block}__group &
+      flex-grow: 0
+      flex-shrink: 1
+      width: auto
+      margin-bottom: 0
+
+    &:first-child
+      #{$block}__group &
+        padding-right: 10px
+
+    &:last-child
+      #{$block}__group &
+        padding-left: 10px
+
+
+  // $Form textarea label text
+  &__label-text
+
+
+  // $Form textarea input
+  &__input
+    position: relative
+
+    #{$block}__group &
+      flex-grow: 1
+      flex-shrink: 1
+
+    & textarea
+      resize: vertical
+      display: block
+      width: 100%
+      height: 100px
+      padding: 10px
+      font-family: $f-sans
+      font-size: 14px
+      color: $c-gray-ultra-dark
+      font-weight: 400
+      line-height: 1.25
+      border-radius: 2px
+      background-color: $c-white
+      border: 1px solid $c-gray-light
+
+      @each $textarea-size-name, $textarea-height, $textarea-base-height in $textarea-sizes
+        #{$block}_size_#{$textarea-size-name} &
+          height: $textarea-height
+          padding-top: floor(($textarea-base-height - 20px) / 2)
+          padding-bottom: floor(($textarea-base-height - 20px) / 2)
+
+      @each $textarea-highlight-name, $textarea-highlight-background, $textarea-highlight-border in $textarea-highlights
+        #{$block}_highlight_#{$textarea-highlight-name} &
+          background-color: $textarea-highlight-background
+          border-color: $textarea-highlight-border
+
+      @each $textarea-color-name, $textarea-color-value in $textarea-colors
+        #{$block}_color_#{$textarea-color-name} &
+          color: $textarea-color-value
+
+      #{$block}.is-error &
+        border-color: $c-red-medium
+        color: $c-red-medium
+
+      &:invalid
+        box-shadow: none
+
+      &:focus
+        outline: none
+        box-shadow: 0 0 3px -1px $c-shadow-primary
+
+      &:disabled
+        background-color: $c-gray-ultra-light
+        cursor: not-allowed
+
+      &:read-only
+        background-color: $c-gray-ultra-light
+
+      &::-webkit-input-placeholder
+        color: $c-gray-medium !important
+        opacity:  1 !important
+
+        #{$block}.is-error &
+          color: $c-red-medium !important
+
+      &:-moz-placeholder
+        color: $c-gray-medium !important
+        opacity:  1 !important
+
+        #{$block}.is-error &
+          color: $c-red-medium !important
+
+      &::-moz-placeholder
+        color: $c-gray-medium !important
+        opacity:  1 !important
+
+        #{$block}.is-error &
+          color: $c-red-medium !important
+
+      &:-ms-input-placeholder
+        color: $c-gray-medium !important
+        opacity:  1 !important
+
+        #{$block}.is-error &
+          color: $c-red-medium !important
+
+      &::-ms-input-placeholder
+        color: $c-gray-medium !important
+        opacity:  1 !important
+
+        #{$block}.is-error &
+          color: $c-red-medium !important
+
+      &::placeholder
+        color: $c-gray-medium !important
+        opacity:  1 !important
+
+        #{$block}.is-error &
+          color: $c-red-medium !important
+
+
+  // $Form textarea box
+  &__box
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+    width: 100%
+    min-height: 100px
+    padding: 10px
+    font-family: $f-sans
+    font-size: 14px
+    color: $c-gray-ultra-dark
+    font-weight: 400
+    line-height: 1.25
+    border-radius: 2px
+    background-color: $c-white
+    border: 1px solid $c-gray-light
+    cursor: default
+
+    #{$block}__group &
+      flex-grow: 1
+      flex-shrink: 1
+
+    @each $textarea-size-name, $textarea-height, $textarea-base-height in $textarea-sizes
+      #{$block}_size_#{$textarea-size-name} &
+        min-height: $textarea-height
+        padding-top: floor(($textarea-base-height - 20px) / 2)
+        padding-bottom: floor(($textarea-base-height - 20px) / 2)
+
+    @each $textarea-highlight-name, $textarea-highlight-background, $textarea-highlight-border in $textarea-highlights
+      #{$block}_highlight_#{$textarea-highlight-name} &
+        background-color: $textarea-highlight-background
+        border-color: $textarea-highlight-border
+
+    @each $textarea-color-name, $textarea-color-value in $textarea-colors
+      #{$block}_color_#{$textarea-color-name} &
+        color: $textarea-color-value
+
+    #{$block}.is-error &
+      border-color: $c-red-medium
+      color: $c-red-medium
+
+
+  // $Form textarea box text
+  &__box-text
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    width: 100%
+    max-width: 100%
+
+
+  // $Form textarea value
+  &__value
+    width: 100%
+    font-family: $f-sans
+    font-size: 18px
+    color: $c-gray-ultra-dark
+    font-weight: 600
+    line-height: 1.25
+    background-color: transparent
+    cursor: default
+
+    #{$block}.is-error &
+      color: $c-red-medium
+
+
+  // $Form textarea note
+  &__note
+    margin-top: 10px
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1
+    font-weight: 400
+    font-style: italic
+    color: $c-gray-ultra-dark
+
+
+  // $Form textarea third-party component wrap
+  &__component
+    display: block
+    width: 100%

@@ -1,0 +1,203 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Form options
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+// $options-size-name, $options-height
+$options-sizes: ("xxs" 25px, "xs" 30px, "s" 35px, "m" 40px, "l" 45px, "xl" 50px, "xxl" 55px)
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-form-options"
+
+#{$block}
+  display: block
+  width: 100%
+
+  // $Form options STATE: error
+  &.is-error
+
+  // $Form options MOD: size xxs
+  &_size_xxs
+
+  // $Form options MOD: size xs
+  &_size_xs
+
+  // $Form options MOD: size s
+  &_size_s
+
+  // $Form options MOD: size m
+  &_size_m
+
+  // $Form options MOD: size l
+  &_size_l
+
+  // $Form options MOD: size xl
+  &_size_xl
+
+  // $Form options MOD: size xxl
+  &_size_xxl
+
+
+  // $Form options group
+  &__group
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+
+    // $Form options group MOD: justify start
+    &_justify_start
+      justify-content: flex-start
+
+    // $Form options group MOD: justify end
+    &_justify_end
+      justify-content: flex-end
+
+
+  // $Common form options label
+  &__label
+    display: block
+    width: 100%
+    margin-bottom: 10px
+    font-family: $f-sans
+    font-size: 14px
+    color: $c-gray-ultra-dark
+    font-weight: 400
+    line-height: 1
+    text-align: left
+
+    #{$block}__group &
+      flex-grow: 0
+      flex-shrink: 1
+      width: auto
+      margin-bottom: 0
+
+    &:first-child
+      #{$block}__group &
+        padding-right: 10px
+
+    &:last-child
+      #{$block}__group &
+        padding-left: 10px
+
+
+  // $Common form options label text
+  &__label-text
+
+
+  // $Common form options control
+  &__control
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: stretch
+    width: 100%
+
+
+  // $Form options input
+  &__input
+    position: relative
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    margin-left: -1px
+
+    & input
+      display: none
+
+    &:first-child
+      margin-left: 0
+
+
+  // $Form options input radio
+  &__input-radio
+    display: none
+
+
+  // $Form options input checkbox
+  &__input-checkbox
+    display: none
+
+
+  // $Form options input label
+  &__input-label
+    display: block
+    width: 100%
+    height: 40px
+    padding: 0 10px
+    border: 1px solid $c-gray-light
+    border-radius: 2px
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 38px
+    white-space: nowrap
+    text-align: center
+    cursor: pointer
+    background-color: $c-white
+    transition: all .3s
+    user-select: none
+
+    @each $options-size-name, $options-height in $options-sizes
+      #{$block}_size_#{$options-size-name} &
+        height: $options-height
+        line-height: $options-height - 2
+
+    #{$block}.is-error &
+      border-top-color: $c-red-medium
+      border-bottom-color: $c-red-medium
+
+    #{$block}.is-error #{$block}__input:first-child &
+      border-left-color: $c-red-medium
+
+    #{$block}.is-error #{$block}__input:last-child &
+      border-right-color: $c-red-medium
+
+    // $Form options input label CONTEXT: $Common form options radio STATE: checked
+    // $Form options input label CONTEXT: $Common form options checkbox STATE: checked
+    #{$block}__input-radio:checked ~ &,
+    #{$block}__input input[type="radio"]:checked ~ &,
+    #{$block}__input-checkbox:checked ~ &,
+    #{$block}__input input[type="checkbox"]:checked ~ &,
+    &.is-active
+      background-color: $c-primary-medium
+      color: $c-white
+      cursor: default
+
+    &:hover
+      color: $c-gray-ultra-dark
+      background-color: $c-gray-ultra-light
+
+      #{$block}__input-radio:checked ~ &,
+      #{$block}__input input[type="radio"]:checked ~ &,
+      #{$block}__input-checkbox:checked ~ &,
+      #{$block}__input input[type="checkbox"]:checked ~ &
+        background-color: $c-primary-medium
+        color: $c-white
+
+    &:focus
+      outline: none
+
+    // $Form options input text MOD: state active
+    &.is-active
+      &:hover
+        color: $c-white
+        background-color: $c-primary-medium
+
+
+  // $Form options input label text
+  &__input-labe-text
+    display: inline-block
+    font-size: inherit
+    font-weight: inherit
+    line-height: inherit
+    color: inherit
+    text-transform: inherit
+    vertical-align: middle

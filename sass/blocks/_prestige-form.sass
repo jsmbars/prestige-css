@@ -1,0 +1,349 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Form
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+// $form-space-name, $form-space-size
+$form-spaces: ("xxs" 10px, "xs" 15px, "s" 15px, "m" 20px, "l" 25px, "xl" 25px, "xxl" 30px)
+
+// $form-highlight-name, $form-highlight-value
+$form-highlights: ("primary-ultra-light" $c-primary-ultra-light, "pink-ultra-light" $c-pink-ultra-light, "red-ultra-light" $c-red-ultra-light, "orange-ultra-light" $c-orange-ultra-light, "yellow-ultra-light" $c-yellow-ultra-light, "green-ultra-light" $c-green-ultra-light, "blue-ultra-light" $c-blue-ultra-light, "purple-ultra-light" $c-purple-ultra-light, "gray-extra-light" $c-gray-extra-light)
+
+// $form-color-name, $form-color-value
+$form-colors: ("primary-medium" $c-primary-medium, "pink-medium" $c-pink-medium, "red-medium" $c-red-medium, "orange-medium" $c-orange-medium, "yellow-medium" $c-yellow-medium, "green-medium" $c-green-medium, "blue-medium" $c-blue-medium, "purple-medium" $c-purple-medium, "gray-medium" $c-gray-medium)
+
+%form-space-position-last
+  margin-right: 0
+  margin-bottom: 0
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-form"
+
+#{$block}
+  display: block
+  width: 100%
+  text-align: left
+
+
+  // $Form delimiter
+  &__delimiter
+    display: block
+    width: 100%
+    border-bottom: 1px solid $c-gray-extra-light
+
+    &:not(:last-child)
+      margin-bottom: 20px
+
+      @each $form-space-name, $form-space-size in $form-spaces
+        #{$block}_space_#{$form-space-name} &
+          margin-bottom: $form-space-size
+
+
+  // $Form board
+  &__board
+    display: block
+    width: 100%
+    background-color: $c-white
+    border: 1px solid $c-gray-extra-light
+
+    // $Form board STATE: closed
+    &.is-closed
+
+
+  // $Form board header
+  &__board-header
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    padding: 20px
+    border-bottom: 1px solid $c-gray-extra-light
+    background-color: $c-gray-hyper-light
+
+    // $Form board header CONTEXT: $Form board STATE: closed
+    #{$block}__board.is-closed &
+      border-bottom: none
+
+
+  // $Form board title
+  &__board-title
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    max-width: 100%
+    font-size: 18px
+    line-height: 1
+    font-family: $f-sans
+    font-weight: 400
+    color: $c-gray-ultra-dark
+
+
+  // $Form board toggle
+  &__board-toggle
+    flex-grow: 0
+    flex-shrink: 0
+    display: block
+    font-size: 0
+    line-height: 0
+    color: transparent
+    outline: none
+    text-decoration: none
+    white-space: nowrap
+    cursor: pointer
+    transition: all .3s
+
+    &:before
+      content: '\e90f'
+      display: inline-block
+      font-family: 'icons'
+      font-size: 30px
+      line-height: 18px
+      color: $c-gray-extra-dark
+      transition: all .3s
+
+      // $Form board toggle CONTEXT: $Form board STATE: closed
+      #{$block}__board.is-closed &
+        content: '\e90e'
+
+    &:hover
+      &:before
+        color: $c-gray-dark
+
+
+  // $Form board content
+  &__board-content
+    padding: 20px
+
+    // $Form board content CONTEXT: $Form board STATE: closed
+    #{$block}__board.is-closed &
+      display: none
+
+
+  // $Form row
+  &__row
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: flex-start
+    width: 100%
+    margin-bottom: 20px
+
+    @each $form-space-name, $form-space-size in $form-spaces
+      #{$block}_space_#{$form-space-name} &
+        margin-bottom: $form-space-size
+
+    // $Form row MOD: justify center
+    &_justify_center
+      justify-content: center
+
+    // $Form row MOD: justify end
+    &_justify_end
+      justify-content: flex-end
+
+    // $Form row MOD: justify space
+    &_justify_space
+      justify-content: space-between
+
+    // $Form row MOD: align center
+    &_align_center
+      align-items: center
+
+    // $Form row MOD: align end
+    &_align_end
+      align-items: flex-end
+
+    // $Form row MOD: position last
+    &:last-child,
+    &_position_last
+      margin-bottom: 0
+
+      @each $form-space-name, $form-space-size in $form-spaces
+        #{$block}_space_#{$form-space-name} &
+          @extend %form-space-position-last
+
+
+  // $Form area
+  // $Form group
+  // $Form field
+  &__area,
+  &__group,
+  &__field
+    position: relative
+    display: block
+    width: 100%
+    margin-bottom: 20px
+
+    @each $form-space-name, $form-space-size in $form-spaces
+      #{$block}_space_#{$form-space-name} &
+        margin-bottom: $form-space-size
+
+    // $Form area MOD: size half
+    // $Form group MOD: size half
+    // $Form field MOD: size half
+    &_size_half
+      flex-grow: 0
+      flex-shrink: 1
+      width: 50%
+
+    // $Form area MOD: size third
+    // $Form group MOD: size third
+    // $Form field MOD: size third
+    &_size_third
+      flex-grow: 0
+      flex-shrink: 1
+      width: 33%
+
+    // $Form area MOD: size fourth
+    // $Form group MOD: size fourth
+    // $Form field MOD: size fourth
+    &_size_fourth
+      flex-grow: 0
+      flex-shrink: 1
+      width: 25%
+
+    // $Form area MOD: size fifth
+    // $Form group MOD: size fifth
+    // $Form field MOD: size fifth
+    &_size_fifth
+      flex-grow: 0
+      flex-shrink: 1
+      width: 20%
+
+    // $Form area MOD: size sixth
+    // $Form group MOD: size sixth
+    // $Form field MOD: size sixth
+    &_size_sixth
+      flex-grow: 0
+      flex-shrink: 1
+      width: 16.6%
+
+    // $Form area MOD: size max
+    // $Form group MOD: size max
+    // $Form field MOD: size max
+    &_size_max
+      flex-grow: 1
+      flex-shrink: 1
+      width: auto
+
+    // $Form area MOD: size min
+    // $Form group MOD: size min
+    // $Form field MOD: size min
+    &_size_min
+      flex-grow: 0
+      flex-shrink: 1
+      width: auto
+
+    &_size_half,
+    &_size_third,
+    &_size_fourth,
+    &_size_fifth,
+    &_size_sixth,
+    &_size_max,
+    &_size_min
+      margin-bottom: 0
+      margin-right: 20px
+
+      @each $form-space-name, $form-space-size in $form-spaces
+        #{$block}_space_#{$form-space-name} &
+          margin-bottom: 0
+          margin-right: $form-space-size
+
+    // $Form area: MOD: position last
+    // $Form group: MOD: position last
+    // $Form field: MOD: position last
+    &:last-child,
+    &_position_last
+      margin-right: 0
+      margin-bottom: 0
+
+      @each $form-space-name, $form-space-size in $form-spaces
+        #{$block}_space_#{$form-space-name} &
+          @extend %form-space-position-last
+
+
+  // $Form area
+  &__area
+    padding: 20px
+    background-color: $c-gray-hyper-light
+
+    @each $form-space-name, $form-space-size in $form-spaces
+      #{$block}_space_#{$form-space-name} &
+        padding: $form-space-size
+
+    @each $form-highlight-name, $form-highlight-value in $form-highlights
+      &_highlight_#{$form-highlight-name}
+        background-color: $form-highlight-value
+
+
+  // $Form actions
+  &__actions
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    width: 100%
+
+    // $Form actions MOD: justify start
+    &_justify_start
+      justify-content: flex-start
+
+    // $Form actions MOD: justify end
+    &_justify_end
+      justify-content: flex-end
+
+
+  // $Form action
+  &__action
+    flex-grow: 0
+    flex-shrink: 1
+
+    &:not(:last-child)
+      margin-right: 20px
+
+
+  // $Form text
+  &__text
+    display: block
+    width: 100%
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1
+    font-weight: 400
+    color: $c-gray-ultra-dark
+
+    @each $form-color-name, $form-color-value in $form-colors
+      &_color_#{$form-color-name}
+        color: $form-color-value
+
+    // $Form text MOD: size small
+    &_size_s
+      font-size: 12px
+
+    // $Form text MOD: size large
+    &_size_l
+      font-size: 16px
+
+    // $Form row MOD: justify center
+    &_justify_center
+      text-align: center
+
+    // $Form row MOD: justify end
+    &_justify_end
+      text-align: right
+
+
+  // $Form text bold
+  &__text-bold
+    font-weight: 600
+
+
+  // $Form text light
+  &__text-light
+    font-weight: 300

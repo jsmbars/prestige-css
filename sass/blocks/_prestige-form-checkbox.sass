@@ -1,0 +1,235 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Form checkbox
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+// $checkbox-size-name, $checkbox-indicator-size, $checkbox-icon-size
+$checkbox-sizes: ("xxs" 10px 4px, "xs" 15px 6px, "s" 20px 8px, "m" 25px 10px, "l" 30px 12px, "xl" 35px 14px, "xxl" 40px 16px)
+
+// $checkbox-highlight-name, $checkbox-highlight-background, $checkbox-highlight-border
+$checkbox-highlights: ("primary-ultra-light" $c-primary-ultra-light $c-primary-light, "pink-ultra-light" $c-pink-ultra-light $c-pink-light, "red-ultra-light" $c-red-ultra-light $c-red-light, "orange-ultra-light" $c-orange-ultra-light $c-orange-light, "yellow-ultra-light" $c-yellow-ultra-light $c-yellow-light, "green-ultra-light" $c-green-ultra-light $c-green-light, "blue-ultra-light" $c-blue-ultra-light $c-blue-light, "purple-ultra-light" $c-purple-ultra-light $c-purple-light, "gray-ultra-light" $c-gray-ultra-light $c-gray-light)
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-form-checkbox"
+
+#{$block}
+  display: inline-block
+
+  // $Form checkbox STATE: error
+  &.is-error
+
+  // $Form checkbox MOD: size xxs
+  &_size_xxs
+
+  // $Form checkbox MOD: size xs
+  &_size_xs
+
+  // $Form checkbox MOD: size s
+  &_size_s
+
+  // $Form checkbox MOD: size m
+  &_size_m
+
+  // $Form checkbox MOD: size l
+  &_size_l
+
+  // $Form checkbox MOD: size xl
+  &_size_xl
+
+  // $Form checkbox MOD: size xxl
+  &_size_xxl
+
+  // $Form checkbox MOD: highlight primary ultra light
+  &_highlight_primary-ultra-light
+
+  // $Form checkbox MOD: highlight pink ultra light
+  &_highlight_pink-ultra-light
+
+  // $Form checkbox MOD: highlight red ultra light
+  &_highlight_red-ultra-light
+
+  // $Form checkbox MOD: highlight orange ultra light
+  &_highlight_orange-ultra-light
+
+  // $Form checkbox MOD: highlight yellow ultra light
+  &_highlight_yellow-ultra-light
+
+  // $Form checkbox MOD: highlight green ultra light
+  &_highlight_green-ultra-light
+
+  // $Form checkbox MOD: highlight blue ultra light
+  &_highlight_blue-ultra-light
+
+  // $Form checkbox MOD: highlight purple ultra light
+  &_highlight_purple-ultra-light
+
+  // $Form checkbox MOD: highlight gray ultra light
+  &_highlight_gray-ultra-light
+
+
+  // $Form checkbox label
+  &__label
+    display: block
+    width: 100%
+    margin-bottom: 10px
+    font-family: $f-sans
+    font-size: 14px
+    color: $c-gray-ultra-dark
+    font-weight: 400
+    line-height: 1
+    text-align: left
+
+
+  // $Form checkbox label text
+  &__label-text
+
+
+  // $Form checkbox value
+  // $Form checkbox input
+  // $Form checkbox input label
+  &__value,
+  &__input
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+
+
+  &__input
+    cursor: pointer
+
+    & input
+      display: none
+
+
+  // $Form checkbox input indicator
+  // $Form checkbox value indicator
+  &__input-indicator,
+  &__value-indicator
+    flex-grow: 0
+    flex-shrink: 0
+    position: relative
+    display: block
+
+    &:before
+      content: ""
+      box-sizing: border-box
+      display: block
+      width: 25px
+      height: 25px
+      background-color: $c-white
+      border: 1px solid $c-gray-light
+      border-radius: 2px
+
+      @each $checkbox-size-name, $checkbox-indicator-size in $checkbox-sizes
+        #{$block}_size_#{$checkbox-size-name} &
+          height: $checkbox-indicator-size
+          width: $checkbox-indicator-size
+
+      @each $checkbox-highlight-name, $checkbox-highlight-background, $checkbox-highlight-border in $checkbox-highlights
+        #{$block}_highlight_#{$checkbox-highlight-name} &
+          background-color: $checkbox-highlight-background
+          border-color: $checkbox-highlight-border
+
+      #{$block}.is-error &
+        border-color: $c-red-medium
+
+    &:after
+      content: "\e907"
+      box-sizing: border-box
+      position: absolute
+      top: 50%
+      left: 50%
+      display: block
+      font-family: icons
+      font-size: 10px
+      line-height: 1
+      color: $c-white
+      text-align: center
+      visibility: hidden
+      transform: translate(-50%, -50%)
+
+      @each $checkbox-size-name, $checkbox-indicator-size, $checkbox-icon-size in $checkbox-sizes
+        #{$block}_size_#{$checkbox-size-name} &
+          font-size: $checkbox-icon-size
+
+      #{$block}.is-error &
+        color: $c-red-medium
+
+
+  // $Form checkbox input indicator
+  &__input-indicator
+    #{$block}__input input:disabled ~ &
+      cursor: not-allowed
+
+    &:before
+      #{$block}__input input:checked ~ &
+        background-color: $c-primary-medium
+        border-color: transparent
+
+      #{$block}.is-error #{$block}__input input:checked ~ &
+        background-color: $c-white
+        border-color: $c-red-medium
+
+      #{$block}__input input:disabled ~ &
+        background-color: $c-gray-ultra-light
+        border-color: $c-gray-light
+
+      #{$block}.is-error #{$block}__input input:disabled ~ &
+        background-color: $c-gray-ultra-light
+        border-color: $c-red-medium
+
+    &:after
+      #{$block}__input input:checked ~ &
+        visibility: visible
+
+      #{$block}__input input:disabled ~ &
+        color: $c-gray-ultra-dark
+
+      #{$block}.is-error #{$block}__input input:disabled ~ &
+        color: $c-red-medium
+
+
+  // $Form checkbox value indicator
+  &__value-indicator
+    &_type_checked
+      &:after
+        visibility: visible
+        color: $c-gray-ultra-dark
+
+
+  // $Form checkbox input label
+  // $Form checkbox value label
+  &__input-label,
+  &__value-label
+    display: inline-block
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1
+    font-weight: 400
+    color: $c-gray-ultra-dark
+    user-select: none
+
+    // $Form checkbox input label MOD: position left
+    // $Form checkbox value label MOD: position left
+    &_position_left
+      padding-right: 10px
+
+    // $Form checkbox input label MOD: position right
+    // $Form checkbox value label MOD: position right
+    &_position_right
+      padding-left: 10px
+
+
+  // $Form checkbox input label
+  &__input-label
+    #{$block}__input input:disabled ~ &
+      cursor: not-allowed

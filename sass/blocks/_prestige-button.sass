@@ -1,0 +1,237 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Button
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+// $button-size-name, $button-height, $button-padding
+$button-sizes: ("xxs" 25px 10px, "xs" 30px 15px, "s" 35px 20px, "m" 40px 25px, "l" 45px 30px, "xl" 50px 35px, "xxl" 55px 40px)
+
+// $button-gray-color-name, $button-gray-color-value
+$button-gray-colors: ("gray-extra-dark" $c-gray-extra-dark, "gray-dark" $c-gray-dark, "gray-medium" $c-gray-medium, "gray-light" $c-gray-light, "gray-extra-light" $c-gray-extra-light)
+
+// $button-accent-medium-color-name, $button-accent-medium-color-value
+$button-accent-medium-colors: ("primary-medium" $c-primary-medium, "pink-medium" $c-pink-medium, "red-medium" $c-red-medium, "orange-medium" $c-orange-medium, "yellow-medium" $c-yellow-medium, "green-medium" $c-green-medium, "blue-medium" $c-blue-medium, "purple-medium" $c-purple-medium)
+
+// $button-icon-name, $button-glyph-code, $button-glyph-size
+$button-icons: ("plus" "e909" 12px, "close" "e908" 12px, "check" "e907" 10px, "pencil" "e903" 12px, "retry" "e913" 12px, "search" "e916" 12px, "zoom-in" "e915" 12px, "zoom-out" "e914" 12px, "download" "e917" 12px, "print" "e918" 12px, "file" "e919" 12px)
+
+
+//////////////////////////////////////// Block mixins and functions
+
+=button-common($color: $c-white, $background-color: $c-gray-ultra-dark, $border-radius: null)
+  color: $color
+  background-color: $background-color
+
+  @if $border-radius
+    border-radius: $border-radius
+
+
+=button-common-hover($background-color: $c-gray-ultra-dark, $amount: 5%)
+  &:hover
+    background-color: lighten($background-color, $amount)
+
+
+=button-bordered($color: $c-gray-ultra-dark, $background-color: transparent, $border-color: $c-gray-ultra-dark, $border-radius: null)
+  color: $color
+  background-color: $background-color
+  border-color: $border-color
+
+  @if $border-radius
+    border-radius: $border-radius
+
+
+=button-bordered-hover($color:$c-white, $background-color: $c-gray-ultra-dark, $border-color: transparent)
+  &:not(:disabled):not([disabled]):not(.is-disabled):hover
+    color: $color
+    background-color: $background-color
+    border-color: $border-color
+
+
+=button-bordered-active($color: $c-white, $background-color: $c-gray-ultra-dark, $border-color: $c-gray-ultra-dark)
+  &:not(:disabled):not([disabled]):not(.is-disabled).is-active
+    color: $color
+    background-color: $background-color
+    border-color: $border-color
+
+
+=button-with-icon-left($icon: null, $icon-color: null, $icon-size: null)
+  &:before
+    @if $icon
+      content: unquote("\'\\#{$icon}\'")
+
+    @if $icon-size
+      font-size: $icon-size
+
+    @if $icon-color
+      color: $icon-color
+
+
+=button-with-icon-right($icon: null, $icon-color: null, $icon-size: null)
+  &:after
+    @if $icon
+      content: unquote("\'\\#{$icon}\'")
+
+    @if $icon-size
+      font-size: $icon-size
+
+    @if $icon-color
+      color: $icon-color
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-button"
+
+#{$block}
+  +button-common()
+  +button-common-hover()
+  display: inline-block
+  height: 40px
+  padding: 0 25px
+  border: 2px solid transparent
+  border-radius: 4px
+  font-family: $f-sans
+  font-size: 14px
+  line-height: 36px
+  font-weight: 400
+  white-space: nowrap
+  vertical-align: middle
+  text-align: center
+  text-transform: inherit
+  text-decoration: none
+  outline: none
+  cursor: pointer
+  transition: all .3s
+
+  &:before,
+  &:after
+    display: inline-block
+    font-family: icons
+    font-size: 12px
+    line-height: 1
+    font-weight: 400
+    color: inherit
+    vertical-align: middle
+
+  &:not(:empty):before
+    margin-right: 10px
+
+  &:not(:empty):after
+    margin-left: 10px
+
+  &:focus
+    outline: none
+
+  // $Button STATE: visible
+  &.is-visible
+    display: inline-block
+
+  // $Button STATE: hidden
+  &.is-hidden
+    display: none
+
+  // $Button STATE: disabled
+  &.is-disabled,
+  &:disabled,
+  &[disabled],
+    background-color: $c-gray-extra-light !important
+    border-color: $c-gray-extra-light !important
+    color: $c-gray-medium !important
+    cursor: not-allowed
+
+    &:hover,
+    &:focus
+      background-color: $c-gray-extra-light !important
+      border-color: $c-gray-extra-light !important
+      color: $c-gray-medium !important
+
+  // $Button MOD: space left
+  &_space_left
+    margin-left: 20px
+
+  // $Button MOD: space right
+  &_space_right
+    margin-right: 20px
+
+  // $Button MOD: type icon
+  &_type_icon
+    &:before
+      margin-right: 0 !important
+
+    &:after
+      margin-left: 0 !important
+
+  // $Button MOD: size full
+  &_size_full
+    display: block
+    width: 100%
+
+  // $Button MOD: size half
+  &_size_half
+    display: block
+    width: 50%
+
+  // Size modifiers
+  @each $button-size-name, $button-height, $button-padding in $button-sizes
+    &_size_#{$button-size-name}
+      height: $button-height
+      padding: 0 $button-padding
+      line-height: $button-height - 4
+
+      &:empty
+        width: $button-height
+        padding: 0
+
+  // Gray color and border modifiers
+  @each $button-gray-color-name, $button-gray-color-value in $button-gray-colors
+    &_color_#{$button-gray-color-name}
+      @if $button-gray-color-name == "gray-light" or $button-gray-color-name == "gray-extra-light"
+        +button-common($color: $c-gray-ultra-dark, $background-color: $button-gray-color-value)
+      @else
+        +button-common($color: $c-white, $background-color: $button-gray-color-value)
+
+      +button-common-hover($background-color: $button-gray-color-value)
+
+    &_border_#{$button-gray-color-name}
+      @if $button-gray-color-name == "gray-light" or $button-gray-color-name == "gray-extra-light"
+        +button-bordered($color: $c-gray-ultra-dark, $background-color: transparent, $border-color: $button-gray-color-value)
+        +button-bordered-hover($color: $c-gray-ultra-dark, $background-color: $button-gray-color-value)
+      @else
+        +button-bordered($color: $button-gray-color-value, $background-color: transparent, $border-color: $button-gray-color-value)
+        +button-bordered-hover($color: $c-white, $background-color: $button-gray-color-value)
+
+  // Accent medium color and border modifiers
+  @each $button-accent-medium-color-name, $button-accent-medium-color-value in $button-accent-medium-colors
+    &_color_#{$button-accent-medium-color-name}
+      +button-common($color: $c-white, $background-color: $button-accent-medium-color-value)
+      +button-common-hover($background-color: $button-accent-medium-color-value)
+
+    &_border_#{$button-accent-medium-color-name}
+      +button-bordered($color: $button-accent-medium-color-value, $background-color: transparent, $border-color: $button-accent-medium-color-value)
+      +button-bordered-hover($color: $c-white, $background-color: $button-accent-medium-color-value)
+
+  // Icon modifiers
+  @each $button-icon-name, $button-glyph-code, $button-glyph-size in $button-icons
+    &_icon-left_#{$button-icon-name}
+      +button-with-icon-left($icon: $button-glyph-code, $icon-size: $button-glyph-size)
+
+    &_icon-right_#{$button-icon-name}
+      +button-with-icon-right($icon: $button-glyph-code, $icon-size: $button-glyph-size)
+
+
+  // $Button text
+  &__text
+    display: inline-block
+    font-size: inherit
+    font-weight: inherit
+    line-height: inherit
+    color: inherit
+    text-transform: inherit
+    vertical-align: middle
+
+    // $Button text CONTEXT: $Button MOD: type icon
+    #{$block}_type_icon &
+      display: none
