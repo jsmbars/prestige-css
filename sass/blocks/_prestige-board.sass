@@ -1,0 +1,184 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Board
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-board"
+
+#{$block}
+  flex-grow: 0
+  display: block
+  width: 100%
+  background-color: $c-white
+  box-shadow: 0 2px 8px -2px $c-shadow-primary
+
+  &:not(:last-child)
+    margin-bottom: 20px
+
+  // $Board STATE: closed
+  &.is-closed
+
+
+  // $Board inner
+  &__inner
+    display: block
+    width: 100%
+    padding: 20px
+
+
+  // $Board scroll container
+  &__scroll
+    display: block
+    width: 100%
+    overflow: hidden
+
+    // $Board scroll container MOD: type horizontal
+    &_type_horizontal
+      overflow-x: auto
+
+    // $Board scroll container MOD: type vertical
+    &_type_vertical
+      overflow-y: auto
+
+
+  // $Board header
+  &__header
+    position: relative
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    padding: 20px
+    border-bottom: 1px solid $c-gray-extra-light
+
+    // $Board content CONTEXT:  $Board STATE: closed
+    #{$block}.is-closed &
+      border-bottom: none
+
+
+  // $Board content
+  &__content
+    display: block
+    width: 100%
+
+    // $Board content CONTEXT:  $Board STATE: closed
+    #{$block}.is-closed &
+      display: none
+
+
+  // $Board footer
+  &__footer
+    position: relative
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    padding: 20px
+    border-top: 1px solid $c-gray-extra-light
+
+
+  // $Board group
+  &__group
+    display: block
+    width: 100%
+
+    &:not(:last-child)
+      margin-bottom: 20px
+
+
+  // $Board title
+  &__title
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    max-width: 100%
+    font-family: $f-sans
+    font-size: 20px
+    line-height: 1
+    font-weight: 400
+    color: $c-gray-ultra-dark
+
+
+  // $Board text
+  &__text
+    display: block
+    font-family: $f-sans
+    font-size: 14px
+    font-weight: 400
+    color: $c-gray-ultra-dark
+
+    // $Board text MOD: size small
+    &_size_s
+      font-size: 12px
+
+    // $Board text MOD: size large
+    &_size_l
+      font-size: 16px
+
+
+  // $Board text light
+  &__text-light
+    font-weight: 300
+
+
+  // $Board text bold
+  &__text-bold
+    font-weight: 600
+
+
+  // $Board toggle
+  &__toggle
+    flex-grow: 0
+    flex-shrink: 0
+    display: block
+    font-size: 0
+    line-height: 0
+    color: transparent
+    outline: none
+    text-decoration: none
+    white-space: nowrap
+    cursor: pointer
+    transition: all .3s
+
+    &:before
+      content: '\e90f'
+      display: inline-block
+      font-family: 'icons'
+      font-size: 30px
+      line-height: 18px
+      color: $c-gray-extra-dark
+      transition: all .3s
+
+      #{$block}.is-closed &
+        content: '\e90e'
+
+    &:hover
+      &:before
+        color: $c-gray-dark
+
+
+  // $Board placeholder
+  &__placeholder
+    display: block
+    width: 100%
+
+
+  // $Board placeholder text
+  &__placeholder-text
+    display: block
+    width: 100%
+    font-family: $f-sans
+    font-size: 16px
+    line-height: 1
+    color: $c-gray-dark

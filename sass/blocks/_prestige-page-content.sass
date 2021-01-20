@@ -24,6 +24,9 @@ $block: ".prestige-page-content"
   overflow-y: auto
   background-color: $c-secondary-ultra-light
 
+  // $Page content MOD: role dashboard
+  &_role_dashboard
+
 
   // $Page content inner container
   &__inner
@@ -131,6 +134,19 @@ $block: ".prestige-page-content"
     color: $c-gray-ultra-dark
 
 
+  // $Page content subtitle
+  &__subtitle
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    max-width: 100%
+    font-family: $f-sans
+    font-size: 18px
+    line-height: 1
+    font-weight: 400
+    color: $c-gray-ultra-dark
+
+
   // $Page content header actions
   &__header-actions
     flex-grow: 0
@@ -143,6 +159,46 @@ $block: ".prestige-page-content"
     &:not(:last-child)
       margin-right: 10px
 
+
+  // $Page content group
+  &__group
+    display: block
+    width: 100%
+
+    &:not(:last-child)
+      margin-bottom: 20px
+
+
+  // $Page content list
+  &__list
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: flex-start
+    flex-wrap: wrap
+    width: 100%
+    padding-top: 5px
+
+
+  // $Page content
+  &__list-item
+    flex-grow: 0
+    flex-shrink: 0
+    width: 20%
+    padding: 10px
+
+    +media-screen-max-m-major
+      width: 25%
+
+    +media-screen-max-m-minor
+      width: 33.3%
+
+    +media-screen-max-s-major
+      width: 50%
+
+    +media-screen-max-s-minor
+      width: 100%
+      padding: 10px 0
 
   // $Page content placeholder
   &__placeholder
