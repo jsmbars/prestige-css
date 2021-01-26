@@ -1,0 +1,91 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Action
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+// $action-size-name, $action-text-size
+$action-sizes: ("xs" 10px, "s" 12px, "m" 14px, "l" 16px, "xl" 18px)
+
+// $action-accent-medium-color-name, $action-accent-medium-color-value
+$action-accent-medium-colors: ("pink-medium" $c-pink-medium, "red-medium" $c-red-medium, "orange-medium" $c-orange-medium, "yellow-medium" $c-yellow-medium, "green-medium" $c-green-medium, "primary-medium" $c-primary-medium, "blue-medium" $c-blue-medium, "purple-medium" $c-purple-medium, "gray-medium" $c-gray-medium)
+
+// $action-icon-name, $action-glyph-code
+$action-icons: ("plus" "e909", "close" "e908", "check" "e907", "pencil" "e903", "retry" "e913")
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-action"
+
+#{$block}
+  display: inline-block
+  margin: 0
+  padding: 0
+  white-space: nowrap
+  font-size: inherit
+  color: inherit
+  cursor: pointer
+  text-decoration: none
+  background-color: transparent
+  border: none
+  transition: all .3s
+
+  &:before,
+  &:after
+    display: inline-block
+    font-family: icons
+    font-size: 12px
+    line-height: 1
+    font-weight: 400
+    color: inherit
+    vertical-align: middle
+
+  &:not(:empty):before
+    margin-right: 5px
+
+  &:not(:empty):after
+    margin-left: 5px
+
+  &:hover
+    text-decoration: none
+    opacity: .75
+
+  &:focus
+    outline: none
+
+  // Size modifiers
+  @each $action-size-name, $action-text-size in $action-sizes
+    &_size_#{$action-size-name}
+      font-size: $action-text-size
+
+      &:before
+        font-size: $action-text-size - 2
+
+  // Color modifiers
+  @each $action-accent-medium-color-name, $action-accent-medium-color-value in $action-accent-medium-colors
+    &_color_#{$action-accent-medium-color-name}
+      color: $action-accent-medium-color-value
+
+  // Icon modifiers
+  @each $action-icon-name, $action-icon-glyph in $action-icons
+    &_icon-left_#{$action-icon-name}
+      &:before
+        content: unquote("\'\\#{$action-icon-glyph}\'")
+
+    &_icon-right_#{$action-icon-name}
+      &:after
+        content: unquote("\'\\#{$action-icon-glyph}\'")
+
+
+  // $Action text
+  &__text
+    display: inline-block
+    white-space: normal
+    vertical-align: middle
+    font-weight: 600

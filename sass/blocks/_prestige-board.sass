@@ -24,6 +24,9 @@ $block: ".prestige-board"
   &:not(:last-child)
     margin-bottom: 20px
 
+  // $Page content MOD: role booking
+  &_role_booking
+
   // $Board STATE: closed
   &.is-closed
 
@@ -33,6 +36,12 @@ $block: ".prestige-board"
     display: block
     width: 100%
     padding: 20px
+
+    +media-screen-max-m-major
+      padding: 20px 15px
+
+    +media-screen-max-s-major
+      padding: 20px 10px
 
 
   // $Board scroll container
@@ -64,6 +73,86 @@ $block: ".prestige-board"
     // $Board content CONTEXT:  $Board STATE: closed
     #{$block}.is-closed &
       border-bottom: none
+
+    +media-screen-max-m-major
+      padding: 20px 15px
+
+    +media-screen-max-s-major
+      padding: 20px 10px
+
+      #{$block}_role_booking &
+        flex-wrap: wrap
+
+
+  // $Board header actions
+  &__header-actions
+    flex-grow: 0
+    flex-shrink: 0
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+
+    +media-screen-max-s-major
+      #{$block}_role_booking &
+        flex-grow: 1
+        flex-shrink: 1
+        width: 50%
+
+    &:first-child
+      +media-screen-max-s-major
+        #{$block}_role_booking &
+          padding-right: 10px
+
+      +media-screen-max-xs
+        #{$block}_role_booking &
+          padding-right: 5px
+
+    &:last-child
+      +media-screen-max-s-major
+        #{$block}_role_booking &
+          padding-left: 10px
+
+      +media-screen-max-xs
+        #{$block}_role_booking &
+          padding-left: 5px
+
+
+  // $Board header action
+  &__header-action
+    flex-grow: 0
+    flex-shrink: 0
+
+    +media-screen-max-s-major
+      #{$block}_role_booking &
+        flex-grow: 1
+        flex-shrink: 1
+        width: 100%
+
+    +media-screen-max-xs
+      #{$block}_role_booking &
+        padding: 0 10px
+
+    &:not(:last-child)
+      margin-right: 20px
+
+
+  // $Panel header info
+  &__header-info
+    flex-grow: 1
+    flex-shrink: 1
+
+    // $Panel header info CONTEXT: $Panel MOD: role booking
+    #{$block}_role_booking &
+      padding: 0 20px
+
+    +media-screen-max-s-major
+      #{$block}_role_booking &
+        order: -99
+        width: 100%
+        margin-bottom: 20px
+        padding: 0
+        text-align: center
 
 
   // $Board content

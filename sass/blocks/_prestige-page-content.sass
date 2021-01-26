@@ -27,6 +27,9 @@ $block: ".prestige-page-content"
   // $Page content MOD: role dashboard
   &_role_dashboard
 
+  // $Page content MOD: role booking
+  &_role_booking
+
 
   // $Page content inner container
   &__inner
@@ -117,6 +120,9 @@ $block: ".prestige-page-content"
     align-items: center
     width: 100%
 
+    +media-screen-max-s-major
+      justify-content: center
+
     &:not(:last-child)
       margin-bottom: 20px
 
@@ -133,6 +139,9 @@ $block: ".prestige-page-content"
     font-weight: 400
     color: $c-gray-ultra-dark
 
+    +media-screen-max-s-major
+      text-align: center
+
 
   // $Page content subtitle
   &__subtitle
@@ -145,6 +154,9 @@ $block: ".prestige-page-content"
     line-height: 1
     font-weight: 400
     color: $c-gray-ultra-dark
+
+    +media-screen-max-s-major
+      text-align: center
 
 
   // $Page content header actions

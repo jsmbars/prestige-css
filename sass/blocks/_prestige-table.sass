@@ -1,0 +1,334 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Table
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+// $table-row-highlight-name, $table-row-highlight-value
+$table-row-highlights: ("pink-ultra-light" $c-pink-ultra-light, "red-ultra-light" $c-red-ultra-light, "orange-ultra-light" $c-orange-ultra-light, "yellow-ultra-light" $c-yellow-ultra-light, "green-ultra-light" $c-green-ultra-light, "primary-ultra-light" $c-primary-ultra-light, "blue-ultra-light" $c-blue-ultra-light, "purple-ultra-light" $c-purple-ultra-light, "gray-ultra-light" $c-gray-ultra-light)
+
+// $table-cell-highlight-name, $table-cell-highlight-value
+$table-cell-highlights: ("pink-extra-light" $c-pink-extra-light, "red-extra-light" $c-red-extra-light, "orange-extra-light" $c-orange-extra-light, "yellow-extra-light" $c-yellow-extra-light, "green-extra-light" $c-green-extra-light, "primary-extra-light" $c-primary-extra-light, "blue-extra-light" $c-blue-extra-light, "purple-extra-light" $c-purple-extra-light, "gray-extra-light" $c-gray-extra-light)
+
+// $table-row-outlines-name, $table-row-outlines-value
+$table-row-outlines: ("pink-medium" $c-pink-medium, "red-medium" $c-red-medium, "orange-medium" $c-orange-medium, "yellow-medium" $c-yellow-medium, "green-medium" $c-green-medium, "primary-medium" $c-primary-medium, "blue-medium" $c-blue-medium, "purple-medium" $c-purple-medium, "gray-medium" $c-gray-medium)
+
+// $table-text-color-name, $table-text-color-value
+$table-text-colors: ("pink-medium" $c-pink-medium, "red-medium" $c-red-medium, "orange-medium" $c-orange-medium, "yellow-medium" $c-yellow-medium, "green-medium" $c-green-medium, "primary-medium" $c-primary-medium, "blue-medium" $c-blue-medium, "purple-medium" $c-purple-medium, "gray-medium" $c-gray-medium)
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-table"
+
+#{$block}
+  position: relative
+  display: block
+  width: 100%
+
+  // $Table MOD: role booking payment
+  &_role_booking-payment
+    min-width: 860px
+
+    +media-screen-max-m-major
+      min-width: 880px
+
+  // $Table MOD: role booking select customer
+  &_role_booking-select-customer
+
+
+  // $Table group
+  &__group
+    position: relative
+    display: block
+    width: 100%
+    background-color: $c-white
+
+
+  // $Table row
+  &__row
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: stretch
+    width: 100%
+    background-color: $c-white
+
+    // $Table row MOD: role header
+    // $Table row MOD: role footer
+    &_role_header,
+    &_role_footer
+      background-color: $c-gray-hyper-light
+
+    @each $table-row-highlight-name, $table-row-highlight-value in $table-row-highlights
+      &_highlight_#{$table-row-highlight-name}
+        background-color: $table-row-highlight-value
+
+    @each $table-row-outline-name, $table-row-outline-value in $table-row-outlines
+      &_outline_#{$table-row-outline-name}
+        box-shadow: inset 5px 0 0 -2px $table-row-outline-value, inset -5px 0 0 -2px $table-row-outline-value, inset 0 4px 0 -2px $table-row-outline-value, inset 0 -5px 0 -2px $table-row-outline-value
+
+
+    // $Table column
+  &__column
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    width: 100%
+
+
+  // $Table cell
+  &__cell
+    position: relative
+    flex-grow: 1
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+    min-height: 50px
+    padding: 15px 10px
+    border-right: 1px solid $c-gray-light
+    border-bottom: 1px solid $c-gray-light
+
+    #{$block}_role_booking-payment &
+      padding-left: 10px
+      padding-right: 10px
+
+    &:first-child
+      border-left: 1px solid $c-gray-light
+
+    &:last-child
+      border-right: 1px solid $c-gray-light
+
+    +media-screen-max-l-major
+      #{$block}_role_booking-payment &
+        padding-left: 5px
+        padding-right: 5px
+
+    // $Table cell first column
+    &:nth-child(1)
+      #{$block}_role_booking-payment &
+        flex-grow: 0
+        flex-shrink: 0
+        width: 19%
+
+      #{$block}_role_booking-select-customer &
+        width: 25%
+
+    // $Table cell second column
+    &:nth-child(2)
+      #{$block}_role_booking-payment &
+        flex-grow: 0
+        flex-shrink: 0
+        width: 16%
+
+      #{$block}_role_booking-select-customer &
+        width: 25%
+
+    // $Table cell third column
+    &:nth-child(3)
+      #{$block}_role_booking-payment &
+        width: 28%
+
+      #{$block}_role_booking-select-customer &
+        width: 30%
+
+    // $Table cell fourth column
+    &:nth-child(4)
+      #{$block}_role_booking-payment &
+        width: 17%
+
+      #{$block}_role_booking-select-customer &
+        flex-grow: 0
+        flex-shrink: 0
+        width: 100px
+
+    // $Table cell fifth column
+    &:nth-child(5)
+      #{$block}_role_booking-payment &
+        flex-grow: 0
+        flex-shrink: 0
+        width: 170px
+        text-align: center
+
+      +media-screen-max-l-major
+        #{$block}_role_booking-payment &
+          width: 160px
+
+    // $Table cell MOD: role header
+    // $Table cell MOD: role footer
+    &_role_header,
+    &_role_footer
+      font-size: 14px
+      font-family: $f-sans
+      font-weight: 600
+      color: $c-gray-ultra-dark
+
+    &_role_header
+      border-top: 1px solid $c-gray-light
+
+    &_role_footer
+      &:nth-child(1)
+        #{$block}_role_booking-payment &
+          flex-grow: 0
+          flex-shrink: 0
+          width: 35%
+          border-right: none
+
+      &:nth-child(2)
+        #{$block}_role_booking-payment &
+          width: 65%
+
+    @each $table-cell-highlight-name, $table-cell-highlight-value in $table-cell-highlights
+      &_highlight_#{$table-cell-highlight-name}
+        background-color: $table-cell-highlight-value !important
+
+
+  // $Table info
+  &__info
+    flex-grow: 1
+    flex-shrink: 1
+    width: 100%
+
+
+  // $Table info group
+  &__info-group
+    width: 100%
+
+    #{$block}_role_booking-payment #{$block}__cell:nth-child(5) &
+      margin-top: 10px
+
+
+  // $Table service
+  &__service
+    flex-grow: 0
+    flex-shrink: 0
+
+
+  // $Table field
+  &__field
+    display: block
+    width: 100%
+
+    &:not(:last-child)
+      margin-bottom: 5px
+
+
+  // $Table details
+  &__details
+    display: block
+    width: 100%
+    padding: 10px
+
+
+  // $Table text
+  &__text
+    font-family: $f-sans
+    font-size: 14px
+    font-weight: 400
+    color: $c-gray-ultra-dark
+
+    #{$block}__cell_role_header &,
+    #{$block}__cell_role_footer &
+      font-weight: 600
+
+    #{$block}_role_booking-payment #{$block}__cell:nth-child(5) &
+      margin-bottom: 10px
+      font-weight: 600
+
+    &:not(:last-child)
+      margin-bottom: 5px
+
+    // $Table text MOD: adjust wrap
+    &_adjust_wrap
+      word-wrap: break-word
+      hyphens: auto
+
+    @each $table-text-color-name, $table-text-color-value in $table-text-colors
+      &_color_#{$table-text-color-name}
+        color: $table-text-color-value
+
+
+  // $Table text light
+  &__text-light
+    font-weight: 300
+
+
+  // $Table text bold
+  &__text-bold
+    font-weight: 600
+
+
+  @each $table-text-color-name, $table-text-color-value in $table-text-colors
+    &__text-#{$table-text-color-name}
+      color: $table-text-color-value
+
+
+  // $Table actions
+  &__actions
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    width: 100%
+
+    #{$block}_role_booking-payment &
+      flex-direction: column
+      justify-content: center
+      align-items: stretch
+
+    #{$block}_role_booking-payment #{$block}__info-group &
+      flex-direction: row
+      align-items: center
+
+
+  // $Table action
+  &__action
+
+    #{$block}_role_booking-payment &,
+    #{$block}_role_booking-select-customer &
+      flex-grow: 1
+      flex-shrink: 1
+
+    &:not(:last-child)
+      margin-right: 15px
+
+      #{$block}_role_booking-payment &
+        margin-right: 0
+        margin-bottom: 10px
+
+      #{$block}_role_booking-payment #{$block}__info-group &
+        margin-bottom: 0
+        margin-right: 10px
+
+
+  // $Table labels
+  &__labels
+
+
+  // $Table label
+  &__label
+
+
+  // $Table placeholder
+  &__placeholder
+    padding: 10px 15px
+
+    #{$block}_role_booking-payment &
+      padding-left: 10px
+      padding-right: 10px
+
+
+  // $Table placeholder text
+  &__placeholder-text
+    display: block
+    width: 100%
+    font-family: $f-sans
+    font-size: 16px
+    line-height: 1
+    color: $c-gray-dark

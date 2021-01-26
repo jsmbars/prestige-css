@@ -31,39 +31,96 @@ $block: ".prestige-form"
   width: 100%
   text-align: left
 
+  // $Form MOD: role booking
+  &_role_booking
+
+  // $Form MOD: role booking create key
+  &_role_booking-create-key
+
+
+  // $Form scroll container
+  &__scroll
+    display: block
+    width: 100%
+    overflow: hidden
+
+    // $Form scroll container MOD: type horizontal
+    &_type_horizontal
+      overflow-x: auto
+
+    // $Form scroll container MOD: type vertical
+    &_type_vertical
+      overflow-y: auto
+
 
   // $Form delimiter
   &__delimiter
     display: block
     width: 100%
-    border-bottom: 1px solid $c-gray-extra-light
 
-    &:not(:last-child)
-      margin-bottom: 20px
+    // $Form delimiter MOD: type space
+    &_type_space
+      height: 20px
 
       @each $form-space-name, $form-space-size in $form-spaces
         #{$block}_space_#{$form-space-name} &
-          margin-bottom: $form-space-size
+          height: $form-space-size
+
+    // $Form delimiter MOD: type line
+    &_type_line
+      border-bottom: 1px solid $c-gray-extra-light
+
+      &:not(:last-child)
+        margin-bottom: 20px
+
+        @each $form-space-name, $form-space-size in $form-spaces
+          #{$block}_space_#{$form-space-name} &
+            margin-bottom: $form-space-size
 
 
   // $Form board
-  &__board
+  // $Form panel
+  &__board,
+  &__panel
     display: block
     width: 100%
     background-color: $c-white
-    border: 1px solid $c-gray-extra-light
 
     // $Form board STATE: closed
+    // $Form panel STATE: closed
     &.is-closed
+
+  &__board
+    border: 1px solid $c-gray-extra-light
+
+
+  &__panel
+    box-shadow: 0 2px 8px -2px $c-shadow-primary
 
 
   // $Form board header
-  &__board-header
+  // $Form panel header
+  &__board-header,
+  &__panel-header
     display: flex
     flex-direction: row
     justify-content: space-between
     align-items: center
     padding: 20px
+
+    @each $form-space-name, $form-space-size in $form-spaces
+      #{$block}_space_#{$form-space-name} &
+        padding: $form-space-size
+
+    +media-screen-max-m-major
+      padding: 20px 15px
+
+    +media-screen-max-s-major
+      padding: 20px 10px
+
+
+  // $Form board header
+  &__board-header
     border-bottom: 1px solid $c-gray-extra-light
     background-color: $c-gray-hyper-light
 
@@ -73,7 +130,9 @@ $block: ".prestige-form"
 
 
   // $Form board title
-  &__board-title
+  // $Form panel title
+  &__board-title,
+  &__panel-title
     flex-grow: 1
     flex-shrink: 1
     display: block
@@ -86,7 +145,9 @@ $block: ".prestige-form"
 
 
   // $Form board toggle
-  &__board-toggle
+  // $Form panel toggle
+  &__board-toggle,
+  &__panel-toggle
     flex-grow: 0
     flex-shrink: 0
     display: block
@@ -108,22 +169,71 @@ $block: ".prestige-form"
       color: $c-gray-extra-dark
       transition: all .3s
 
-      // $Form board toggle CONTEXT: $Form board STATE: closed
-      #{$block}__board.is-closed &
-        content: '\e90e'
-
     &:hover
       &:before
         color: $c-gray-dark
 
 
+  // $Form board toggle
+  &__board-toggle
+    &:before
+      // $Form board toggle CONTEXT: $Form board STATE: closed
+      #{$block}__board.is-closed &
+        content: '\e90e'
+
+
+  // $Form panel toggle
+  &__panel-toggle
+    &:before
+      // $Form panel toggle CONTEXT: $Form panel STATE: closed
+      #{$block}__panel.is-closed &
+        content: '\e90e'
+
   // $Form board content
-  &__board-content
+  // $Form panel content
+  &__board-content,
+  &__panel-content
+    display: block
+    width: 100%
     padding: 20px
 
+    @each $form-space-name, $form-space-size in $form-spaces
+      #{$block}_space_#{$form-space-name} &
+        padding: $form-space-size
+
+    +media-screen-max-m-major
+      padding: 20px 15px
+
+    +media-screen-max-s-major
+      padding: 20px 10px
+
+
+  // $Form board content
+  &__board-content
     // $Form board content CONTEXT: $Form board STATE: closed
     #{$block}__board.is-closed &
       display: none
+
+
+  // $Form panel content
+  &__panel-content
+    // $Form panel content CONTEXT: $Form panel STATE: closed
+    #{$block}__panel.is-closed &
+      display: none
+
+
+  &__panel-header + &__panel-content
+    padding: 0 20px 20px
+
+    @each $form-space-name, $form-space-size in $form-spaces
+      #{$block}_space_#{$form-space-name} &
+        padding: 0 $form-space-size $form-space-size
+
+    +media-screen-max-m-major
+      padding: 0 15px 20px
+
+    +media-screen-max-s-major
+      padding: 0 10px 20px
 
 
   // $Form row
@@ -158,6 +268,14 @@ $block: ".prestige-form"
     // $Form row MOD: align end
     &_align_end
       align-items: flex-end
+
+    &_wrap_screen-m-major
+      +media-screen-max-m-major
+        flex-direction: column
+
+    &_wrap_screen-s-major
+      +media-screen-max-s-major
+        flex-direction: column
 
     // $Form row MOD: position last
     &:last-child,
@@ -255,6 +373,22 @@ $block: ".prestige-form"
           margin-bottom: 0
           margin-right: $form-space-size
 
+      +media-screen-max-m-major
+        #{$block}__row_wrap_screen-m-major > &
+          flex-grow: 1
+          flex-shrink: 1
+          width: 100%
+          margin-right: 0
+          margin-bottom: 20px
+
+      +media-screen-max-s-major
+        #{$block}__row_wrap_screen-s-major > &
+          flex-grow: 1
+          flex-shrink: 1
+          width: 100%
+          margin-right: 0
+          margin-bottom: 20px
+
     // $Form area: MOD: position last
     // $Form group: MOD: position last
     // $Form field: MOD: position last
@@ -267,6 +401,16 @@ $block: ".prestige-form"
         #{$block}_space_#{$form-space-name} &
           @extend %form-space-position-last
 
+      +media-screen-max-m-major
+        #{$block}__row_wrap_screen-m-major > &
+          margin-right: 0
+          margin-bottom: 0
+
+      +media-screen-max-s-major
+        #{$block}__row_wrap_screen-s-major > &
+          margin-right: 0
+          margin-bottom: 0
+
 
   // $Form area
   &__area
@@ -277,9 +421,34 @@ $block: ".prestige-form"
       #{$block}_space_#{$form-space-name} &
         padding: $form-space-size
 
+    +media-screen-max-m-major
+      padding: 20px 15px
+
+    +media-screen-max-s-major
+      padding: 20px 10px
+
     @each $form-highlight-name, $form-highlight-value in $form-highlights
       &_highlight_#{$form-highlight-name}
         background-color: $form-highlight-value
+
+
+  // $Form group
+  // $Form field
+  &__group,
+  &__field
+
+    // $Form group: MOD: adjust no label
+    // $Form field: MOD: adjust no label
+    &_adjust_no-label
+      padding-top: 24px
+
+      +media-screen-max-m-major
+        #{$block}__row_wrap_screen-m-major > &
+          padding-top: 0
+
+      +media-screen-max-s-major
+        #{$block}__row_wrap_screen-s-major > &
+          padding-top: 0
 
 
   // $Form actions
@@ -329,6 +498,31 @@ $block: ".prestige-form"
     // $Form text MOD: size large
     &_size_l
       font-size: 16px
+
+    // $Form text MOD: role title
+    &_role_title
+      margin-bottom: 20px
+      font-weight: 600
+      font-size: 18px
+
+      @each $form-space-name, $form-space-size in $form-spaces
+        #{$block}_space_#{$form-space-name} &
+          margin-bottom: $form-space-size
+
+      +media-screen-max-s-major
+        #{$block}_role_booking &
+          text-align: center
+
+    &_role_title#{&}_size_s
+      font-size: 16px
+
+    &_role_title#{&}_size_l
+      font-size: 20px
+
+    // $Form text MOD: role label
+    &_role_label
+      margin-bottom: 10px
+      font-weight: 300
 
     // $Form row MOD: justify center
     &_justify_center
