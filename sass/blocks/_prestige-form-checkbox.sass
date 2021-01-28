@@ -83,7 +83,7 @@ $block: ".prestige-form-checkbox"
     font-family: $f-sans
     font-size: 14px
     color: $c-gray-ultra-dark
-    font-weight: 400
+    font-weight: 300
     line-height: 1
     text-align: left
 
@@ -129,7 +129,7 @@ $block: ".prestige-form-checkbox"
       border: 1px solid $c-gray-light
       border-radius: 2px
 
-      @each $checkbox-size-name, $checkbox-indicator-size in $checkbox-sizes
+      @each $checkbox-size-name, $checkbox-indicator-size, $checkbox-icon-size in $checkbox-sizes
         #{$block}_size_#{$checkbox-size-name} &
           height: $checkbox-indicator-size
           width: $checkbox-indicator-size
@@ -152,6 +152,7 @@ $block: ".prestige-form-checkbox"
       font-family: icons
       font-size: 10px
       line-height: 1
+      font-weight: 400
       color: $c-white
       text-align: center
       visibility: hidden
@@ -214,7 +215,7 @@ $block: ".prestige-form-checkbox"
     font-family: $f-sans
     font-size: 14px
     line-height: 1
-    font-weight: 400
+    font-weight: 300
     color: $c-gray-ultra-dark
     user-select: none
 

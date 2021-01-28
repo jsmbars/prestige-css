@@ -17,7 +17,7 @@ $button-gray-colors: ("gray-extra-dark" $c-gray-extra-dark, "gray-dark" $c-gray-
 $button-accent-medium-colors: ("primary-medium" $c-primary-medium, "pink-medium" $c-pink-medium, "red-medium" $c-red-medium, "orange-medium" $c-orange-medium, "yellow-medium" $c-yellow-medium, "green-medium" $c-green-medium, "blue-medium" $c-blue-medium, "purple-medium" $c-purple-medium)
 
 // $button-icon-name, $button-glyph-code, $button-glyph-size
-$button-icons: ("plus" "e909" 12px, "close" "e908" 12px, "check" "e907" 10px, "pencil" "e903" 12px, "retry" "e913" 12px, "search" "e916" 12px, "zoom-in" "e915" 12px, "zoom-out" "e914" 12px, "download" "e917" 12px, "print" "e918" 12px, "file" "e919" 12px)
+$button-icons: ("plus" "e909" 12px, "close" "e908" 12px, "check" "e907" 10px, "pencil" "e903" 12px, "retry" "e913" 12px, "search" "e916" 12px, "zoom-in" "e915" 12px, "zoom-out" "e914" 12px, "download" "e917" 12px, "print" "e918" 12px, "file" "e919" 12px, "envelope" "e91a" 12px)
 
 
 //////////////////////////////////////// Block mixins and functions
@@ -158,6 +158,9 @@ $block: ".prestige-button"
 
   // $Button MOD: type icon
   &_type_icon
+    width: 40px
+    padding: 0
+
     &:before
       margin-right: 0 !important
 
@@ -181,9 +184,9 @@ $block: ".prestige-button"
       padding: 0 $button-padding
       line-height: $button-height - 4
 
-      &:empty
-        width: $button-height
-        padding: 0
+    &_size_#{$button-size-name}#{&}_type_icon
+      width: $button-height
+      padding: 0
 
   // Gray color and border modifiers
   @each $button-gray-color-name, $button-gray-color-value in $button-gray-colors

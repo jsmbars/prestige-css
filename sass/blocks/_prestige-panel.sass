@@ -7,8 +7,11 @@
 
 //////////////////////////////////////// Block variables
 
+// $panel-highlight-name, $panel-highlight-value
+$panel-highlights: ("pink-ultra-light" $c-pink-ultra-light, "red-ultra-light" $c-red-ultra-light, "orange-ultra-light" $c-orange-ultra-light, "yellow-ultra-light" $c-yellow-ultra-light, "green-ultra-light" $c-green-ultra-light, "primary-ultra-light" $c-primary-ultra-light, "blue-ultra-light" $c-blue-ultra-light, "purple-ultra-light" $c-purple-ultra-light, "gray-ultra-light" $c-gray-ultra-light)
+
 // $panel-text-color-name, $panel-text-color-value
-$panel-text-colors: ("pink-medium" $c-pink-medium, "red-medium" $c-red-medium, "orange-medium" $c-orange-medium, "yellow-medium" $c-yellow-medium, "green-medium" $c-green-medium, "blue-medium" $c-blue-medium, "purple-medium" $c-purple-medium, "gray-medium" $c-gray-medium, "gray-dark" $c-gray-dark, "gray-extra-dark" $c-gray-extra-dark)
+$panel-text-colors: ("pink-medium" $c-pink-medium, "red-medium" $c-red-medium, "orange-medium" $c-orange-medium, "yellow-medium" $c-yellow-medium, "green-medium" $c-green-medium, "blue-medium" $c-blue-medium, "purple-medium" $c-purple-medium, "gray-medium" $c-gray-medium)
 
 
 //////////////////////////////////////// Block mixins and functions
@@ -40,6 +43,22 @@ $block: ".prestige-panel"
     &:not(:last-child)
       margin-bottom: 0
 
+  // $Panel MOD: role booking extra
+  &_role_booking-extra
+    background-color: $c-gray-ultra-light
+
+    &:not(:last-child)
+      margin-bottom: 20px
+
+  // $Panel MOD: role booking select customer
+  &_role_booking-select-customer
+    box-shadow: 0 2px 8px -2px $c-shadow-primary
+    text-align: center
+
+  @each $panel-highlight-name, $panel-highlight-value in $panel-highlights
+    &_highlight_#{$panel-highlight-name}
+      background-color: $panel-highlight-value
+
 
   // $Panel link
   &__link
@@ -62,7 +81,65 @@ $block: ".prestige-panel"
     align-items: center
     width: 100%
     padding: 15px 20px
-    border-bottom: 1px solid $c-gray-extra-light
+
+    // $Panel header CONTEXT: $Panel MOD: role booking extra
+    #{$block}_role_booking-extra &
+      padding: 10px
+
+    +media-screen-max-m-major
+      padding: 20px 15px
+
+      #{$block}_role_booking-extra &
+        padding: 10px
+
+    +media-screen-max-s-major
+      padding: 20px 10px
+
+      #{$block}_role_booking-extra &
+        padding: 10px
+
+    &:not(:last-child)
+      border-bottom: 1px solid $c-gray-extra-light
+
+
+  // $Panel header info
+  &__header-info
+    flex-grow: 1
+    flex-shrink: 1
+
+    // $Panel header info CONTEXT: $Panel MOD: role booking extra
+    #{$block}_role_booking-extra &
+      display: flex
+      flex-direction: row
+      justify-content: flex-start
+      align-items: center
+      padding-right: 10px
+
+    +media-screen-max-s-major
+      #{$block}_role_booking-extra &
+        flex-wrap: wrap
+
+  // $Panel header info item
+  &__header-info-item
+    flex-grow: 0
+    flex-shrink: 0
+
+    +media-screen-max-xs
+      #{$block}_role_booking-extra &
+        flex-grow: 1
+        flex-shrink: 1
+        width: 100%
+
+    &:not(:last-child)
+      #{$block}_role_booking-extra &
+        margin-right: 10px
+
+    &:nth-child(1)
+      +media-screen-max-s-major
+        #{$block}_role_booking-extra &
+          flex-grow: 1
+          flex-shrink: 1
+          width: 100%
 
 
   // $Panel header actions
@@ -95,6 +172,7 @@ $block: ".prestige-panel"
     display: block
     width: 100%
 
+    // $Panel content CONTEXT: $Panel MOD: role booking extra
     #{$block}_role_dashboard-shortcut &
       position: relative
       padding-top: 50%
@@ -109,6 +187,7 @@ $block: ".prestige-panel"
     display: block
     width: 100%
 
+    // $Panel content inner CONTEXT: $Panel MOD: role booking extra
     #{$block}_role_dashboard-shortcut &
       position: absolute
       top: 0
@@ -188,6 +267,12 @@ $block: ".prestige-panel"
     font-weight: 600
     color: $c-gray-ultra-dark
 
+    // $Panel title CONTEXT: $Panel MOD: role booking select customer
+    #{$block}_role_booking-select-customer &
+      width: 100%
+      max-width: 100%
+      text-align: center
+
 
   // $Panel text
   &__text
@@ -197,8 +282,17 @@ $block: ".prestige-panel"
     font-weight: 400
     color: $c-gray-ultra-dark
 
+    // $Panel text CONTEXT: $Panel MOD: role dashboard shortcut
     #{$block}_role_dashboard-shortcut &
       max-width: 100%
+
+    &:not(:last-child)
+      margin-bottom: 5px
+
+    // $Panel text MOD: adjust wrap
+    &_adjust_wrap
+      word-wrap: break-word
+      hyphens: auto
 
     // $Panel text MOD: size small
     &_size_s

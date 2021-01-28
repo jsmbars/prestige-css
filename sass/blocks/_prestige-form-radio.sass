@@ -1,0 +1,229 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Form radio
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+// $radio-size-name, $radio-indicator-size, $radio-icon-size
+$radio-sizes: ("xxs" 10px 6px, "xs" 15px 8px, "s" 20px 12px, "m" 25px 16px, "l" 30px 20px, "xl" 35px 24px, "xxl" 40px 28px)
+
+// $radio-highlight-name, $radio-highlight-background, $radio-highlight-border
+$radio-highlights: ("primary-ultra-light" $c-primary-ultra-light $c-primary-light, "pink-ultra-light" $c-pink-ultra-light $c-pink-light, "red-ultra-light" $c-red-ultra-light $c-red-light, "orange-ultra-light" $c-orange-ultra-light $c-orange-light, "yellow-ultra-light" $c-yellow-ultra-light $c-yellow-light, "green-ultra-light" $c-green-ultra-light $c-green-light, "blue-ultra-light" $c-blue-ultra-light $c-blue-light, "purple-ultra-light" $c-purple-ultra-light $c-purple-light, "gray-ultra-light" $c-gray-ultra-light $c-gray-light)
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-form-radio"
+
+#{$block}
+  display: inline-block
+
+  // $Form radio STATE: error
+  &.is-error
+
+  // $Form radio MOD: size xxs
+  &_size_xxs
+
+  // $Form radio MOD: size xs
+  &_size_xs
+
+  // $Form radio MOD: size s
+  &_size_s
+
+  // $Form radio MOD: size m
+  &_size_m
+
+  // $Form radio MOD: size l
+  &_size_l
+
+  // $Form radio MOD: size xl
+  &_size_xl
+
+  // $Form radio MOD: size xxl
+  &_size_xxl
+
+  // $Form radio MOD: highlight primary ultra light
+  &_highlight_primary-ultra-light
+
+  // $Form radio MOD: highlight pink ultra light
+  &_highlight_pink-ultra-light
+
+  // $Form radio MOD: highlight red ultra light
+  &_highlight_red-ultra-light
+
+  // $Form radio MOD: highlight orange ultra light
+  &_highlight_orange-ultra-light
+
+  // $Form radio MOD: highlight yellow ultra light
+  &_highlight_yellow-ultra-light
+
+  // $Form radio MOD: highlight green ultra light
+  &_highlight_green-ultra-light
+
+  // $Form radio MOD: highlight blue ultra light
+  &_highlight_blue-ultra-light
+
+  // $Form radio MOD: highlight purple ultra light
+  &_highlight_purple-ultra-light
+
+  // $Form radio MOD: highlight gray ultra light
+  &_highlight_gray-ultra-light
+
+
+  // $Form radio label
+  &__label
+    display: block
+    width: 100%
+    margin-bottom: 10px
+    font-family: $f-sans
+    font-size: 14px
+    color: $c-gray-ultra-dark
+    font-weight: 300
+    line-height: 1
+    text-align: left
+
+
+  // $Form radio label text
+  &__label-text
+
+
+  // $Form radio value
+  // $Form radio input
+  // $Form radio input label
+  &__value,
+  &__input
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+
+
+  &__input
+    cursor: pointer
+
+    & input
+      display: none
+
+
+  // $Form radio input indicator
+  // $Form radio value indicator
+  &__input-indicator,
+  &__value-indicator
+    flex-grow: 0
+    flex-shrink: 0
+    position: relative
+    display: block
+
+    &:before
+      content: ""
+      box-sizing: border-box
+      display: block
+      width: 25px
+      height: 25px
+      background-color: $c-white
+      border: 1px solid $c-gray-light
+      border-radius: 2px
+
+      @each $radio-size-name, $radio-indicator-size, $radio-icon-size in $radio-sizes
+        #{$block}_size_#{$radio-size-name} &
+          height: $radio-indicator-size
+          width: $radio-indicator-size
+
+      @each $radio-highlight-name, $radio-highlight-background, $radio-highlight-border in $radio-highlights
+        #{$block}_highlight_#{$radio-highlight-name} &
+          background-color: $radio-highlight-background
+          border-color: $radio-highlight-border
+
+      #{$block}.is-error &
+        border-color: $c-red-medium
+
+    &:after
+      content: ''
+      position: absolute
+      top: 50%
+      left: 50%
+      display: block
+      width: 16px
+      height: 16px
+      background-color: $c-primary-medium
+      border-radius: 2px
+      visibility: hidden
+      transform: translate(-50%, -50%)
+
+      @each $radio-size-name, $radio-indicator-size, $radio-icon-size in $radio-sizes
+        #{$block}_size_#{$radio-size-name} &
+          height: $radio-icon-size
+          width: $radio-icon-size
+
+      #{$block}.is-error &
+        background-color: $c-red-medium
+
+
+  // $Form radio input indicator
+  &__input-indicator
+    #{$block}__input input:disabled ~ &
+      cursor: not-allowed
+
+    &:before
+      #{$block}.is-error #{$block}__input input:checked ~ &
+        border-color: $c-red-medium
+
+      #{$block}__input input:disabled ~ &
+        background-color: $c-gray-ultra-light
+        border-color: $c-gray-light
+
+      #{$block}.is-error #{$block}__input input:disabled ~ &
+        background-color: $c-gray-ultra-light
+        border-color: $c-red-medium
+
+    &:after
+      #{$block}__input input:checked ~ &
+        visibility: visible
+
+      #{$block}__input input:disabled ~ &
+        background-color: $c-gray-ultra-dark
+
+      #{$block}.is-error #{$block}__input input:disabled ~ &
+        background-color: $c-red-medium
+
+
+  // $Form radio value indicator
+  &__value-indicator
+    &_type_checked
+      &:after
+        visibility: visible
+        background-color: $c-gray-ultra-dark
+
+
+  // $Form radio input label
+  // $Form radio value label
+  &__input-label,
+  &__value-label
+    display: inline-block
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1
+    font-weight: 300
+    color: $c-gray-ultra-dark
+    user-select: none
+
+    // $Form radio input label MOD: position left
+    // $Form radio value label MOD: position left
+    &_position_left
+      padding-right: 10px
+
+    // $Form radio input label MOD: position right
+    // $Form radio value label MOD: position right
+    &_position_right
+      padding-left: 10px
+
+
+  // $Form radio input label
+  &__input-label
+    #{$block}__input input:disabled ~ &
+      cursor: not-allowed

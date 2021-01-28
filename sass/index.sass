@@ -5,6 +5,7 @@
 // CONTENTS.............................Here we are!
 //
 // VENDOR...............................
+//  $Flatpickr..........................
 //
 // HELPERS..............................Variables, mixins, elements
 //  $Fonts..............................Offline and online fonts
@@ -15,6 +16,7 @@
 //
 // BLOCKS...............................Page components
 //  $Button.............................
+//  $Action.............................
 //  $Error..............................
 //  $Form...............................
 //  $Form checkbox......................
@@ -22,6 +24,8 @@
 //  $Form select........................
 //  $Form textarea......................
 //  $Form options.......................
+//  $Form choice........................
+//  $Form group.........................
 //  $Body...............................
 //  $Page header........................
 //  $Page container.....................
@@ -33,11 +37,16 @@
 //  $Modal Window.......................
 //  $Board..............................
 //  $Panel..............................
+//  $Table..............................
+//  $Datepicker.........................
 
 
 ////////////////////////////////////////
 /// $VENDOR
 ////////////////////////////////////////
+
+// $Flatpickr
+@import ./vendor/flatpickr/flatpickr.scss
 
 
 ////////////////////////////////////////
@@ -67,6 +76,9 @@
 // $Button
 @import './blocks/prestige-button'
 
+// $Action
+@import './blocks/prestige-action'
+
 // $Error
 @import './blocks/prestige-error'
 
@@ -75,6 +87,9 @@
 
 // $Form checkbox
 @import './blocks/prestige-form-checkbox'
+
+// $Form radio
+@import './blocks/prestige-form-radio'
 
 // $Form field
 @import './blocks/prestige-form-field'
@@ -87,6 +102,12 @@
 
 // $Form options
 @import './blocks/prestige-form-options'
+
+// $Form choice
+@import './blocks/prestige-form-choice'
+
+// $Form group
+@import './blocks/prestige-form-group'
 
 // $Body
 @import './blocks/prestige-body'
@@ -120,3 +141,9 @@
 
 // $Panel
 @import './blocks/prestige-panel'
+
+// $Table
+@import './blocks/prestige-table'
+
+// $Datepicker
+@import './blocks/prestige-datepicker'

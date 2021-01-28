@@ -1,0 +1,247 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Form choice
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+// $choice-highlight-name, $choice-highlight-background
+$choice-highlights: ("primary-ultra-light" $c-primary-ultra-light, "pink-ultra-light" $c-pink-ultra-light, "red-ultra-light" $c-red-ultra-light, "orange-ultra-light" $c-orange-ultra-light, "yellow-ultra-light" $c-yellow-ultra-light, "green-ultra-light" $c-green-ultra-light, "blue-ultra-light" $c-blue-ultra-light, "purple-ultra-light" $c-purple-ultra-light, "gray-ultra-light" $c-gray-ultra-light)
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-form-choice"
+
+#{$block}
+  display: block
+  width: 100%
+
+  // $Form choice STATE: error
+  &.is-error
+
+  // $Form choice MOD: highlight primary ultra light
+  &_highlight_primary-ultra-light
+
+  // $Form choice MOD: highlight pink ultra light
+  &_highlight_pink-ultra-light
+
+  // $Form choice MOD: highlight red ultra light
+  &_highlight_red-ultra-light
+
+  // $Form choice MOD: highlight orange ultra light
+  &_highlight_orange-ultra-light
+
+  // $Form choice MOD: highlight yellow ultra light
+  &_highlight_yellow-ultra-light
+
+  // $Form choice MOD: highlight green ultra light
+  &_highlight_green-ultra-light
+
+  // $Form choice MOD: highlight blue ultra light
+  &_highlight_blue-ultra-light
+
+  // $Form choice MOD: highlight purple ultra light
+  &_highlight_purple-ultra-light
+
+  // $Form choice MOD: highlight gray ultra light
+  &_highlight_gray-ultra-light
+
+
+  // $Form choice label
+  &__label
+    display: block
+    width: 100%
+    margin-bottom: 10px
+    font-family: $f-sans
+    font-size: 14px
+    color: $c-gray-ultra-dark
+    font-weight: 300
+    line-height: 1
+    text-align: left
+
+
+  // $Form choice label text
+  &__label-text
+
+
+  // $Form choice control
+  &__control
+    position: relative
+    display: block
+    width: 100%
+    min-height: 200px
+    background-color: $c-white
+    border: 1px solid $c-gray-light
+
+    // $Form choice control STATE: error
+    #{$block}.is-error &
+      border-color: $c-red-medium
+
+    @each $choice-highlight-name, $choice-highlight-value in $choice-highlights
+      #{$block}_highlight_#{$choice-highlight-name} &
+        background-color: $choice-highlight-value
+
+
+  // $Form choice options
+  &__options
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    width: 30%
+    min-width: 240px
+    padding: 10px
+    border-right: 1px solid $c-gray-light
+    background-color: $c-white
+
+    +media-screen-max-s-major
+      position: static
+      top: auto
+      left: auto
+      bottom: auto
+      width: 100%
+      min-width: 0
+      height: 200px
+      border-right: none
+      border-bottom: 1px solid $c-gray-light
+
+
+  // $Form choice options scroll
+  &__options-scroll
+    display: block
+    width: 100%
+    height: 100%
+    overflow: auto
+
+
+  // $Form choice options list
+  &__options-list
+    display: block
+    width: 100%
+    list-style: none
+
+
+  // $Form choice options item
+  &__options-item
+    display: block
+    width: 100%
+    padding: 10px
+    cursor: pointer
+    transition: all .3s
+
+    &:hover
+      background-color: $c-primary-ultra-light
+
+    // $Form choice options item STATE: active
+    &.is-active
+      background-color: $c-primary-ultra-light
+      cursor: default
+
+
+  // $Form choice options text
+  &__options-text
+    display: block
+    width: 100%
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1
+    font-weight: 400
+    color: $c-gray-ultra-dark
+
+
+  // $Form choice details
+  &__details
+    display: block
+    width: 70%
+    max-width: calc(100% - 240px)
+    margin-left: auto
+    padding: 10px
+
+    +media-screen-max-s-major
+      width: 100%
+      max-width: none
+
+
+  // $Form choice details title
+  &__details-title
+    display: block
+    width: 100%
+    font-family: $f-sans
+    font-size: 16px
+    line-height: 1
+    font-weight: 600
+    color: $c-gray-ultra-dark
+
+    &:not(:last-child)
+      margin-bottom: 20px
+
+
+  // $Form choice details list
+  &__details-list
+    display: block
+    width: 100%
+    list-style: none
+
+
+  // $Form choice details item
+  &__details-item
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: flex-start
+    width: 100%
+
+    &:not(:last-child)
+      margin-bottom: 15px
+
+
+  // $Form choice details label
+  &__details-label
+    flex-grow: 0
+    flex-shrink: 0
+    display: inline-block
+    margin-right: 5px
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1
+    font-weight: 300
+    color: $c-gray-extra-dark
+    white-space: nowrap
+    vertical-align: middle
+
+
+  // $Form choice details value
+  &__details-value
+    flex-grow: 1
+    flex-shrink: 1
+    display: inline-block
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1
+    font-weight: 800
+    color: $c-gray-ultra-dark
+    text-transform: uppercase
+    vertical-align: middle
+
+
+  // $Form choice details warning
+  &__details-warning
+    font-weight: 600
+    color: $c-red-medium
+    text-transform: none
+
+
+  // $Form choice note
+  &__note
+    margin-top: 10px
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1
+    font-weight: 400
+    font-style: italic
+    color: $c-gray-ultra-dark

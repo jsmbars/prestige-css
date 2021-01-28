@@ -62,7 +62,7 @@ $block: ".prestige-form-options"
       justify-content: flex-end
 
 
-  // $Common form options label
+  // $Form options label
   &__label
     display: block
     width: 100%
@@ -70,7 +70,7 @@ $block: ".prestige-form-options"
     font-family: $f-sans
     font-size: 14px
     color: $c-gray-ultra-dark
-    font-weight: 400
+    font-weight: 300
     line-height: 1
     text-align: left
 
@@ -89,11 +89,11 @@ $block: ".prestige-form-options"
         padding-left: 10px
 
 
-  // $Common form options label text
+  // $Form options label text
   &__label-text
 
 
-  // $Common form options control
+  // $Form options control
   &__control
     display: flex
     flex-direction: row
@@ -160,8 +160,8 @@ $block: ".prestige-form-options"
     #{$block}.is-error #{$block}__input:last-child &
       border-right-color: $c-red-medium
 
-    // $Form options input label CONTEXT: $Common form options radio STATE: checked
-    // $Form options input label CONTEXT: $Common form options checkbox STATE: checked
+    // $Form options input label CONTEXT: $Form options radio STATE: checked
+    // $Form options input label CONTEXT: $Form options checkbox STATE: checked
     #{$block}__input-radio:checked ~ &,
     #{$block}__input input[type="radio"]:checked ~ &,
     #{$block}__input-checkbox:checked ~ &,
