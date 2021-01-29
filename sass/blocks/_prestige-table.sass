@@ -41,6 +41,9 @@ $block: ".prestige-table"
   // $Table MOD: role booking select customer
   &_role_booking-select-customer
 
+  // $Table MOD: role booking history
+  &_role_booking-history
+
 
   // $Table group
   &__group
@@ -95,7 +98,7 @@ $block: ".prestige-table"
     border-right: 1px solid $c-gray-light
     border-bottom: 1px solid $c-gray-light
 
-    #{$block}_role_booking-payment &
+    #{$block}_role_booking-history &
       padding-left: 10px
       padding-right: 10px
 
@@ -106,7 +109,8 @@ $block: ".prestige-table"
       border-right: 1px solid $c-gray-light
 
     +media-screen-max-l-major
-      #{$block}_role_booking-payment &
+      #{$block}_role_booking-payment &,
+      #{$block}_role_booking-history &
         padding-left: 5px
         padding-right: 5px
 
@@ -120,6 +124,9 @@ $block: ".prestige-table"
       #{$block}_role_booking-select-customer &
         width: 25%
 
+      #{$block}_role_booking-history &
+        width: 18%
+
     // $Table cell second column
     &:nth-child(2)
       #{$block}_role_booking-payment &
@@ -130,6 +137,9 @@ $block: ".prestige-table"
       #{$block}_role_booking-select-customer &
         width: 25%
 
+      #{$block}_role_booking-history &
+        width: 25%
+
     // $Table cell third column
     &:nth-child(3)
       #{$block}_role_booking-payment &
@@ -137,6 +147,9 @@ $block: ".prestige-table"
 
       #{$block}_role_booking-select-customer &
         width: 30%
+
+      #{$block}_role_booking-history &
+        width: 17%
 
     // $Table cell fourth column
     &:nth-child(4)
@@ -148,6 +161,9 @@ $block: ".prestige-table"
         flex-shrink: 0
         width: 100px
 
+      #{$block}_role_booking-history &
+        width: 8%
+
     // $Table cell fifth column
     &:nth-child(5)
       #{$block}_role_booking-payment &
@@ -156,9 +172,24 @@ $block: ".prestige-table"
         width: 170px
         text-align: center
 
+      #{$block}_role_booking-history &
+        width: 11%
+
       +media-screen-max-l-major
         #{$block}_role_booking-payment &
           width: 160px
+
+    // $Table cell sixth column
+    &:nth-child(6)
+      #{$block}_role_booking-history &
+        width: 11%
+
+    // $Table cell seventh column
+    &:nth-child(7)
+      #{$block}_role_booking-history &
+        flex-grow: 0
+        flex-shrink: 0
+        width: 110px
 
     // $Table cell MOD: role header
     // $Table cell MOD: role footer
