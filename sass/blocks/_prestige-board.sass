@@ -27,6 +27,9 @@ $block: ".prestige-board"
   // $Page content MOD: role booking
   &_role_booking
 
+  // $Page content MOD: role booking history
+  &_role_booking-history
+
   // $Board STATE: closed
   &.is-closed
 
@@ -153,6 +156,60 @@ $block: ".prestige-board"
         margin-bottom: 20px
         padding: 0
         text-align: center
+
+
+  // $Board filter
+  &__filter
+    display: block
+    width: 100%
+    padding: 20px
+    background-color: $c-gray-hyper-light
+
+    +media-screen-max-m-major
+      padding: 20px 15px
+
+    +media-screen-max-s-major
+      padding: 20px 10px
+
+
+  // $Board filter toggle
+  &__filter-toggle
+    display: none
+    width: 100%
+    font-family: $f-sans
+    font-size: 16px
+    line-height: 1
+    font-weight: 600
+    color: $c-gray-extra-dark
+    white-space: nowrap
+    text-align: right
+    cursor: pointer
+
+    +media-screen-max-m-major
+      display: block
+
+    &:before
+      content: '\e91e'
+      display: inline-block
+      margin-right: 10px
+      font-family: icons
+      font-size: 16px
+      line-height: 1
+      font-weight: 400
+      color: inherit
+
+    &.is-active
+      color: $c-primary-medium
+
+
+  // $Board filter content
+  &__filter-content
+    display: block
+    width: 100%
+
+    +media-screen-max-m-major
+      display: none
+      padding-top: 20px
 
 
   // $Board content

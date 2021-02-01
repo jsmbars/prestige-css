@@ -1,0 +1,166 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Pagination
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-pagination"
+
+#{$block}
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  width: 100%
+
+
+  // $Pagination info
+  &__info
+    display: block
+    width: 100%
+
+
+  // $Pagination info text
+  &__info-text
+    display: block
+    width: 100%
+    margin-bottom: 20px
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1
+    font-weight: 300
+    color: $c-gray-extra-dark
+    text-align: center
+
+
+  // $Pagination actions
+  &__actions
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    padding: 0 10px
+    list-style: none
+
+
+  // $Pagination action
+  &__action
+    position: relative
+    flex-grow: 0
+    flex-shrink: 0
+    display: block
+    display: block
+    width: 40px
+    height: 40px
+    padding: 0
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 38px
+    font-weight: 600
+    color: $c-gray-extra-dark
+    text-align: center
+    border: 1px solid $c-gray-light
+    background-color: $c-white
+    text-decoration: none
+    outline: none
+    cursor: pointer
+    transition: all .2s
+
+    +media-screen-max-s-major
+      display: none
+
+    +media-screen-max-xs
+      width: 35px
+      height: 35px
+      line-height: 33px
+      font-size: 12px
+
+    &:not(:last-child)
+      margin-right: 10px
+
+      +media-screen-max-xs
+        margin-right: 8px
+
+    &:hover
+      border-color: $c-primary-medium
+      background-color: $c-primary-medium
+      color: $c-white
+
+    &:focus
+      outline: none
+
+    // $Pagination action STATE: active
+    &.is-active
+      border-color: $c-primary-medium
+      background-color: $c-primary-medium
+      color: $c-white
+      cursor: default
+
+    // $Pagination action STATE: disabled
+    &.is-disabled
+      border-color: $c-gray-extra-light
+      background-color: $c-gray-ultra-light
+      color: $c-gray-dark
+      cursor: default
+
+      &:hover
+        border-color: $c-gray-extra-light
+        background-color: $c-gray-ultra-light
+        color: $c-gray-dark
+
+    // $Pagination action STATE: active
+    // $Pagination action MOD: role prev
+    // $Pagination action MOD: role next
+    // $Pagination action MOD: role first
+    // $Pagination action MOD: role last
+    // $Pagination action MOD: role delimiter
+    &.is-active,
+    &_role_prev,
+    &_role_next,
+    &_role_first,
+    &_role_last,
+    &_role_delimiter
+      +media-screen-max-s-major
+        display: block
+
+    &_role_prev,
+    &_role_next
+      width: 60px
+
+      +media-screen-max-xs
+        width: 45px
+
+    &_role_delimiter
+      position: relative
+      font-size: 0
+      line-height: 0
+      width: auto
+      color: transparent
+      border: none
+      background-color: transparent
+
+      &:hover
+        color: transparent
+        background-color: transparent
+        cursor: default
+
+      &:after
+        content: '\e91c'
+        display: block
+        font-family: icons
+        font-size: 14px
+        line-height: 40px
+        font-weight: 400
+        color: $c-gray-ultra-dark
+        text-align: center
+
+        +media-screen-max-xs
+          font-size: 12px
