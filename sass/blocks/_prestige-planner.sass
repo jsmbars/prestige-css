@@ -1,0 +1,135 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Planner
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-planner"
+
+#{$block}
+  display: block
+  width: 100%
+
+  // $Planner MOD: role booking
+  &_role_booking
+    height: calc(100vh - 265px)
+    min-height: 500px
+
+    +media-screen-max-m-major
+      height: calc(100vh - 235px)
+
+    +media-screen-max-s-major
+      height: calc(100vh - 225px)
+
+
+  // $Planner component
+  &__component
+    display: block
+    width: 100%
+    height: 100%
+
+
+    // Vendor styles overrides
+    & .gantt-panel
+      height: 100%
+      font-family: $f-sans
+      font-weight: 400
+      border: 1px solid $c-gray-light
+
+    & .gantt-toolbar
+      padding: 8px
+      color: $c-gray-ultra-dark
+      background-color: $c-gray-hyper-light
+      border-bottom: 1px solid $c-gray-light
+
+    & .gantt-toolbar .toolbar-button
+      margin-left: 12px
+
+    & .gantt-toolbar .toolbar-button svg
+      fill: $c-gray-ultra-dark
+
+    & .gantt-toolbar .g-hoverable:hover
+      background-color: transparent
+
+    & .gantt-toolbar .g-hoverable:hover svg
+      fill: $c-primary-medium
+
+    & .gantt-panel .gantt-body
+      border: none
+
+    & .gantt-panel table.dataTable.gantt-tree-table thead th, .gantt-panel table.dataTable.gantt-tree-table thead td
+      padding: 8px 10px
+
+    & .gantt-panel table.dataTable.gantt-tree-table tbody td
+      padding: 6px 10px
+
+    & .gantt-panel .tree-node-spacing
+      width: 20px
+
+    & .gantt-panel table.dataTable.gantt-tree-table.display tbody tr.selected,
+    & .gantt-panel table.dataTable.gantt-tree-table.order-column.stripe tbody tr.selected,
+    & .gantt-panel table.dataTable.gantt-tree-table tbody tr.highlight,
+    & .gantt-panel table.dataTable.gantt-tree-table tbody tr.selected.highlight,
+    & .gantt-panel .time-panel .time-table-row.highlight,
+    & .gantt-panel .time-panel .time-table-row.selected,
+    & .gantt-panel .time-panel .time-table-row.selected.highlight
+      background-color: $c-yellow-extra-light
+
+    & .gantt-panel .time-panel .time-table-activity
+      background-color: $c-primary-medium
+
+    & .gantt-panel .parent-row,
+    & .gantt-panel .leaf-row,
+    & .gantt-panel table.dataTable.gantt-tree-table thead th,
+    & .gantt-panel table.dataTable.gantt-tree-table thead td,
+    & .vis-time-axis .vis-text,
+      color: $c-gray-ultra-dark
+
+    & .gantt-panel .time-panel .vertical-scroller-filler,
+    & .gantt-panel .time-panel .time-table-row,
+    & .gantt-panel .vis-timeline .vis-top .vis-minor,
+    & .vis-time-axis .vis-grid.vis-minor,
+    & .vis-panel.vis-bottom,
+    & .vis-panel.vis-center,
+    & .vis-panel.vis-left,
+    & .vis-panel.vis-right,
+    & .vis-panel.vis-top,
+    & .gantt-panel table.dataTable.gantt-tree-table thead th,
+    & .gantt-panel table.dataTable.gantt-tree-table thead td,
+    & .gantt-panel table.dataTable.gantt-tree-table tbody tr:last-child td,
+    & .gantt-panel .dataTables_scrollBody table.dataTable,
+    & .gantt-panel .dataTables_scrollBody table.dataTable td
+      border-color: $c-gray-extra-light
+
+    @at-root
+      .gantt-tooltip
+        font-family: $f-sans
+        color: $c-gray-ultra-dark
+        background-color: $c-white
+        border: 1px solid $c-gray-light
+        border-radius: 2px
+        box-shadow: 0 0 8px -2px $c-shadow-primary
+
+      .gantt-tooltip h2
+        margin-bottom: 5px
+        font-weight: 600
+        font-size: 16px
+
+      .gantt-tooltip table tr,
+      .gantt-tooltip table td
+        font-size: 12px
+        color: $c-gray-ultra-dark
+
+      .gantt-tooltip-arrow.bottom-arrow
+        border-top-color: $c-gray-light
+
+      .gantt-tooltip-arrow.top-arrow
+        border-bottom-color: $c-gray-light

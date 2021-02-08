@@ -24,27 +24,17 @@ $block: ".prestige-board"
   &:not(:last-child)
     margin-bottom: 20px
 
-  // $Page content MOD: role booking
+  // $Board MOD: role booking
   &_role_booking
 
-  // $Page content MOD: role booking history
+  // $Board MOD: role booking history
   &_role_booking-history
+
+  // $Board MOD: role booking planner
+  &_role_booking-planner
 
   // $Board STATE: closed
   &.is-closed
-
-
-  // $Board inner
-  &__inner
-    display: block
-    width: 100%
-    padding: 20px
-
-    +media-screen-max-m-major
-      padding: 20px 15px
-
-    +media-screen-max-s-major
-      padding: 20px 10px
 
 
   // $Board scroll container
@@ -220,6 +210,19 @@ $block: ".prestige-board"
     // $Board content CONTEXT:  $Board STATE: closed
     #{$block}.is-closed &
       display: none
+
+
+  // $Board inner
+  &__inner
+    display: block
+    width: 100%
+    padding: 20px
+
+    +media-screen-max-m-major
+      padding: 20px 15px
+
+    +media-screen-max-s-major
+      padding: 20px 10px
 
 
   // $Board footer
