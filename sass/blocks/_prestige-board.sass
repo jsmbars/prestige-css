@@ -27,6 +27,9 @@ $block: ".prestige-board"
   // $Board MOD: role booking
   &_role_booking
 
+  // $Board MOD: role booking changes
+  &_role_booking-changes
+
   // $Board MOD: role booking history
   &_role_booking-history
 
@@ -67,6 +70,10 @@ $block: ".prestige-board"
     #{$block}.is-closed &
       border-bottom: none
 
+    #{$block}_role_booking &,
+    #{$block}_role_booking-changes &
+      height: 80px
+
     +media-screen-max-m-major
       padding: 20px 15px
 
@@ -75,6 +82,10 @@ $block: ".prestige-board"
 
       #{$block}_role_booking &
         flex-wrap: wrap
+        height: auto
+
+      #{$block}_role_booking-changes &
+        height: auto
 
 
   // $Board header actions

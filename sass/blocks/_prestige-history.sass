@@ -1,0 +1,80 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $History
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-history"
+
+#{$block}
+  display: block
+  width: 100%
+
+
+  // $History records
+  &__records
+    display: block
+    width: 100%
+    margin: 0
+    list-style: none
+
+
+  // $History record
+  &__record
+    position: relative
+    width: 100%
+    margin-bottom: 20px
+
+    &:before
+      content: "\e920"
+      box-sizing: border-box
+      position: absolute
+      top: 8px
+      left: 0
+      z-index: 1
+      display: block
+      width: 16px
+      height: 30px
+      font-family: icons
+      font-size: 16px
+      line-height: 30px
+      text-align: center
+      color: $c-gray-extra-dark
+      background-color: $c-white
+
+    &:after
+      content: ""
+      position: absolute
+      top: 30px
+      bottom: -50px
+      left: 8px
+      z-index: 0
+      display: block
+      width: 2px
+      margin-left: -1px
+      background-color: $c-gray-extra-light
+
+    &:last-child,
+    &:only-child
+      margin-bottom: 0
+
+      &:before
+        color: $c-blue-dark
+
+      &:after
+        display: none
+
+
+  // $History panel
+  &__panel
+    display: block
+    width: calc(100% - 30px)
+    margin-left: 30px
