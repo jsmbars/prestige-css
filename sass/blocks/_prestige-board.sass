@@ -36,6 +36,9 @@ $block: ".prestige-board"
   // $Board MOD: role booking planner
   &_role_booking-planner
 
+  // $Board MOD: role cleaning history
+  &_role_cleaning-history
+
   // $Board STATE: closed
   &.is-closed
 
@@ -211,6 +214,12 @@ $block: ".prestige-board"
     +media-screen-max-m-major
       display: none
       padding-top: 20px
+
+    +media-screen-min-m-major
+      display: block !important
+
+    &.is-opened
+      display: block
 
 
   // $Board content
