@@ -33,10 +33,7 @@ $block: ".prestige-table"
 
   // $Table MOD: role booking payment
   &_role_booking-payment
-    min-width: 860px
-
-    +media-screen-max-m-major
-      min-width: 880px
+    min-width: 920px
 
   // $Table MOD: role booking select customer
   &_role_booking-select-customer
@@ -108,7 +105,7 @@ $block: ".prestige-table"
     &:last-child
       border-right: 1px solid $c-gray-light
 
-    +media-screen-max-l-major
+    +media-screen-max-xl
       #{$block}_role_booking-payment &,
       #{$block}_role_booking-history &
         padding-left: 5px
@@ -132,7 +129,7 @@ $block: ".prestige-table"
       #{$block}_role_booking-payment &
         flex-grow: 0
         flex-shrink: 0
-        width: 16%
+        width: 13%
 
       #{$block}_role_booking-select-customer &
         width: 25%
@@ -143,7 +140,9 @@ $block: ".prestige-table"
     // $Table cell third column
     &:nth-child(3)
       #{$block}_role_booking-payment &
-        width: 28%
+        flex-grow: 0
+        flex-shrink: 0
+        width: 13%
 
       #{$block}_role_booking-select-customer &
         width: 30%
@@ -154,7 +153,7 @@ $block: ".prestige-table"
     // $Table cell fourth column
     &:nth-child(4)
       #{$block}_role_booking-payment &
-        width: 17%
+        width: 18%
 
       #{$block}_role_booking-select-customer &
         flex-grow: 0
@@ -167,6 +166,14 @@ $block: ".prestige-table"
     // $Table cell fifth column
     &:nth-child(5)
       #{$block}_role_booking-payment &
+        width: 17%
+
+      #{$block}_role_booking-history &
+        width: 11%
+
+    // $Table cell sixth column
+    &:nth-child(6)
+      #{$block}_role_booking-payment &
         flex-grow: 0
         flex-shrink: 0
         width: 170px
@@ -178,11 +185,6 @@ $block: ".prestige-table"
       +media-screen-max-l-major
         #{$block}_role_booking-payment &
           width: 160px
-
-    // $Table cell sixth column
-    &:nth-child(6)
-      #{$block}_role_booking-history &
-        width: 11%
 
     // $Table cell seventh column
     &:nth-child(7)
@@ -208,12 +210,12 @@ $block: ".prestige-table"
         #{$block}_role_booking-payment &
           flex-grow: 0
           flex-shrink: 0
-          width: 35%
+          width: 45%
           border-right: none
 
       &:nth-child(2)
         #{$block}_role_booking-payment &
-          width: 65%
+          width: 55%
 
     @each $table-cell-highlight-name, $table-cell-highlight-value in $table-cell-highlights
       &_highlight_#{$table-cell-highlight-name}
@@ -231,7 +233,7 @@ $block: ".prestige-table"
   &__info-group
     width: 100%
 
-    #{$block}_role_booking-payment #{$block}__cell:nth-child(5) &
+    #{$block}_role_booking-payment #{$block}__cell:nth-child(6) &
       margin-top: 10px
 
 
@@ -268,7 +270,7 @@ $block: ".prestige-table"
     #{$block}__cell_role_footer &
       font-weight: 600
 
-    #{$block}_role_booking-payment #{$block}__cell:nth-child(5) &
+    #{$block}_role_booking-payment #{$block}__cell:nth-child(6) &
       margin-bottom: 10px
       font-weight: 600
 

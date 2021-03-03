@@ -11,7 +11,7 @@
 $panel-highlights: ("pink-ultra-light" $c-pink-ultra-light, "red-ultra-light" $c-red-ultra-light, "orange-ultra-light" $c-orange-ultra-light, "yellow-ultra-light" $c-yellow-ultra-light, "green-ultra-light" $c-green-ultra-light, "primary-ultra-light" $c-primary-ultra-light, "blue-ultra-light" $c-blue-ultra-light, "purple-ultra-light" $c-purple-ultra-light, "gray-ultra-light" $c-gray-ultra-light)
 
 // $panel-text-color-name, $panel-text-color-value
-$panel-text-colors: ("pink-medium" $c-pink-medium, "red-medium" $c-red-medium, "orange-medium" $c-orange-medium, "yellow-medium" $c-yellow-medium, "green-medium" $c-green-medium, "blue-medium" $c-blue-medium, "purple-medium" $c-purple-medium, "gray-medium" $c-gray-medium)
+$panel-text-colors: ("pink-medium" $c-pink-medium, "red-medium" $c-red-medium, "orange-medium" $c-orange-medium, "yellow-medium" $c-yellow-medium, "green-medium" $c-green-medium, "blue-medium" $c-blue-medium, "purple-medium" $c-purple-medium, "gray-medium" $c-gray-medium, "gray-dark" $c-gray-dark)
 
 
 //////////////////////////////////////// Block mixins and functions
@@ -64,6 +64,10 @@ $block: ".prestige-panel"
     &_highlight_#{$panel-highlight-name}
       background-color: $panel-highlight-value
 
+  // $Panel MOD: role booking changes
+  &_role_booking-changes
+    box-shadow: 0 2px 8px -2px $c-shadow-primary
+
 
   // $Panel link
   &__link
@@ -90,6 +94,10 @@ $block: ".prestige-panel"
     // $Panel header CONTEXT: $Panel MOD: role booking extra
     #{$block}_role_booking-extra &
       padding: 10px
+
+    // $Panel header CONTEXT: $Panel MOD: role booking changes
+    #{$block}_role_booking-changes &
+      padding: 15px 10px
 
     +media-screen-max-m-major
       padding: 20px 15px
@@ -182,6 +190,10 @@ $block: ".prestige-panel"
       position: relative
       padding-top: 50%
 
+    // $Panel content CONTEXT: $Panel MOD: role booking changes
+    #{$block}_role_booking-changes &
+      padding: 10px
+
     +media-screen-max-s-minor
       #{$block}_role_dashboard-shortcut &
         padding-top: 30%
@@ -218,6 +230,10 @@ $block: ".prestige-panel"
     padding: 20px
     border-top: 1px solid $c-gray-extra-light
 
+    // $Panel header CONTEXT: $Panel MOD: role booking changes
+    #{$block}_role_booking-changes &
+      padding: 15px 10px
+
     +media-screen-max-m-major
       padding: 20px 15px
 
@@ -249,6 +265,31 @@ $block: ".prestige-panel"
 
     +media-screen-max-s-major
       padding: 20px 10px
+
+
+  // $Panel list
+  &__list
+    display: block
+    width: 100%
+    list-style: none
+
+
+  // $Panel list item
+  &__list-item
+    position: relative
+    display: block
+    width: 100%
+    padding-left: 15px
+
+    &:before
+      content: "-"
+      position: absolute
+      left: 0
+      top: 0
+      display: inline-block
+
+    &:not(:last-child)
+      margin-bottom: 5px
 
 
   // $Panel info list
@@ -343,6 +384,20 @@ $block: ".prestige-panel"
       width: 100%
       max-width: 100%
       text-align: center
+
+    // $Panel title CONTEXT: $Panel MOD: role booking changes
+    #{$block}_role_booking-changes &
+      font-size: 16px
+
+
+  // $Panel title light
+  &__title-light
+    font-weight: 300
+
+
+  // $Panel title bold
+  &__title-bold
+    font-weight: 600
 
 
   // $Panel text

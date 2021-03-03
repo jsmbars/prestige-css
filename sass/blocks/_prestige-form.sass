@@ -269,6 +269,10 @@ $block: ".prestige-form"
     &_align_end
       align-items: flex-end
 
+    &_wrap_screen-l-minor
+      +media-screen-max-l-minor
+        flex-direction: column
+
     &_wrap_screen-m-major
       +media-screen-max-m-major
         flex-direction: column
@@ -373,6 +377,14 @@ $block: ".prestige-form"
           margin-bottom: 0
           margin-right: $form-space-size
 
+      +media-screen-max-l-minor
+        #{$block}__row_wrap_screen-l-minor > &
+          flex-grow: 1
+          flex-shrink: 1
+          width: 100%
+          margin-right: 0
+          margin-bottom: 20px
+
       +media-screen-max-m-major
         #{$block}__row_wrap_screen-m-major > &
           flex-grow: 1
@@ -400,6 +412,11 @@ $block: ".prestige-form"
       @each $form-space-name, $form-space-size in $form-spaces
         #{$block}_space_#{$form-space-name} &
           @extend %form-space-position-last
+
+      +media-screen-max-l-minor
+        #{$block}__row_wrap_screen-l-minor > &
+          margin-right: 0
+          margin-bottom: 0
 
       +media-screen-max-m-major
         #{$block}__row_wrap_screen-m-major > &
@@ -441,6 +458,10 @@ $block: ".prestige-form"
     // $Form field: MOD: adjust no label
     &_adjust_no-label
       padding-top: 24px
+
+      +media-screen-max-l-minor
+        #{$block}__row_wrap_screen-l-minor > &
+          padding-top: 0
 
       +media-screen-max-m-major
         #{$block}__row_wrap_screen-m-major > &
