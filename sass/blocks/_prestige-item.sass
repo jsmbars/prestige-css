@@ -1,0 +1,427 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Item
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-item"
+
+#{$block}
+  display: block
+  width: 100%
+  padding: 15px 10px
+  overflow: hidden
+  background-color: $c-white
+  border-radius: 8px
+  box-shadow: 0 2px 8px -2px $c-shadow-primary
+
+  &:not(:last-child)
+    margin-bottom: 20px
+
+  // $Item MOD: role cleaning checklist
+  &_role_cleaning-checklist
+
+  // $Item STATE: missing
+  &.is-missing
+    box-shadow: 0 2px 8px -2px $c-orange-ultra-light, 0 0 0 2px $c-orange-light
+    background-color: $c-orange-ultra-light
+
+  // $Item STATE: damaged
+  &.is-damaged
+    box-shadow: 0 2px 8px -2px $c-shadow-primary, 0 0 0 2px $c-red-light
+    background-color: $c-red-ultra-light
+
+
+  // $Item main
+  &__main
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: flex-start
+    width: 100%
+
+    +media-screen-max-s-minor
+      flex-direction: column
+
+
+  // $Item image
+  &__image
+    flex-grow: 0
+    flex-shrink: 0
+    width: 140px
+    height: 140px
+    background-color: $c-gray-ultra-light
+    border-radius: 8px
+    overflow: hidden
+
+    +media-screen-max-m-major
+      width: 120px
+      height: 120px
+
+    +media-screen-max-s-major
+      width: 140px
+      height: 140px
+
+    +media-screen-max-s-minor
+      width: 100%
+      height: auto
+      margin-bottom: 20px
+
+    & img
+      display: block
+      width: 100%
+      max-width: 100%
+
+
+  // $Item info
+  &__info
+    display: block
+    width: calc(100% - 140px)
+    padding-left: 20px
+
+    +media-screen-max-m-major
+      width: calc(100% - 120px)
+      padding-left: 10px
+
+    +media-screen-max-s-major
+      width: calc(100% - 140px)
+
+    +media-screen-max-s-minor
+      padding-left: 0
+      width: 100%
+
+
+  // $Item header
+  &__header
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+    width: 100%
+    margin-bottom: 20px
+
+    +media-screen-max-m-major
+      flex-direction: column
+      align-items: flex-start
+      margin-bottom: 10px
+
+
+  // $Item title
+  &__title
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    max-width: 100%
+    padding-right: 20px
+    font-family: $f-sans
+    font-size: 20px
+    line-height: 1
+    font-weight: 600
+    color: $c-gray-ultra-dark
+
+    +media-screen-max-m-major
+      margin-bottom: 5px
+      padding-right: 0
+
+    +media-screen-max-s-major
+      margin-bottom: 10px
+
+
+  // $Item status
+  &__status
+    flex-grow: 0
+    flex-shrink: 0
+    display: flex
+    flex-direction: row
+    justify-content: flex-end
+    align-items: center
+    width: 440px
+
+    +media-screen-max-m-major
+      flex-grow: 1
+      flex-shrink: 1
+      width: 100%
+
+    +media-screen-max-s-major
+      flex-direction: column
+      align-items: flex-start
+
+
+  // $Item status info
+  &__status-info
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    padding-right: 20px
+
+    +media-screen-max-m-major
+      flex-grow: 1
+      flex-shrink: 1
+      width: calc(100% - 200px)
+      padding-right: 10px
+
+    +media-screen-max-s-major
+      margin-bottom: 10px
+      padding-right: 0
+
+
+  // $Item status text
+  &__status-text
+    display: block
+    max-width: 100%
+    font-family: $f-sans
+    font-size: 16px
+    font-weight: 400
+    color: $c-gray-ultra-dark
+    white-space: nowrap
+
+
+  // $Item status text bold
+  &__status-text-bold
+    font-weight: 800
+
+
+  // $Item status select
+  &__status-select
+    width: 200px
+
+    +media-screen-max-s-major
+      width: 100%
+
+
+  // $Item content
+  &__content
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: flex-start
+    width: 100%
+
+    +media-screen-max-m-major
+      flex-direction: column
+
+
+  // $Item description
+  &__description
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    padding-right: 20px
+
+
+  // $Item text
+  &__text
+    display: block
+    max-width: 100%
+    font-family: $f-sans
+    font-size: 14px
+    font-weight: 400
+    color: $c-gray-ultra-dark
+
+    &:not(Last-child)
+      margin-bottom: 10px
+
+
+  // $Item actions
+  &__actions
+    flex-grow: 0
+    flex-shrink: 0
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-items: stretch
+    width: 200px
+
+    +media-screen-max-m-major
+      flex-grow: 1
+      flex-shrink: 1
+      flex-direction: row
+      align-items: center
+      width: 100%
+
+    +media-screen-max-xs
+      flex-direction: column
+      align-items: stretch
+
+
+  // $Item action
+  &__action
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    text-align: left
+
+    +media-screen-max-m-major
+      text-align: center
+
+    +media-screen-max-s-major
+      padding-left: 5px
+      padding-right: 5px
+
+    +media-screen-max-xs
+      width: 100%
+      padding-left: 15px
+      padding-right: 15px
+      text-align: left
+
+    &:not(:last-child)
+      margin-bottom: 10px
+
+      +media-screen-max-m-major
+        margin-bottom: 0
+        margin-right: 10px
+
+      +media-screen-max-xs
+        margin-bottom: 10px
+        margin-right: 0
+
+
+  // $Item report
+  &__report
+    display: block
+    width: 100%
+    margin-top: 20px
+    padding-top: 20px
+    border-top: 1px solid $c-gray-extra-light
+
+    +media-screen-max-m-major
+      margin-top: 10px
+
+
+  // $Item report header
+  &__report-header
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+    width: 100%
+    margin-bottom: 20px
+
+    +media-screen-max-m-major
+      margin-bottom: 10px
+
+    +media-screen-max-s-major
+      flex-direction: column
+      align-items: flex-start
+
+
+  // $Item report status
+  &__report-status
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    padding-right: 20px
+
+    +media-screen-max-m-major
+      padding-right: 10px
+
+    +media-screen-max-s-major
+      padding-right: 0
+
+    &:not(:last-child)
+      +media-screen-max-s-major
+        margin-bottom: 10px
+
+
+  // $Item report status text
+  &__report-status-text
+    display: block
+    max-width: 100%
+    font-family: $f-sans
+    font-size: 15px
+    font-weight: 400
+    color: $c-gray-ultra-dark
+    white-space: nowrap
+
+
+  // $Item report status text bold
+  &__report-status-text-bold
+    font-size: 16px
+    font-weight: 800
+
+
+  // $Item report priority
+  &__report-priority
+    flex-grow: 0
+    flex-shrink: 0
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+
+    +media-screen-max-s-major
+      width: 100%
+
+
+  // $Item report priority select
+  &__report-priority-select
+    width: 200px
+
+    +media-screen-max-s-major
+      width: 100%
+
+
+  // $Item report content
+  &__report-content
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: flex-start
+    width: 100%
+
+    +media-screen-max-m-major
+      flex-direction: column
+
+
+  // $Item report explanation
+  &__report-explanation
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    width: 50%
+    padding-right: 20px
+
+    +media-screen-max-m-major
+      width: 100%
+      padding-right: 0
+      margin-bottom: 20px
+
+
+  // $Item report files
+  &__report-files
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    width: 50%
+
+    +media-screen-max-m-major
+      width: 100%
+
+
+  // $Item report files control
+  &__report-files-control
+    display: block
+    width: 100%
+    margin-bottom: 20px
+
+
+  // $Item files action
+  &__report-files-action
+    display: block
+    width: 100%
+    text-align: center
+
+
+  // $Item report files list
+  &__report-files-list
+
+
+
