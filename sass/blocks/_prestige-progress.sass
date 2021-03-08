@@ -1,0 +1,133 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Progress
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+@keyframes stripes-move
+  0%
+    background-position: 0 0
+
+  100%
+    background-position: 40px 40px
+
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-progress"
+
+#{$block}
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+  align-items: center
+  width: 100%
+
+
+  // $Progress info
+  &__info
+    flex-grow: 0
+    flex-shrink: 0
+    display: block
+
+    &:first-child
+      padding-right: 10px
+      text-align: left
+
+    &:last-child
+      padding-left: 10px
+      text-align: right
+
+
+  // $Progress text
+  &__text
+    display: block
+    max-width: 100%
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1
+
+    // $Progress text MOD: size small
+    &_size_s
+      font-size: 12px
+
+    // $Progress text MOD: size large
+    &_size_l
+      font-size: 16px
+
+
+  // $Progress text light
+  &__text-light
+    font-weight: 300
+
+
+  // $Progress text bold
+  &__text-bold
+    font-weight: 600
+
+
+  // $Progress indicator
+  &__indicator
+    position: relative
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    width: 100%
+    padding: 5px
+    border-radius: 4px
+    background-color: $c-gray-ultra-light
+
+
+  // $Progress value
+  &__value
+    display: block
+    width: 0
+    height: 20px
+    padding: 0 5px
+    line-height: 20px
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 20px
+    font-weight: 400
+    color: $c-white
+    text-shadow: 0 0 2px $c-gray-ultra-dark
+    background-color: $c-gray-dark
+    border-radius: 4px
+    transition: width .4s
+
+    // $Progress value CONTEXT: $Progress STATE: incomplete
+    #{$block}.is-incomplete &
+      background-color: $c-red-medium
+
+    // $Progress value CONTEXT: $Progress STATE: complete
+    #{$block}.is-complete &
+      background-color: $c-green-medium
+
+    // $Progress value MOD: type stripped
+    &_type_striped
+      position: relative
+      overflow: hidden
+
+      &:after
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        z-index: 1
+        background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent)
+        background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent)
+        background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent)
+        background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent)
+        background-image: linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent)
+        background-size: 40px 40px
+
+    // $Progress value MOD: type striped MOD: type animated
+    &_type_striped#{&}_type_animated
+      &:after
+        animation: stripes-move 2s linear infinite

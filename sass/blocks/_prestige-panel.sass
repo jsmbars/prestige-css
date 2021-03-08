@@ -68,6 +68,11 @@ $block: ".prestige-panel"
   &_role_booking-changes
     box-shadow: 0 2px 8px -2px $c-shadow-primary
 
+  // $Panel MOD: role cleaning history
+  &_role_cleaning-history
+    box-shadow: 0 2px 8px -2px $c-shadow-primary
+    text-align: center
+
 
   // $Panel link
   &__link
@@ -351,6 +356,11 @@ $block: ".prestige-panel"
     align-items: center
     width: 100%
 
+    +media-screen-max-xs
+      #{$block}_role_cleaning-history &
+        flex-direction: column
+        align-items: stretch
+
     // $Panel actions MOD: justify start
     &_justify_start
       justify-content: flex-start
@@ -365,8 +375,17 @@ $block: ".prestige-panel"
     flex-grow: 0
     flex-shrink: 1
 
+    +media-screen-max-xs
+      #{$block}_role_cleaning-history &
+        flex-grow: 1
+
     &:not(:last-child)
       margin-right: 20px
+
+      +media-screen-max-xs
+        #{$block}_role_cleaning-history &
+          margin-right: 0
+          margin-bottom: 10px
 
 
   // $Panel title
@@ -380,7 +399,8 @@ $block: ".prestige-panel"
     // $Panel title CONTEXT: $Panel MOD: role booking select customer
     // $Panel title CONTEXT: $Panel MOD: role booking history
     #{$block}_role_booking-select-customer &,
-    #{$block}_role_booking-history &
+    #{$block}_role_booking-history &,
+    #{$block}_role_cleaning-history &
       width: 100%
       max-width: 100%
       text-align: center

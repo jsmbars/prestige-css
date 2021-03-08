@@ -36,6 +36,12 @@ $block: ".prestige-board"
   // $Board MOD: role booking planner
   &_role_booking-planner
 
+  // $Board MOD: role cleaning history
+  &_role_cleaning-history
+
+  // $Board MOD: role cleaning checklist
+  &_role_cleaning-checklist
+
   // $Board STATE: closed
   &.is-closed
 
@@ -76,6 +82,9 @@ $block: ".prestige-board"
 
     +media-screen-max-m-major
       padding: 20px 15px
+
+      #{$block}_role_cleaning-checklist &
+        flex-wrap: wrap
 
     +media-screen-max-s-major
       padding: 20px 10px
@@ -150,6 +159,15 @@ $block: ".prestige-board"
     #{$block}_role_booking &
       padding: 0 20px
 
+    +media-screen-max-m-major
+      #{$block}_role_cleaning-checklist &
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        align-items: flex-start
+        width: 100%
+        margin-bottom: 10px
+
     +media-screen-max-s-major
       #{$block}_role_booking &
         order: -99
@@ -157,6 +175,22 @@ $block: ".prestige-board"
         margin-bottom: 20px
         padding: 0
         text-align: center
+
+      #{$block}_role_cleaning-checklist &
+        display: block
+
+
+  // $Panel header progress
+  &__header-progress
+    flex-grow: 0
+    flex-shrink: 0
+
+    #{$block}_role_cleaning-checklist &
+      width: 50%
+
+    +media-screen-max-m-major
+      #{$block}_role_cleaning-checklist &
+        width: 100%
 
 
   // $Board filter
@@ -211,6 +245,12 @@ $block: ".prestige-board"
     +media-screen-max-m-major
       display: none
       padding-top: 20px
+
+    +media-screen-min-m-major
+      display: block !important
+
+    &.is-opened
+      display: block
 
 
   // $Board content
@@ -268,6 +308,19 @@ $block: ".prestige-board"
     line-height: 1
     font-weight: 400
     color: $c-gray-ultra-dark
+
+    #{$block}_role_cleaning-checklist &
+      margin-bottom: 10px
+
+    +media-screen-max-m-major
+      #{$block}_role_cleaning-checklist &
+        margin-bottom: 0
+        padding-right: 20px
+
+    +media-screen-max-s-major
+      #{$block}_role_cleaning-checklist &
+        margin-bottom: 10px
+        padding-right: 0
 
 
   // $Board text

@@ -36,6 +36,12 @@ $block: ".prestige-page-content"
   // $Page content MOD: role booking planner
   &_role_booking-planner
 
+  // $Page content MOD: role cleaning history
+  &_role_cleaning-history
+
+  // $Page content MOD: role cleaning checklist
+  &_role_cleaning-checklist
+
 
   // $Page content inner container
   &__inner
@@ -129,6 +135,9 @@ $block: ".prestige-page-content"
     +media-screen-max-s-major
       justify-content: center
 
+      #{$block}_role_cleaning-checklist &
+        justify-content: space-between
+
     &:not(:last-child)
       margin-bottom: 20px
 
@@ -145,8 +154,19 @@ $block: ".prestige-page-content"
     font-weight: 400
     color: $c-gray-ultra-dark
 
+    #{$block}_role_cleaning-checklist &
+      padding-right: 20px
+
     +media-screen-max-s-major
       text-align: center
+
+      #{$block}_role_cleaning-checklist &
+        text-align: left
+
+    +media-screen-max-xs
+      #{$block}_role_cleaning-checklist &
+        font-size: 22px
+        line-height: 26px
 
 
   // $Page content subtitle
@@ -163,6 +183,9 @@ $block: ".prestige-page-content"
 
     +media-screen-max-s-major
       text-align: center
+
+      #{$block}_role_cleaning-checklist &
+        text-align: left
 
 
   // $Page content header actions
