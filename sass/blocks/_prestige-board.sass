@@ -42,6 +42,12 @@ $block: ".prestige-board"
   // $Board MOD: role cleaning checklist
   &_role_cleaning-checklist
 
+  // $Board MOD: role rooms
+  &_role_rooms
+
+  // $Board MOD: role room itinerary
+  &_role_room-itinerary
+
   // $Board STATE: closed
   &.is-closed
 
@@ -83,7 +89,8 @@ $block: ".prestige-board"
     +media-screen-max-m-major
       padding: 20px 15px
 
-      #{$block}_role_cleaning-checklist &
+      #{$block}_role_cleaning-checklist &,
+      #{$block}_role_room-itinerary &
         flex-wrap: wrap
 
     +media-screen-max-s-major
@@ -150,17 +157,18 @@ $block: ".prestige-board"
       margin-right: 20px
 
 
-  // $Panel header info
+  // $Board header info
   &__header-info
     flex-grow: 1
     flex-shrink: 1
 
-    // $Panel header info CONTEXT: $Panel MOD: role booking
+    // $Board header info CONTEXT: $Board MOD: role booking
     #{$block}_role_booking &
       padding: 0 20px
 
     +media-screen-max-m-major
-      #{$block}_role_cleaning-checklist &
+      #{$block}_role_cleaning-checklist &,
+      #{$block}_role_room-itinerary &
         display: flex
         flex-direction: row
         justify-content: space-between
@@ -176,11 +184,12 @@ $block: ".prestige-board"
         padding: 0
         text-align: center
 
-      #{$block}_role_cleaning-checklist &
+      #{$block}_role_cleaning-checklist &,
+      #{$block}_role_room-itinerary &
         display: block
 
 
-  // $Panel header progress
+  // $Board header progress
   &__header-progress
     flex-grow: 0
     flex-shrink: 0
@@ -191,6 +200,61 @@ $block: ".prestige-board"
     +media-screen-max-m-major
       #{$block}_role_cleaning-checklist &
         width: 100%
+
+
+  // $Board header status
+  &__header-status
+    flex-grow: 0
+    flex-shrink: 0
+    display: flex
+    flex-direction: row
+    justify-content: flex-end
+    align-items: center
+
+    +media-screen-max-m-major
+      #{$block}_role_room-itinerary &
+        flex-grow: 1
+        flex-shrink: 1
+        width: 100%
+
+
+  // $Board header status info
+  &__header-status-info
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    padding-right: 20px
+
+    +media-screen-max-m-major
+      #{$block}_role_room-itinerary &
+        flex-grow: 0
+        flex-shrink: 0
+        padding-right: 10px
+
+
+  // $Board header status text
+  &__header-status-text
+    display: block
+    max-width: 100%
+    font-family: $f-sans
+    font-size: 15px
+    line-height: 1
+    font-weight: 400
+    color: $c-gray-ultra-dark
+    white-space: nowrap
+
+
+  // $Board header status select
+  &__header-status-select
+    flex-grow: 0
+    flex-shrink: 0
+    width: 240px
+
+    +media-screen-max-m-major
+      #{$block}_role_room-itinerary &
+        flex-grow: 1
+        flex-shrink: 1
+        width: auto
 
 
   // $Board filter
@@ -309,16 +373,19 @@ $block: ".prestige-board"
     font-weight: 400
     color: $c-gray-ultra-dark
 
-    #{$block}_role_cleaning-checklist &
+    #{$block}_role_cleaning-checklist &,
+    #{$block}_role_room-itinerary &
       margin-bottom: 10px
 
     +media-screen-max-m-major
-      #{$block}_role_cleaning-checklist &
+      #{$block}_role_cleaning-checklist &,
+      #{$block}_role_room-itinerary &
         margin-bottom: 0
         padding-right: 20px
 
     +media-screen-max-s-major
-      #{$block}_role_cleaning-checklist &
+      #{$block}_role_cleaning-checklist &,
+      #{$block}_role_room-itinerary &
         margin-bottom: 10px
         padding-right: 0
 
@@ -348,6 +415,32 @@ $block: ".prestige-board"
   // $Board text bold
   &__text-bold
     font-weight: 600
+
+
+  // $Board actions
+  &__actions
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    width: 100%
+
+    // $Board actions MOD: justify start
+    &_justify_start
+      justify-content: flex-start
+
+    // $Board actions MOD: justify end
+    &_justify_end
+      justify-content: flex-end
+
+
+  // $Board action
+  &__action
+    flex-grow: 0
+    flex-shrink: 1
+
+    &:not(:last-child)
+      margin-right: 20px
 
 
   // $Board toggle

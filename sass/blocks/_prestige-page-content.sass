@@ -42,6 +42,12 @@ $block: ".prestige-page-content"
   // $Page content MOD: role cleaning checklist
   &_role_cleaning-checklist
 
+  // $Page content MOD: role rooms
+  &_role_rooms
+
+  // $Page content MOD: role room itinerary
+  &_role_room-itinerary
+
 
   // $Page content inner container
   &__inner
@@ -135,7 +141,8 @@ $block: ".prestige-page-content"
     +media-screen-max-s-major
       justify-content: center
 
-      #{$block}_role_cleaning-checklist &
+      #{$block}_role_cleaning-checklist &,
+      #{$block}_role_room-itinerary &
         justify-content: space-between
 
     &:not(:last-child)
@@ -154,17 +161,20 @@ $block: ".prestige-page-content"
     font-weight: 400
     color: $c-gray-ultra-dark
 
-    #{$block}_role_cleaning-checklist &
+    #{$block}_role_cleaning-checklist &,
+    #{$block}_role_room-itinerary &
       padding-right: 20px
 
     +media-screen-max-s-major
       text-align: center
 
-      #{$block}_role_cleaning-checklist &
+      #{$block}_role_cleaning-checklist &,
+      #{$block}_role_room-itinerary &
         text-align: left
 
     +media-screen-max-xs
-      #{$block}_role_cleaning-checklist &
+      #{$block}_role_cleaning-checklist &,
+      #{$block}_role_room-itinerary &
         font-size: 22px
         line-height: 26px
 
@@ -184,7 +194,8 @@ $block: ".prestige-page-content"
     +media-screen-max-s-major
       text-align: center
 
-      #{$block}_role_cleaning-checklist &
+      #{$block}_role_cleaning-checklist &,
+      #{$block}_role_room-itinerary &
         text-align: left
 
 

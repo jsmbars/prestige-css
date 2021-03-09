@@ -74,7 +74,7 @@ $block: ".prestige-form-group"
   &__label-text
 
 
-  // $Common form group list
+  // $Form group list
   &__list
     position: relative
     display: block
@@ -85,16 +85,16 @@ $block: ".prestige-form-group"
     border: 1px solid $c-gray-light
     border-radius: 0
 
-    // $Common form group list STATE: error
+    // $Form group list STATE: error
     #{$block}.is-error &
       border-color: $c-red-medium
 
-    @each $choice-highlight-name, $choice-highlight-value in $choice-highlights
-      #{$block}_highlight_#{$choice-highlight-name} &
-        background-color: $choice-highlight-value
+    @each $group-highlight-name, $group-highlight-value in $group-highlights
+      #{$block}_highlight_#{$group-highlight-name} &
+        background-color: $group-highlight-value
 
 
-  // $Common form list scroll
+  // $Form group list scroll
   &__list-scroll
     position: relative
     display: block

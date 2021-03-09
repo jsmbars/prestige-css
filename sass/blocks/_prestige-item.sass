@@ -29,6 +29,9 @@ $block: ".prestige-item"
   // $Item MOD: role cleaning checklist
   &_role_cleaning-checklist
 
+  // $Item MOD: role room itinerary
+  &_role_room-itinerary
+
   // $Item STATE: missing
   &.is-missing
     box-shadow: 0 2px 8px -2px $c-orange-ultra-light, 0 0 0 2px $c-orange-light
@@ -109,6 +112,12 @@ $block: ".prestige-item"
     margin-bottom: 20px
 
     +media-screen-max-m-major
+      #{$block}_role_cleaning-checklist &
+        flex-direction: column
+        align-items: flex-start
+        margin-bottom: 10px
+
+    +media-screen-max-s-major
       flex-direction: column
       align-items: flex-start
       margin-bottom: 10px
@@ -128,12 +137,16 @@ $block: ".prestige-item"
     color: $c-gray-ultra-dark
 
     +media-screen-max-m-major
-      margin-bottom: 5px
-      padding-right: 0
+      #{$block}_role_cleaning-checklist &
+        margin-bottom: 5px
+        padding-right: 0
 
     +media-screen-max-s-major
       margin-bottom: 10px
+      padding-right: 0
 
+      #{$block}_role_cleaning-checklist &
+        margin-bottom: 10px
 
   // $Item status
   &__status
@@ -143,16 +156,25 @@ $block: ".prestige-item"
     flex-direction: row
     justify-content: flex-end
     align-items: center
-    width: 440px
+
+    #{$block}_role_cleaning-checklist &
+      width: 340px
 
     +media-screen-max-m-major
+      #{$block}_role_cleaning-checklist &
+        flex-grow: 1
+        flex-shrink: 1
+        width: 100%
+
+    +media-screen-max-s-major
       flex-grow: 1
       flex-shrink: 1
       width: 100%
 
-    +media-screen-max-s-major
-      flex-direction: column
-      align-items: flex-start
+      #{$block}_role_cleaning-checklist &
+        flex-direction: column
+        align-items: flex-start
+
 
 
   // $Item status info
@@ -163,14 +185,23 @@ $block: ".prestige-item"
     padding-right: 20px
 
     +media-screen-max-m-major
-      flex-grow: 1
-      flex-shrink: 1
-      width: calc(100% - 200px)
-      padding-right: 10px
+      #{$block}_role_cleaning-checklist &
+        flex-grow: 0
+        flex-shrink: 0
+        width: 220px
+        padding-right: 10px
 
     +media-screen-max-s-major
-      margin-bottom: 10px
-      padding-right: 0
+      flex-grow: 0
+      flex-shrink: 0
+      padding-right: 10px
+
+      #{$block}_role_cleaning-checklist &
+        flex-grow: 1
+        flex-shrink: 1
+        width: auto
+        margin-bottom: 10px
+        padding-right: 0
 
 
   // $Item status text
@@ -178,11 +209,11 @@ $block: ".prestige-item"
     display: block
     max-width: 100%
     font-family: $f-sans
-    font-size: 16px
+    font-size: 15px
+    line-height: 1
     font-weight: 400
     color: $c-gray-ultra-dark
     white-space: nowrap
-
 
   // $Item status text bold
   &__status-text-bold
@@ -191,10 +222,23 @@ $block: ".prestige-item"
 
   // $Item status select
   &__status-select
-    width: 200px
+    flex-grow: 0
+    flex-shrink: 0
+    width: 120px
+
+    +media-screen-max-m-major
+      #{$block}_role_cleaning-checklist &
+        flex-grow: 1
+        flex-shrink: 1
+        width: auto
 
     +media-screen-max-s-major
+      flex-grow: 1
+      flex-shrink: 1
       width: 100%
+
+      #{$block}_role_cleaning-checklist &
+        width: 100%
 
 
   // $Item content
@@ -205,7 +249,7 @@ $block: ".prestige-item"
     align-items: flex-start
     width: 100%
 
-    +media-screen-max-m-major
+    +media-screen-max-s-major
       flex-direction: column
 
 
@@ -238,9 +282,9 @@ $block: ".prestige-item"
     flex-direction: column
     justify-content: flex-start
     align-items: stretch
-    width: 200px
+    width: 120px
 
-    +media-screen-max-m-major
+    +media-screen-max-s-major
       flex-grow: 1
       flex-shrink: 1
       flex-direction: row
@@ -259,10 +303,8 @@ $block: ".prestige-item"
     display: block
     text-align: left
 
-    +media-screen-max-m-major
-      text-align: center
-
     +media-screen-max-s-major
+      text-align: center
       padding-left: 5px
       padding-right: 5px
 
@@ -275,7 +317,7 @@ $block: ".prestige-item"
     &:not(:last-child)
       margin-bottom: 10px
 
-      +media-screen-max-m-major
+      +media-screen-max-s-major
         margin-bottom: 0
         margin-right: 10px
 
@@ -337,6 +379,7 @@ $block: ".prestige-item"
     max-width: 100%
     font-family: $f-sans
     font-size: 15px
+    line-height: 1
     font-weight: 400
     color: $c-gray-ultra-dark
     white-space: nowrap
@@ -344,7 +387,6 @@ $block: ".prestige-item"
 
   // $Item report status text bold
   &__report-status-text-bold
-    font-size: 16px
     font-weight: 800
 
 
@@ -361,11 +403,44 @@ $block: ".prestige-item"
       width: 100%
 
 
-  // $Item report priority select
-  &__report-priority-select
-    width: 200px
+  // $Item report-priority info
+  &__report-priority-info
+    flex-grow: 0
+    flex-shrink: 0
+    display: block
+    padding-right: 20px
 
     +media-screen-max-s-major
+      padding-right: 10px
+
+    +media-screen-max-xs
+      width: 110px
+
+
+  // $Item report-priority text
+  &__report-priority-text
+    display: block
+    max-width: 100%
+    font-family: $f-sans
+    font-size: 15px
+    line-height: 1
+    font-weight: 400
+    color: $c-gray-ultra-dark
+    white-space: nowrap
+
+    +media-screen-max-xs
+      white-space: normal
+
+
+  // $Item report priority select
+  &__report-priority-select
+    flex-grow: 0
+    flex-shrink: 0
+    width: 120px
+
+    +media-screen-max-s-major
+      flex-grow: 1
+      flex-shrink: 1
       width: 100%
 
 
