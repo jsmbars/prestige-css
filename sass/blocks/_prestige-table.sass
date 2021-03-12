@@ -44,6 +44,9 @@ $block: ".prestige-table"
   // $Table MOD: role cleaning history
   &_role_cleaning-history
 
+  // $Table MOD: role rooms
+  &_role_rooms
+
 
   // $Table group
   &__group
@@ -106,11 +109,11 @@ $block: ".prestige-table"
 
     +media-screen-max-xl
       #{$block}_role_booking-payment &,
-      #{$block}_role_booking-history &
+      #{$block}_role_booking-history &,
+      #{$block}_role_rooms &
         padding-left: 5px
         padding-right: 5px
 
-    +media-screen-max-xl
       #{$block}_role_cleaning-history &
         padding-top: 10px
         padding-bottom: 10px
@@ -131,6 +134,9 @@ $block: ".prestige-table"
       #{$block}_role_cleaning-history &
         width: 15%
 
+      #{$block}_role_rooms &
+        width: 18%
+
       +media-screen-max-xl
         #{$block}_role_cleaning-history &
           width: 18%
@@ -149,6 +155,9 @@ $block: ".prestige-table"
         width: 25%
 
       #{$block}_role_cleaning-history &
+        width: 7%
+
+      #{$block}_role_rooms &
         width: 7%
 
       +media-screen-max-xl
@@ -171,6 +180,9 @@ $block: ".prestige-table"
       #{$block}_role_cleaning-history &
         width: 14%
 
+      #{$block}_role_rooms &
+        width: 17%
+
       +media-screen-max-xl
         #{$block}_role_cleaning-history &
           width: 17%
@@ -191,6 +203,9 @@ $block: ".prestige-table"
       #{$block}_role_cleaning-history &
         width: 14%
 
+      #{$block}_role_rooms &
+        width: 14%
+
       +media-screen-max-xl
         #{$block}_role_cleaning-history &
           width: 16%
@@ -205,6 +220,9 @@ $block: ".prestige-table"
 
       #{$block}_role_cleaning-history &
         width: 11%
+
+      #{$block}_role_rooms &
+        width: 14%
 
       +media-screen-max-xl
         #{$block}_role_cleaning-history &
@@ -226,6 +244,9 @@ $block: ".prestige-table"
         flex-shrink: 0
         width: 320px
 
+      #{$block}_role_rooms &
+        width: 14%
+
       +media-screen-max-xl
         #{$block}_role_cleaning-history &
           width: 180px
@@ -240,6 +261,12 @@ $block: ".prestige-table"
         flex-grow: 0
         flex-shrink: 0
         width: 110px
+
+      #{$block}_role_rooms &
+        flex-grow: 0
+        flex-shrink: 0
+        width: 180px
+        text-align: center
 
     // $Table cell MOD: role header
     // $Table cell MOD: role footer

@@ -73,6 +73,11 @@ $block: ".prestige-panel"
     box-shadow: 0 2px 8px -2px $c-shadow-primary
     text-align: center
 
+  // $Panel MOD: role rooms
+  &_role_rooms
+    box-shadow: 0 2px 8px -2px $c-shadow-primary
+    text-align: center
+
 
   // $Panel link
   &__link
@@ -400,7 +405,8 @@ $block: ".prestige-panel"
     // $Panel title CONTEXT: $Panel MOD: role booking history
     #{$block}_role_booking-select-customer &,
     #{$block}_role_booking-history &,
-    #{$block}_role_cleaning-history &
+    #{$block}_role_cleaning-history &,
+    #{$block}_role_rooms &
       width: 100%
       max-width: 100%
       text-align: center

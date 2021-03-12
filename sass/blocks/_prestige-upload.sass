@@ -7,6 +7,8 @@
 
 //////////////////////////////////////// Block variables
 
+// $upload-highlight-name, $upload-highlight-background, $upload-highlight-border
+$upload-highlights: ("primary-ultra-light" $c-primary-ultra-light $c-primary-light, "pink-ultra-light" $c-pink-ultra-light $c-pink-light, "red-ultra-light" $c-red-ultra-light $c-red-light, "orange-ultra-light" $c-orange-ultra-light $c-orange-light, "yellow-ultra-light" $c-yellow-ultra-light $c-yellow-light, "green-ultra-light" $c-green-ultra-light $c-green-light, "blue-ultra-light" $c-blue-ultra-light $c-blue-light, "purple-ultra-light" $c-purple-ultra-light $c-purple-light, "gray-ultra-light" $c-gray-ultra-light $c-gray-light)
 
 //////////////////////////////////////// Block mixins and functions
 
@@ -17,6 +19,183 @@ $block: ".prestige-upload"
 #{$block}
   display: block
   width: 100%
+
+  // $Upload STATE: error
+  &.is-error
+
+  // $Upload MOD: highlight primary ultra light
+  &_highlight_primary-ultra-light
+
+  // $Upload MOD: highlight pink ultra light
+  &_highlight_pink-ultra-light
+
+  // $Upload MOD: highlight red ultra light
+  &_highlight_red-ultra-light
+
+  // $Upload MOD: highlight orange ultra light
+  &_highlight_orange-ultra-light
+
+  // $Upload MOD: highlight yellow ultra light
+  &_highlight_yellow-ultra-light
+
+  // $Upload MOD: highlight green ultra light
+  &_highlight_green-ultra-light
+
+  // $Upload MOD: highlight blue ultra light
+  &_highlight_blue-ultra-light
+
+  // $Upload MOD: highlight purple ultra light
+  &_highlight_purple-ultra-light
+
+  // $Upload MOD: highlight gray ultra light
+  &_highlight_gray-ultra-light
+
+
+  // $Upload label
+  &__label
+    display: block
+    width: 100%
+    margin-bottom: 10px
+    font-family: $f-sans
+    font-size: 14px
+    color: $c-gray-ultra-dark
+    font-weight: 300
+    line-height: 1
+    text-align: left
+
+    // $Upload label MOD: adjust nowrap
+    &_adjust_nowrap
+      white-space: nowrap
+
+
+  // $Upload label text
+  &__label-text
+
+
+  // $Upload control
+  &__control
+    position: relative
+    display: block
+    width: 100%
+    background-color: $c-gray-ultra-light
+    border: 1px solid $c-gray-light
+
+    @each $upload-highlight-name, $upload-highlight-background, $upload-highlight-border in $upload-highlights
+      #{$block}_highlight_#{$upload-highlight-name} &
+        background-color: $upload-highlight-background
+        border-color: $upload-highlight-border
+
+    // $Upload control STATE: error
+    #{$block}.is-error &
+      border-color: $c-red-medium
+
+
+  // $Upload control content
+  &__control-content
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    width: 100%
+    min-height: 200px
+    padding: 10px
+
+
+  // $Upload control input
+  &__control-input
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    z-index: 10
+    display: block
+    margin: 0
+    padding: 0
+    cursor: pointer
+    opacity: 0
+
+
+  // $Upload control preview
+  &__control-preview
+    display: block
+    width: 100%
+
+    & img
+      display: block
+      width: 100%
+      max-width: 100%
+
+    &:not(:last-child)
+      margin-bottom: 20px
+
+
+  // $Upload control icon
+  &__control-icon
+    flex-grow: 0
+    flex-shrink: 0
+    text-align: center
+
+    &:before
+      content: ''
+      display: block
+      font-family: icons
+      font-size: 60px
+      line-height: 60px
+      font-weight: 400
+      color: $c-gray-medium
+
+    &:not(:last-child)
+      margin-bottom: 20px
+
+    // $Upload control icon MOD: plus
+    &_plus
+      &:before
+        content: '\e909'
+
+    // $Upload control icon MOD: file broken
+    &_file-broken
+      &:before
+        content: '\e922'
+
+    // $Upload control icon MOD: spinner
+    &_spinner
+      &:before
+        content: ''
+        display: block
+        width: 60px
+        height: 60px
+        background-image: url(../images/spinner-dark.svg)
+        background-position: center center
+        background-repeat: no-repeat
+        background-size: contain
+
+      &:not(:last-child)
+        margin-bottom: 10px
+
+
+  // $Upload control text
+  &__control-text
+    display: block
+    width: 100%
+    font-family: $f-sans
+    font-size: 14px
+    color: $c-gray-dark
+    font-weight: 400
+    line-height: 1
+    text-align: center
+
+    &:not(:last-child)
+      margin-bottom: 20px
+
+
+  // $Upload control actions
+  &__control-actions
+    text-align: center
+
+
+  // $Upload control action
+  &__control-action
 
 
   // $Upload list
