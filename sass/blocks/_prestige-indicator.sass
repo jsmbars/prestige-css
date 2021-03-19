@@ -1,0 +1,140 @@
+@import '../helpers/settings'
+@import '../helpers/mixins'
+
+////////////////////////////////////////
+// $Indicator
+////////////////////////////////////////
+
+//////////////////////////////////////// Block variables
+
+// $indicator-size-name, $indicator-marker-size, $indicator-marker-padding, $indicator-marker-text, $indicator-text, $indicator-icon
+$indicator-sizes: ("xxs" 25px 5px 16px 14px 16px, "xs" 30px 5px 18px 16px 18px, "s" 35px 10px 20px 18px 20px, "m" 40px 10px 22px 20px 22px, "l" 45px 10px 24px 22px 24px, "xl" 50px 15px 26px 24px 26px, "xxl" 55px 15px 28px 26px 28px)
+
+// $indicator-color-name, $indicator-color-value
+$indicator-colors: ("primary-medium" $c-primary-medium, "pink-medium" $c-pink-medium, "red-medium" $c-red-medium, "orange-medium" $c-orange-medium, "yellow-medium" $c-yellow-medium, "green-medium" $c-green-medium, "blue-medium" $c-blue-medium, "purple-medium" $c-purple-medium, "gray-medium" $c-gray-medium, "gray-dark" $c-gray-dark)
+
+// $indicator-icon-name, $indicator-glyph-code
+$indicator-icons: ("error-circle" "e924", "alert-circle" "e923","check-circle" "e925")
+
+//////////////////////////////////////// Block mixins and functions
+
+
+//////////////////////////////////////// Block styles
+$block: ".prestige-indicator"
+
+#{$block}
+  flex-grow: 0
+  flex-shrink: 0
+  display: inline-flex
+  justify-content: flex-start
+  align-items: center
+
+  // $Indicator MOD: position before
+  &_position_before
+    margin-right: 20px
+
+  // $Indicator MOD: position after
+  &_position_after
+    margin-left: 20px
+
+
+  // $Indicator marker
+  &__marker
+    flex-grow: 0
+    flex-shrink: 0
+    display: block
+    min-width: 40px
+    height: 40px
+    padding: 0 10px
+    background-color: $c-gray-ultra-dark
+    border-radius: 20px
+    font-family: $f-sans
+    font-size: 20px
+    line-height: 40px
+    font-weight: 800
+    color: $c-white
+    text-align: center
+    text-transform: uppercase
+
+    @each $indicator-size-name, $indicator-marker-size, $indicator-marker-padding, $indicator-marker-text, $indicator-text, $indicator-icon in $indicator-sizes
+      #{$block}_size_#{$indicator-size-name} &
+        min-width: $indicator-marker-size
+        height: $indicator-marker-size
+        padding: 0 $indicator-marker-padding
+        font-size: $indicator-marker-text
+        line-height: $indicator-marker-size
+        border-radius: $indicator-marker-size / 2
+
+    @each $indicator-color-name, $indicator-color-value in $indicator-colors
+      #{$block}_color_#{$indicator-color-name} &
+        background-color: $indicator-color-value
+
+    &:first-child
+      margin-right: 5px
+
+    &:last-child
+      margin-left: 5px
+
+    &:only-child
+      margin-left: 0
+      margin-right: 0
+
+
+  // $Indicator icon
+  &__icon
+    flex-grow: 0
+    flex-shrink: 0
+    display: block
+
+    &:before
+      content: ''
+      display: block
+      font-family: icons
+      font-size: 20px
+      line-height: 20px
+      font-weight: 400
+      color: $c-gray-ultra-dark
+
+      @each $indicator-size-name, $indicator-marker-size, $indicator-marker-padding, $indicator-marker-text, $indicator-text, $indicator-icon in $indicator-sizes
+        #{$block}_size_#{$indicator-size-name} &
+          font-size: $indicator-icon
+          line-height: $indicator-icon
+
+      @each $indicator-color-name, $indicator-color-value in $indicator-colors
+        #{$block}_color_#{$indicator-color-name} &
+          color: $indicator-color-value
+
+    &:first-child
+      margin-right: 5px
+
+    &:last-child
+      margin-left: 5px
+
+    &:only-child
+      margin-left: 0
+      margin-right: 0
+
+    @each $indicator-icon-name, $indicator-glyph-code in $indicator-icons
+      &_#{$indicator-icon-name}
+        &:before
+          content: unquote("\'\\#{$indicator-glyph-code}\'")
+
+
+  // $Indicator text
+  &__text
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    font-family: $f-sans
+    font-size: 20px
+    line-height: 1
+    font-weight: 600
+    color: $c-gray-ultra-dark
+
+    @each $indicator-size-name, $indicator-marker-size, $indicator-marker-padding, $indicator-marker-text,$indicator-text, $indicator-icon in $indicator-sizes
+      #{$block}_size_#{$indicator-size-name} &
+        font-size: $indicator-text
+
+    @each $indicator-color-name, $indicator-color-value in $indicator-colors
+      #{$block}_color_#{$indicator-color-name} &
+        color: $indicator-color-value

@@ -47,6 +47,9 @@ $block: ".prestige-table"
   // $Table MOD: role rooms
   &_role_rooms
 
+  // $Table MOD: role maintenance history
+  &_role_maintenance-history
+
 
   // $Table group
   &__group
@@ -110,7 +113,8 @@ $block: ".prestige-table"
     +media-screen-max-xl
       #{$block}_role_booking-payment &,
       #{$block}_role_booking-history &,
-      #{$block}_role_rooms &
+      #{$block}_role_rooms &,
+      #{$block}_role_maintenance-history &
         padding-left: 5px
         padding-right: 5px
 
@@ -137,6 +141,13 @@ $block: ".prestige-table"
       #{$block}_role_rooms &
         width: 18%
 
+      #{$block}_role_maintenance-history &
+        flex-grow: 0
+        flex-shrink: 0
+        width: 70px
+        justify-content: center
+        text-align: center
+
       +media-screen-max-xl
         #{$block}_role_cleaning-history &
           width: 18%
@@ -159,6 +170,9 @@ $block: ".prestige-table"
 
       #{$block}_role_rooms &
         width: 7%
+
+      #{$block}_role_maintenance-history &
+        width: 12%
 
       +media-screen-max-xl
         #{$block}_role_cleaning-history &
@@ -183,6 +197,9 @@ $block: ".prestige-table"
       #{$block}_role_rooms &
         width: 17%
 
+      #{$block}_role_maintenance-history &
+        width: 7%
+
       +media-screen-max-xl
         #{$block}_role_cleaning-history &
           width: 17%
@@ -206,6 +223,9 @@ $block: ".prestige-table"
       #{$block}_role_rooms &
         width: 14%
 
+      #{$block}_role_maintenance-history &
+        width: 12%
+
       +media-screen-max-xl
         #{$block}_role_cleaning-history &
           width: 16%
@@ -223,6 +243,9 @@ $block: ".prestige-table"
 
       #{$block}_role_rooms &
         width: 14%
+
+      #{$block}_role_maintenance-history &
+        width: 7%
 
       +media-screen-max-xl
         #{$block}_role_cleaning-history &
@@ -247,6 +270,9 @@ $block: ".prestige-table"
       #{$block}_role_rooms &
         width: 14%
 
+      #{$block}_role_maintenance-history &
+        width: 12%
+
       +media-screen-max-xl
         #{$block}_role_cleaning-history &
           width: 180px
@@ -267,6 +293,30 @@ $block: ".prestige-table"
         flex-shrink: 0
         width: 180px
         text-align: center
+
+      #{$block}_role_maintenance-history &
+        width: 10%
+
+    // $Table cell eighth column
+    &:nth-child(8)
+      #{$block}_role_maintenance-history &
+        width: 10%
+
+    // $Table cell ninth column
+    &:nth-child(9)
+      #{$block}_role_maintenance-history &
+        width: 10%
+
+    // $Table cell tenth column
+    &:nth-child(10)
+      #{$block}_role_maintenance-history &
+        flex-grow: 0
+        flex-shrink: 0
+        width: 110px
+
+      +media-screen-max-xl
+        #{$block}_role_maintenance-history &
+          width: 100px
 
     // $Table cell MOD: role header
     // $Table cell MOD: role footer

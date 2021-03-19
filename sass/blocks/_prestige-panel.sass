@@ -51,32 +51,28 @@ $block: ".prestige-panel"
       margin-bottom: 20px
 
   // $Panel MOD: role booking select customer
-  &_role_booking-select-customer
-    box-shadow: 0 2px 8px -2px $c-shadow-primary
-    text-align: center
-
+  // $Panel MOD: role booking changes
   // $Panel MOD: role booking history
-  &_role_booking-history
+  // $Panel MOD: role cleaning history
+  // $Panel MOD: role rooms
+  // $Panel MOD: role maintenance history
+  &_role_booking-select-customer,
+  &_role_booking-changes,
+  &_role_booking-history,
+  &_role_cleaning-history,
+  &_role_rooms,
+  &_role_maintenance-history
     box-shadow: 0 2px 8px -2px $c-shadow-primary
+
+  &_role_booking-select-customer,
+  &_role_booking-history,
+  &_role_cleaning-history,
+  &_role_rooms
     text-align: center
 
   @each $panel-highlight-name, $panel-highlight-value in $panel-highlights
     &_highlight_#{$panel-highlight-name}
       background-color: $panel-highlight-value
-
-  // $Panel MOD: role booking changes
-  &_role_booking-changes
-    box-shadow: 0 2px 8px -2px $c-shadow-primary
-
-  // $Panel MOD: role cleaning history
-  &_role_cleaning-history
-    box-shadow: 0 2px 8px -2px $c-shadow-primary
-    text-align: center
-
-  // $Panel MOD: role rooms
-  &_role_rooms
-    box-shadow: 0 2px 8px -2px $c-shadow-primary
-    text-align: center
 
 
   // $Panel link
@@ -121,6 +117,11 @@ $block: ".prestige-panel"
       #{$block}_role_booking-extra &
         padding: 10px
 
+    +media-screen-max-s-major
+      #{$block}_role_maintenance-history &
+        flex-wrap: wrap
+        justify-content: center
+
     &:not(:last-child)
       border-bottom: 1px solid $c-gray-extra-light
 
@@ -138,9 +139,22 @@ $block: ".prestige-panel"
       align-items: center
       padding-right: 10px
 
+    // $Panel header info CONTEXT: $Panel MOD: role maintenance history
+    #{$block}_role_maintenance-history &
+      display: flex
+      flex-direction: row
+      justify-content: flex-start
+      align-items: center
+
     +media-screen-max-s-major
       #{$block}_role_booking-extra &
         flex-wrap: wrap
+
+      #{$block}_role_maintenance-history &
+        justify-content: center
+        margin-bottom: 20px
+        padding-bottom: 20px
+        border-bottom: 1px solid $c-gray-extra-light
 
   // $Panel header info item
   &__header-info-item
@@ -163,6 +177,17 @@ $block: ".prestige-panel"
           flex-grow: 1
           flex-shrink: 1
           width: 100%
+
+
+  &__header-indicator
+    flex-grow: 0
+    flex-shrink: 0
+
+    &:last-child
+      +media-screen-max-s-major
+        #{$block}_role_maintenance-history &
+          width: 100%
+          text-align: center
 
 
   // $Panel header actions
@@ -414,6 +439,14 @@ $block: ".prestige-panel"
     // $Panel title CONTEXT: $Panel MOD: role booking changes
     #{$block}_role_booking-changes &
       font-size: 16px
+
+    // $Panel header indicator CONTEXT: $Panel MOD: role maintenance history
+    #{$block}_role_maintenance-history &
+      padding: 0 10px
+
+    +media-screen-max-s-major
+      #{$block}_role_maintenance-history &
+        padding-right: 0
 
 
   // $Panel title light
