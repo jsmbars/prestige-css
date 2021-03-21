@@ -51,6 +51,9 @@ $block: ".prestige-page-content"
   // $Page content MOD: role maintenance history
   &_role_maintenance-history
 
+  // $Page content MOD: role maintenance ticket
+  &_role_maintenance-ticket
+
 
   // $Page content inner container
   &__inner
@@ -145,7 +148,8 @@ $block: ".prestige-page-content"
       justify-content: center
 
       #{$block}_role_cleaning-checklist &,
-      #{$block}_role_room-itinerary &
+      #{$block}_role_room-itinerary &,
+      #{$block}_role_maintenance-ticket &
         justify-content: space-between
 
     &:not(:last-child)
@@ -165,21 +169,34 @@ $block: ".prestige-page-content"
     color: $c-gray-ultra-dark
 
     #{$block}_role_cleaning-checklist &,
-    #{$block}_role_room-itinerary &
+    #{$block}_role_room-itinerary &,
+    #{$block}_role_maintenance-ticket &
       padding-right: 20px
 
     +media-screen-max-s-major
       text-align: center
 
       #{$block}_role_cleaning-checklist &,
-      #{$block}_role_room-itinerary &
+      #{$block}_role_room-itinerary &,
+      #{$block}_role_maintenance-ticket &
         text-align: left
 
     +media-screen-max-xs
       #{$block}_role_cleaning-checklist &,
-      #{$block}_role_room-itinerary &
+      #{$block}_role_room-itinerary &,
+      #{$block}_role_maintenance-ticket &
         font-size: 22px
         line-height: 26px
+
+
+  // $Page content title light
+  &__title-light
+    font-weight: 300
+
+
+  // $Page content title bold
+  &__title-bold
+    font-weight: 600
 
 
   // $Page content subtitle
@@ -198,7 +215,8 @@ $block: ".prestige-page-content"
       text-align: center
 
       #{$block}_role_cleaning-checklist &,
-      #{$block}_role_room-itinerary &
+      #{$block}_role_room-itinerary &,
+      #{$block}_role_maintenance-ticket &
         text-align: left
 
 
@@ -239,7 +257,8 @@ $block: ".prestige-page-content"
     width: 100%
 
     @media screen and (max-width: 1920px)
-      #{$block}_role_booking &
+      #{$block}_role_booking &,
+      #{$block}_role_maintenance-ticket &
         flex-direction: column
 
 
@@ -254,23 +273,27 @@ $block: ".prestige-page-content"
     width: 100%
 
     &:nth-child(1)
-      #{$block}_role_booking &
+      #{$block}_role_booking &,
+      #{$block}_role_maintenance-ticket &
         width: 60%
         padding-right: 10px
 
       @media screen and (max-width: 1920px)
-        #{$block}_role_booking &
+        #{$block}_role_booking &,
+        #{$block}_role_maintenance-ticket &
           width: 100%
           margin-bottom: 20px
           padding-right: 0
 
     &:nth-child(2)
-      #{$block}_role_booking &
+      #{$block}_role_booking &,
+      #{$block}_role_maintenance-ticket &
         width: 40%
         padding-left: 10px
 
       @media screen and (max-width: 1920px)
-        #{$block}_role_booking &
+        #{$block}_role_booking &,
+        #{$block}_role_maintenance-ticket &
           width: 100%
           padding-left: 0
 

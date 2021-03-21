@@ -61,7 +61,8 @@ $block: ".prestige-panel"
   &_role_booking-history,
   &_role_cleaning-history,
   &_role_rooms,
-  &_role_maintenance-history
+  &_role_maintenance-history,
+  &_role_maintenance-changes
     box-shadow: 0 2px 8px -2px $c-shadow-primary
 
   &_role_booking-select-customer,
@@ -102,7 +103,9 @@ $block: ".prestige-panel"
       padding: 10px
 
     // $Panel header CONTEXT: $Panel MOD: role booking changes
-    #{$block}_role_booking-changes &
+    // $Panel header CONTEXT: $Panel MOD: role maintenance changes
+    #{$block}_role_booking-changes &,
+    #{$block}_role_maintenance-changes &
       padding: 15px 10px
 
     +media-screen-max-m-major
@@ -226,7 +229,9 @@ $block: ".prestige-panel"
       padding-top: 50%
 
     // $Panel content CONTEXT: $Panel MOD: role booking changes
-    #{$block}_role_booking-changes &
+    // $Panel content CONTEXT: $Panel MOD: role maintenance changes
+    #{$block}_role_booking-changes &,
+    #{$block}_role_maintenance-changes &
       padding: 10px
 
     +media-screen-max-s-minor
@@ -266,7 +271,9 @@ $block: ".prestige-panel"
     border-top: 1px solid $c-gray-extra-light
 
     // $Panel header CONTEXT: $Panel MOD: role booking changes
-    #{$block}_role_booking-changes &
+    // $Panel header CONTEXT: $Panel MOD: role maintenance changes
+    #{$block}_role_booking-changes &,
+    #{$block}_role_maintenance-changes &
       padding: 15px 10px
 
     +media-screen-max-m-major
@@ -437,7 +444,9 @@ $block: ".prestige-panel"
       text-align: center
 
     // $Panel title CONTEXT: $Panel MOD: role booking changes
-    #{$block}_role_booking-changes &
+    // $Panel title CONTEXT: $Panel MOD: role maintenance changes
+    #{$block}_role_booking-changes &,
+    #{$block}_role_maintenance-changes &
       font-size: 16px
 
     // $Panel header indicator CONTEXT: $Panel MOD: role maintenance history

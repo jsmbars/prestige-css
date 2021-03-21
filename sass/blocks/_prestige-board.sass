@@ -51,6 +51,12 @@ $block: ".prestige-board"
   // $Board MOD: role maintenance history
   &_role_maintenance-history
 
+  // $Board MOD: role maintenance ticket
+  &_role_maintenance-ticket
+
+  // $Board MOD: role maintenance changes
+  &_role_maintenance-changes
+
   // $Board STATE: closed
   &.is-closed
 
@@ -89,11 +95,26 @@ $block: ".prestige-board"
     #{$block}_role_booking-changes &
       height: 80px
 
+    #{$block}_role_maintenance-ticket &,
+    #{$block}_role_maintenance-changes &
+      height: 130px
+
+    #{$block}_role_maintenance-ticket &
+      align-items: flex-start
+
+    @media screen and (max-width: 1920px)
+      #{$block}_role_booking &,
+      #{$block}_role_booking-changes &,
+      #{$block}_role_maintenance-ticket &,
+      #{$block}_role_maintenance-changes &
+        height: auto
+
     +media-screen-max-m-major
       padding: 20px 15px
 
       #{$block}_role_cleaning-checklist &,
-      #{$block}_role_room-itinerary &
+      #{$block}_role_room-itinerary &,
+      #{$block}_role_maintenance-ticket &
         flex-wrap: wrap
 
     +media-screen-max-s-major
@@ -101,9 +122,6 @@ $block: ".prestige-board"
 
       #{$block}_role_booking &
         flex-wrap: wrap
-        height: auto
-
-      #{$block}_role_booking-changes &
         height: auto
 
 
@@ -171,13 +189,22 @@ $block: ".prestige-board"
 
     +media-screen-max-m-major
       #{$block}_role_cleaning-checklist &,
-      #{$block}_role_room-itinerary &
+      #{$block}_role_room-itinerary &,
+      #{$block}_role_maintenance-ticket &
         display: flex
         flex-direction: row
         justify-content: space-between
         align-items: flex-start
         width: 100%
+
+      #{$block}_role_cleaning-checklist &,
+      #{$block}_role_room-itinerary &,
         margin-bottom: 10px
+
+      #{$block}_role_maintenance-ticket &
+        margin-bottom: 20px
+        padding-bottom: 20px
+        border-bottom: 1px solid $c-gray-extra-light
 
     +media-screen-max-s-major
       #{$block}_role_booking &
@@ -188,8 +215,20 @@ $block: ".prestige-board"
         text-align: center
 
       #{$block}_role_cleaning-checklist &,
-      #{$block}_role_room-itinerary &
+      #{$block}_role_room-itinerary &,
+      #{$block}_role_maintenance-ticket &
         display: block
+
+
+  // $Board header info group
+  &__header-info-group
+    flex-grow: 0
+    flex-shrink: 0
+
+    +media-screen-max-s-major
+      #{$block}_role_maintenance-ticket &
+        flex-grow: 1
+        flex-shrink: 1
 
 
   // $Board header progress
@@ -211,14 +250,24 @@ $block: ".prestige-board"
     flex-shrink: 0
     display: flex
     flex-direction: row
-    justify-content: flex-end
+    justify-content: flex-start
     align-items: center
 
+    #{$block}_role_maintenance-ticket &
+      margin-bottom: 15px
+
     +media-screen-max-m-major
-      #{$block}_role_room-itinerary &
+      #{$block}_role_room-itinerary &,
+      #{$block}_role_maintenance-ticket &
         flex-grow: 1
         flex-shrink: 1
         width: 100%
+
+    +media-screen-max-xs
+      #{$block}_role_maintenance-ticket &
+        flex-wrap: wrap
+        justify-content: flex-start
+        align-items: flex-start
 
 
   // $Board header status info
@@ -226,10 +275,12 @@ $block: ".prestige-board"
     flex-grow: 1
     flex-shrink: 1
     display: block
+    margin-right: auto
     padding-right: 20px
 
     +media-screen-max-m-major
-      #{$block}_role_room-itinerary &
+      #{$block}_role_room-itinerary &,
+      #{$block}_role_maintenance-ticket &
         flex-grow: 0
         flex-shrink: 0
         padding-right: 10px
@@ -258,6 +309,141 @@ $block: ".prestige-board"
         flex-grow: 1
         flex-shrink: 1
         width: auto
+
+      #{$block}_role_maintenance-ticket &
+        flex-grow: 0
+        flex-shrink: 1
+        width: calc(100% - 180px)
+
+    +media-screen-max-xs
+      #{$block}_role_maintenance-ticket &
+        flex-grow: 1
+        flex-shrink: 1
+        width: 100%
+        margin-top: 10px
+
+
+  // $Board status indicator
+  &__header-status-indicator
+    flex-grow: 0
+    flex-shrink: 0
+
+    #{$block}_role_maintenance-ticket &
+      text-align: right
+
+    +media-screen-max-m-major
+      #{$block}_role_maintenance-ticket &
+        flex-grow: 1
+        flex-shrink: 1
+        width: calc(100% - 180px)
+
+    +media-screen-max-xs
+      #{$block}_role_maintenance-ticket &
+        width: calc(100% - 170px)
+
+
+  // $Board header priority
+  &__header-priority
+    flex-grow: 0
+    flex-shrink: 0
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+
+    +media-screen-max-m-major
+      #{$block}_role_maintenance-ticket &
+        flex-grow: 1
+        flex-shrink: 1
+        width: 100%
+
+    +media-screen-max-xs
+      #{$block}_role_maintenance-ticket &
+        flex-wrap: wrap
+        justify-content: flex-start
+        align-items: flex-start
+
+
+  // $Board header priority info
+  &__header-priority-info
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    margin-right: auto
+    padding-right: 20px
+
+    +media-screen-max-m-major
+      #{$block}_role_maintenance-ticket &
+        flex-grow: 0
+        flex-shrink: 0
+        padding-right: 10px
+
+
+  // $Board header priority text
+  &__header-priority-text
+    display: block
+    max-width: 100%
+    font-family: $f-sans
+    font-size: 15px
+    line-height: 1
+    font-weight: 400
+    color: $c-gray-ultra-dark
+    white-space: nowrap
+
+
+  // $Board header priority select
+  &__header-priority-select
+    flex-grow: 0
+    flex-shrink: 0
+    width: 240px
+
+    +media-screen-max-m-major
+      #{$block}_role_maintenance-ticket &
+        flex-grow: 0
+        flex-shrink: 1
+        width: calc(100% - 180px)
+
+    +media-screen-max-xs
+      #{$block}_role_maintenance-ticket &
+        flex-grow: 1
+        flex-shrink: 1
+        width: 100%
+        margin-top: 10px
+
+
+  // $Board priority indicator
+  &__header-priority-indicator
+    flex-grow: 0
+    flex-shrink: 0
+
+    #{$block}_role_maintenance-ticket &
+      text-align: right
+
+    +media-screen-max-m-major
+      #{$block}_role_maintenance-ticket &
+        flex-grow: 1
+        flex-shrink: 1
+        width: calc(100% - 180px)
+
+    +media-screen-max-xs
+      #{$block}_role_maintenance-ticket &
+        width: calc(100% - 170px)
+
+
+  // $Board header group
+  &__header-group
+    flex-grow: 1
+    flex-shrink: 1
+
+    #{$block}_role_maintenance-ticket &
+      flex-grow: 0
+      flex-shrink: 0
+
+    +media-screen-max-m-major
+      #{$block}_role_maintenance-ticket &
+        flex-grow: 1
+        flex-shrink: 1
+        width: 100%
 
 
   // $Board filter
@@ -377,18 +563,21 @@ $block: ".prestige-board"
     color: $c-gray-ultra-dark
 
     #{$block}_role_cleaning-checklist &,
-    #{$block}_role_room-itinerary &
+    #{$block}_role_room-itinerary &,
+    #{$block}_role_maintenance-ticket &
       margin-bottom: 10px
 
     +media-screen-max-m-major
       #{$block}_role_cleaning-checklist &,
-      #{$block}_role_room-itinerary &
+      #{$block}_role_room-itinerary &,
+      #{$block}_role_maintenance-ticket &
         margin-bottom: 0
         padding-right: 20px
 
     +media-screen-max-s-major
       #{$block}_role_cleaning-checklist &,
-      #{$block}_role_room-itinerary &
+      #{$block}_role_room-itinerary &,
+      #{$block}_role_maintenance-ticket &
         margin-bottom: 10px
         padding-right: 0
 
@@ -400,6 +589,10 @@ $block: ".prestige-board"
     font-size: 14px
     font-weight: 400
     color: $c-gray-ultra-dark
+
+    &:not(:last-child)
+      #{$block}_role_maintenance-ticket &
+        margin-bottom: 5px
 
     // $Board text MOD: size small
     &_size_s
