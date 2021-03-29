@@ -32,6 +32,11 @@ $block: ".prestige-item"
   // $Item MOD: role room itinerary
   &_role_room-itinerary
 
+  // $Item MOD: role maintenance ticket
+  &_role_maintenance-ticket
+    padding: 0
+    box-shadow: none
+
   // $Item STATE: missing
   &.is-missing
     box-shadow: 0 2px 8px -2px $c-orange-ultra-light, 0 0 0 2px $c-orange-light
@@ -258,7 +263,13 @@ $block: ".prestige-item"
     flex-grow: 1
     flex-shrink: 1
     display: block
-    padding-right: 20px
+
+    &:not(:last-child)
+      padding-right: 20px
+
+      +media-screen-max-s-major
+        padding-right: 0
+        margin-bottom: 10px
 
 
   // $Item text
@@ -267,10 +278,11 @@ $block: ".prestige-item"
     max-width: 100%
     font-family: $f-sans
     font-size: 14px
+    line-height: 1.25
     font-weight: 400
     color: $c-gray-ultra-dark
 
-    &:not(Last-child)
+    &:not(:last-child)
       margin-bottom: 10px
 
 
@@ -470,6 +482,21 @@ $block: ".prestige-item"
       margin-bottom: 20px
 
 
+  // $Item report explanation text
+  &__report-explanation-text
+    display: block
+    width: 100%
+    max-width: 100%
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1.25
+    font-weight: 400
+    color: $c-gray-ultra-dark
+
+    &:not(:last-child)
+      margin-bottom: 10px
+
+
   // $Item report files
   &__report-files
     flex-grow: 1
@@ -479,6 +506,19 @@ $block: ".prestige-item"
 
     +media-screen-max-m-major
       width: 100%
+
+
+  // $Item report files title
+  &__report-files-title
+    display: block
+    width: 100%
+    max-width: 100%
+    margin-bottom: 20px
+    font-family: $f-sans
+    font-size: 15px
+    line-height: 1
+    font-weight: 600
+    color: $c-gray-ultra-dark
 
 
   // $Item report files control
@@ -497,6 +537,205 @@ $block: ".prestige-item"
 
   // $Item report files list
   &__report-files-list
+
+
+  // $Item resolution
+  &__resolution
+    display: block
+    width: 100%
+    margin-top: 20px
+    padding-top: 20px
+    border-top: 1px solid $c-gray-extra-light
+
+    +media-screen-max-m-major
+      margin-top: 10px
+
+
+  // $Item resolution header
+  &__resolution-header
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+    width: 100%
+    margin-bottom: 20px
+
+    +media-screen-max-m-major
+      margin-bottom: 10px
+
+    +media-screen-max-s-major
+      flex-direction: column
+      align-items: flex-start
+
+
+  // $Item resolution title
+  &__resolution-title
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    max-width: 100%
+    padding-right: 20px
+    font-family: $f-sans
+    font-size: 15px
+    line-height: 1
+    font-weight: 400
+    color: $c-gray-ultra-dark
+
+    +media-screen-max-m-major
+      padding-right: 10px
+
+    +media-screen-max-s-major
+      padding-right: 0
+
+    &:not(:last-child)
+      +media-screen-max-s-major
+        margin-bottom: 10px
+
+
+  // $Item resolution status
+  &__resolution-status
+    flex-grow: 0
+    flex-shrink: 0
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+
+    +media-screen-max-s-major
+      width: 100%
+
+    +media-screen-max-xs
+      flex-wrap: wrap
+
+
+  // $Item resolution-status info
+  &__resolution-status-info
+    flex-grow: 0
+    flex-shrink: 0
+    display: block
+    padding-right: 20px
+
+    +media-screen-max-s-major
+      padding-right: 10px
+
+    +media-screen-max-xs
+      flex-grow: 1
+      flex-shrink: 1
+      width: 100%
+      padding-right: 0
+
+
+  // $Item resolution-status text
+  &__resolution-status-text
+    display: block
+    max-width: 100%
+    font-family: $f-sans
+    font-size: 15px
+    line-height: 1
+    font-weight: 400
+    color: $c-gray-ultra-dark
+    white-space: nowrap
+
+    +media-screen-max-xs
+      white-space: normal
+
+
+  // $Item resolution status select
+  &__resolution-status-select
+    flex-grow: 0
+    flex-shrink: 0
+    width: 240px
+
+    +media-screen-max-s-major
+      flex-grow: 1
+      flex-shrink: 1
+      width: 100%
+
+    +media-screen-max-xs
+      margin-top: 10px
+
+
+  // $Item resolution content
+  &__resolution-content
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: flex-start
+    width: 100%
+
+    +media-screen-max-m-major
+      flex-direction: column
+
+
+  // $Item resolution explanation
+  &__resolution-explanation
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    width: 50%
+    padding-right: 20px
+
+    +media-screen-max-m-major
+      width: 100%
+      padding-right: 0
+      margin-bottom: 20px
+
+
+  // $Item resolution explanation text
+  &__resolution-explanation-text
+    display: block
+    width: 100%
+    max-width: 100%
+    font-family: $f-sans
+    font-size: 14px
+    line-height: 1.25
+    font-weight: 400
+    color: $c-gray-ultra-dark
+
+    &:not(:last-child)
+      margin-bottom: 10px
+
+
+  // $Item resolution files
+  &__resolution-files
+    flex-grow: 1
+    flex-shrink: 1
+    display: block
+    width: 50%
+
+    +media-screen-max-m-major
+      width: 100%
+
+
+  // $Item resolution files title
+  &__resolution-files-title
+    display: block
+    width: 100%
+    max-width: 100%
+    margin-bottom: 20px
+    font-family: $f-sans
+    font-size: 15px
+    line-height: 1
+    font-weight: 600
+    color: $c-gray-ultra-dark
+
+
+  // $Item resolution files control
+  &__resolution-files-control
+    display: block
+    width: 100%
+    margin-bottom: 20px
+
+
+  // $Item files action
+  &__resolution-files-action
+    display: block
+    width: 100%
+    text-align: center
+
+
+  // $Item resolution files list
+  &__resolution-files-list
 
 
 
