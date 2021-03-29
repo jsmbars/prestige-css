@@ -263,7 +263,13 @@ $block: ".prestige-item"
     flex-grow: 1
     flex-shrink: 1
     display: block
-    padding-right: 20px
+
+    &:not(:last-child)
+      padding-right: 20px
+
+      +media-screen-max-s-major
+        padding-right: 0
+        margin-bottom: 10px
 
 
   // $Item text
